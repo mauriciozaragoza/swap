@@ -35,7 +35,7 @@
 
 		private function iniciar() : void {
 			trace("lol");
-			FlxG.switchState(new LevelLoader());
+			FlxG.switchState(new LevelContainer());
 		}
 
 		override public function update():void
