@@ -153,5 +153,6 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		// List of null classes allows you to spawn levels dynamically from code using ClassReference.
 		private static var level_Level1:Level_Level1;
+		private static var level_Level2:Level_Level2;
 	}
 }

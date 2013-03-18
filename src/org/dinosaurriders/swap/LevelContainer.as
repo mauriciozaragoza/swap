@@ -1,124 +1,156 @@
 package org.dinosaurriders.swap {
-	import Box2D.Collision.Shapes.b2PolygonDef;
-	import Box2D.Collision.b2AABB;
+	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2BodyDef;
+	import Box2D.Dynamics.b2DebugDraw;
+	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.levels.BaseLevel;
-	import org.dinosaurriders.swap.levels.BoxData;
 	import org.dinosaurriders.swap.levels.Level_Level1;
-	import org.dinosaurriders.swap.levels.ObjectLink;
-	import org.dinosaurriders.swap.levels.TextData;
+	import org.dinosaurriders.swap.objects.PhysicalBody;
 	import org.dinosaurriders.swap.objects.Player;
-	import org.dinosaurriders.swap.objects.StaticSwap;
 	import org.dinosaurriders.swap.objects.Trigger;
 	import org.flixel.*;
 
+	import flash.display.Sprite;
 	import flash.utils.Dictionary;
-	import flash.utils.getTimer;
 
 	public class LevelContainer extends FlxState {
 		private var currentLevel : BaseLevel;
 		private var player : Player;
-		public static var elapsedTime : Number = 0;
-		private static var lastTime : uint = 0;
+		private var tempSprite : PhysicalBody;
 		private var triggersGroup : FlxGroup = new FlxGroup;
-		private var ids : Dictionary = new Dictionary(true);
 		private var camera : FlxCamera;
 		// box2d physics
-		protected var _world : b2World;
-		private var physicBodies : Array;
-
-		public function LevelContainer() : void {
-			super();
-			
-			physicBodies = new Array;
-		}
-
-		private function setupWorld(x1 : Number, y1 : Number, x2 : Number, y2 : Number) : void {
-			trace("creating world", x1, y1, x2, y2);
-			
-			var worldAABB : b2AABB = new b2AABB();
-			worldAABB.lowerBound.Set(x1 / Settings.ratio, y1 / Settings.ratio);
-			worldAABB.upperBound.Set(x2 / Settings.ratio, y2 / Settings.ratio);
-
+		protected var world : b2World;
+		private var debugSprite : Sprite;
+		
+		private function setupWorld() : void {
 			// TODO must be able to handle multiple gravities
 			var gravity : b2Vec2 = new b2Vec2(0, 9.8);
-			_world = new b2World(worldAABB, gravity, true);
+			world = new b2World(gravity, true);
 			
-			var currentHitLayer : Array; 
-			for each (var hitLayer : FlxTilemap in currentLevel.hitTilemaps.members) {
-				currentHitLayer = hitLayer.getData();
-				for (var y : Number = 0, i : Number = 0; y < hitLayer.heightInTiles; y++) {
-					for (var x : Number = 0; x < hitLayer.widthInTiles; x++, i++) {
+			debugDrawing();
+		}
+		
+		/*
+		 * Creates the physics for the given tilemap
+		 */
+		private function createTilemapPhysics(tilemap : FlxTilemap, properties : Array, level : BaseLevel, offsetX : Number, offsetY : Number) : void {
+			var currentHitLayer : Array;
+			
+			// DAME tile properties are stored in properties["%DAME_tiledata%"][tileId][key]
+			var tileProperties = properties[0];
+			
+			if (tileProperties == null) {
+				// if it has no properties, we still need to iterate over an empty array
+				tileProperties = new Array;
+			}
+			else if (tileProperties.name != "%DAME_tiledata%") {
+				throw new Error("Invalid tilemap properties index");
+			}
+			else {
+				tileProperties = tileProperties.value;
+			}	
+					
+			var currentProperties : Array;
+			
+			// create map tiles
+			if (level.hitTilemaps.members.lastIndexOf(tilemap) != -1) {
+				currentHitLayer = tilemap.getData();
+				
+				for (var y : Number = 0, i : Number = 0; y < tilemap.heightInTiles; y++) {
+					for (var x : Number = 0; x < tilemap.widthInTiles; x++, i++) {
 						if (currentHitLayer[i] != 0) {
-							createTileBox(x, y);
+							createTileBox(x, y, offsetX, offsetY);
+						}
+						
+						// checks for specific properties of the tile
+						// POTENTIALLY SLOW
+						currentProperties = tileProperties[currentHitLayer[i]];
+						if (currentProperties != null) {
+							for (var j : int = 0; j < currentProperties.length; j++) {
+								switch (properties[j].name) {
+									case "kill":
+									if (properties[j].value == true) {
+										trace("omg danger at ", x, y);
+									}
+									break;								
+								}
+							}
 						}
 					}
 				}
 			}
 			
-			// TODO must be a higher class than staticswap which extends to other physical bodies 
-			for each (var body : StaticSwap in physicBodies) {
-				body.createPhysicsObject(_world);
+			// Create border tiles
+			for (var y1 : int = -1; y1 <= tilemap.heightInTiles; y1++) {
+				createTileBox(-1, y1, offsetX, offsetY);
+				createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY);
+			}
+			
+			for (var x1 : int = -1; x1 < tilemap.widthInTiles; x1++) {
+				createTileBox(x1, tilemap.heightInTiles, offsetX, offsetY);
 			}
 		}
 		
-		private function createTileBox(tileX : Number, tileY : Number) : void {
-			// FIXME hardcoded sizes
+		/*
+		 * Creates a solid and static tile block, all sizes expressed in tiles
+		 */
+		private function createTileBox(tileX : Number, tileY : Number, offsetX : Number, offsetY : Number) : void {
 			var body:b2Body;
             var bodyDef:b2BodyDef;
-            var boxDef:b2PolygonDef;
+            var fixtureDef:b2FixtureDef = new b2FixtureDef();
 			
-			boxDef = new b2PolygonDef();
-			boxDef.SetAsBox(32 / Settings.ratio / 2, 32 / Settings.ratio / 2);
+			var boxDef : b2PolygonShape = new b2PolygonShape();
+			boxDef.SetAsBox(Settings.TILESIZE / Settings.ratio / 2, Settings.TILESIZE / Settings.ratio / 2);
 			
-			boxDef.density = 0;
-			boxDef.friction = 5;
+			fixtureDef.shape = boxDef;
+			fixtureDef.density = 0;
+			fixtureDef.friction = 5;
 			
-			bodyDef = new b2BodyDef();			
-			bodyDef.position.Set((tileX * 32 + 16) / Settings.ratio, (tileY * 32 + 16) / Settings.ratio);
+			bodyDef = new b2BodyDef();
+			bodyDef.position.Set(
+				((offsetX + tileX) * Settings.TILESIZE + Settings.TILESIZE / 2) / Settings.ratio,
+				((offsetY + tileY) * Settings.TILESIZE + Settings.TILESIZE / 2) / Settings.ratio);
+			bodyDef.type = b2Body.b2_staticBody;
 			
-			body = _world.CreateBody(bodyDef);
-			body.CreateShape(boxDef);
-			body.SetMassFromShapes();
+			body = world.CreateBody(bodyDef);
+			body.CreateFixture(fixtureDef);
 		}
 
 		override public function create() : void {
+			// sets up the world physics
+			setupWorld();
+			
+			// Creates the level
 			currentLevel = new Level_Level1(true, onObjectAddedCallback);
-
+			
 			FlxG.bgColor = currentLevel.bgColor;
 
 			camera = new FlxCamera(0, 0, FlxG.width, FlxG.height);
 			FlxG.resetCameras(camera);
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);
+			
+			// Will be removed when box2d is implemented
 			FlxG.worldBounds = new FlxRect(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x, currentLevel.boundsMax.y);
-
-			// sets up the world physics
-			setupWorld(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x, currentLevel.boundsMax.y);
 		}
 
 		protected function onObjectAddedCallback(obj : Object, layer : FlxGroup, level : BaseLevel, scrollX : Number, scrollY : Number, properties : Array) : Object {
-			// finds all 
-			if (properties) {
-				var i : uint = properties.length;
-				while (i--) {
-					if (properties[i].name == "id") {
-						var name : String = properties[i].value;
-						ids[name] = obj;
-						break;
-					}
-				}
-			}
-			
 			if (obj is Player) {
 				player = obj as Player;
-			} else if (obj is StaticSwap) {
-				physicBodies.push(obj);
-			} else if (obj is TextData) {
+				player.createPhysicsObject(world);
+			} else if (obj is FlxTilemap) {
+				var map : FlxTilemap = obj as FlxTilemap;
+				createTilemapPhysics(map, properties, level, map.x / Settings.TILESIZE, map.y / Settings.TILESIZE);
+			} else if (obj is PhysicalBody) {
+				var physicsBody : PhysicalBody = obj as PhysicalBody;
+				tempSprite = physicsBody;
+				physicsBody.createPhysicsObject(world);				
+			} /*else if (obj is TextData) {
 				var tData : TextData = obj as TextData;
 				if ( tData.fontName != "" && tData.fontName != "system" ) {
 					tData.fontName += "Font";
@@ -126,6 +158,7 @@ package org.dinosaurriders.swap {
 				
 				return level.addTextToLayer(tData, layer, scrollX, scrollY, true, properties, onObjectAddedCallback);
 			} else if (obj is BoxData) {
+				
 				// Create the trigger.
 				var bData : BoxData = obj as BoxData;
 				var box : Trigger = new Trigger(bData.x, bData.y, bData.width, bData.height);
@@ -140,28 +173,48 @@ package org.dinosaurriders.swap {
 				var fromBox : Trigger = link.fromObject as Trigger;
 
 				fromBox.AddLinkTo(link.toObject);
-			}
+			}*/
 
 			return obj;
 		}
 
 		override public function update() : void {
-			var time : uint = getTimer();
-			elapsedTime = (time - lastTime) / 1000;
-			lastTime = time;
-
 			super.update();
 
 			// Box2D physics step
-			_world.Step(1.0/30.0, 10);
+			world.Step(FlxG.elapsed, 10, 10);
+			//world.DrawDebugData();
+			//world.ClearForces();
+			
+			// swap test
+			if (FlxG.keys.justPressed("X")) {
+				player.swap(tempSprite);
+			}
 			
 			// map collisions
-			FlxG.collide(currentLevel.hitTilemaps, player);
 			FlxG.overlap(triggersGroup, player, TriggerEntered);
+		}
+		
+		private function debugDrawing() : void {
+			//Assuming a world is set up, under variable m_world
+			//debugSprite is some sprite that we want to draw our debug shapes into.
+			debugSprite = new Sprite();
+			FlxG.stage.addChild(debugSprite);
+			 
+			// FIXME debug does not follow camera
+			var debugDraw:b2DebugDraw = new b2DebugDraw();
+			
+			debugDraw.SetSprite(debugSprite);
+			debugDraw.SetDrawScale(Settings.ratio);
+			debugDraw.SetLineThickness(1);
+			debugDraw.SetAlpha(1.0);
+			debugDraw.SetFillAlpha(0.5);
+			debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
+			world.SetDebugDraw(debugDraw);
 		}
 
 		private function TriggerEntered(trigger : Trigger, plr : FlxSprite) : void {
-			var target : Object = trigger.targetObject ? trigger.targetObject : ids[trigger.target];
+			var target : Object = trigger.targetObject;
 
 			trace("die plz!");
 			target.kill();

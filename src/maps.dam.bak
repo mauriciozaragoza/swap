@@ -1,32 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
   <version>3.1.3</version>
-  <bgColor>0x000000</bgColor>
-  <viewPos x="234" y="119"/>
+  <bgColor>0x99cccc</bgColor>
+  <viewPos x="95" y="-164"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="3">
     <sprite name="Player" idx="1" className="Player" image="../assets/player2.png" width="48" height="48" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="48" boundsHeight="48" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false"/>
-    <tileEntry name="Boulder" idx="2" className="StaticSwap" image="../assets/boulder_big_grass.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="" creation="" exports="true" canScale="true" canRotate="false" surfaceObject="false" lockRotation="false" selected="true"/>
+    <tileEntry name="ForestBoulderLarge" idx="2" className="PolygonBody" image="../assets/ForestBoulderLarge.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 6, 100)" creation="" exports="true" canScale="true" canRotate="false" surfaceObject="false" lockRotation="false" selected="true"/>
   </spriteEntries>
   <layers>
     <group name="Level1" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="PlayerLayer" id="1" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,10,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,10,9,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,10,17,17,17,17,8,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,10,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,10,17,17,9,17,17,17</row>
-        <row>0,0,0,0,0,2,16,4,0,0,0,0,0,10,17,17,17,17,17,17</row>
-        <row>3,3,16,3,3,17,17,17,3,4,0,0,0,10,9,17,17,17,17,17</row>
-        <row>17,17,17,17,17,17,17,17,17,12,0,0,0,10,17,17,17,17,17,17</row>
-        <row>17,9,17,17,17,17,17,17,9,12,0,0,0,10,17,8,17,17,9,17</row>
-        <row>17,17,17,17,17,17,17,17,17,12,0,0,0,10,17,17,17,17,17,17</row>
-        <row>17,17,17,8,17,9,17,17,17,12,0,0,0,18,19,19,19,19,19,19</row>
-        <row>17,17,17,17,17,17,17,17,17,12,0,0,0,0,0,0,0,0,0,0</row>
-        <row>17,17,17,17,17,17,17,9,17,12,0,0,0,0,0,0,0,0,0,0</row>
-        <row>17,17,17,17,17,17,17,17,17,12,0,0,0,0,0,0,0,0,0,0</row>
-        <row>17,9,17,17,17,17,8,17,17,12,0,0,0,0,2,16,3,3,3,3</row>
-        <row>17,17,17,17,17,17,17,17,17,12,24,24,24,24,10,17,17,17,17,17</row>
+      <maplayer name="BackLayer" id="5" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,6,0,7,6,21,22,23,7,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>22,22,22,22,22,39,0,38,22,23,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,48,49,49,49,49,50,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,48,68,65,51,81,52,67,50,0,0,48,49,49,49</row>
+        <row>49,49,49,50,0,48,68,51,81,82,0,64,65,67,49,49,68,65,65,65</row>
+        <row>65,65,65,66,0,48,49,50,25,0,0,64,65,65,65,51,81,81,52,65</row>
+        <row>65,65,65,67,50,80,52,66,0,48,49,68,65,65,51,82,0,0,64,65</row>
+        <row>65,51,81,52,67,50,64,67,49,68,65,65,65,65,66,0,48,49,68,65</row>
+        <row>51,82,0,64,65,67,68,65,65,65,65,65,65,65,67,49,68,65,65,65</row>
+        <row>67,50,0,64,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65</row>
+        <row>65,67,49,68,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65</row>
+      </maplayer>
+      <maplayer name="PlayerLayer" id="0" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,18,16,16,16,16,33,33</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,33,33,33,16,17</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,18,16,33,16,33,16,17</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,18,16,33,17,33,33,33</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,17,16,33,17,16</row>
+        <row>0,0,0,0,0,2,32,4,0,0,0,0,0,18,33,33,33,33,17,33</row>
+        <row>3,32,3,3,3,16,33,17,3,4,0,0,0,18,16,33,16,16,17,33</row>
+        <row>33,33,33,17,33,16,33,16,16,20,0,0,0,18,17,16,33,33,33,33</row>
+        <row>17,16,17,33,17,17,33,16,33,20,0,0,0,18,16,33,33,17,33,33</row>
+        <row>35,35,35,35,35,35,35,35,35,36,0,0,0,18,33,33,17,16,33,33</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,34,35,35,35,35,35,35</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,3,3,3</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,16,16,16,33,33</row>
         <tileProperties>
           <properties/>
           <properties/>
@@ -57,7 +75,58 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="2" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="FrontLayer" id="1" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,6,0,7,6,21,22,23,7,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>22,22,22,22,22,39,0,38,22,23,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,9,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,24,0,26,0,0,0,25,0,0,0,0,0,0,9,30,0,10,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,24,0,26,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,7</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,22,22,22,22,22</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <spritelayer name="Sprites" id="2" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true">
+        <sprite guid="85CCD2D1-AC98-1C63-4DB2-552255E3FA62" x="180" y="90" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1"/>
+        <sprite guid="CD4332BA-C25B-0D78-7A50-4F217792085E" x="1" y="128" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
+      </spritelayer>
+    </group>
+    <group name="Level2" id="4" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
+      <maplayer name="FrontLayer" id="3" xScroll="1" yScroll="1" x="640" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -74,40 +143,90 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,7</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,14,14,14,14</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false" selected="true">
-        <sprite guid="2AA7FA3B-C7F3-2A2F-4213-669373DE8458" x="235" y="38" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1"/>
-        <sprite guid="79ACBE1B-47F1-630F-EC88-758CF7FA4A38" x="114" y="32" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
-        <sprite guid="CD4332BA-C25B-0D78-7A50-4F217792085E" x="342" y="50" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
-        <sprite guid="D10E84D9-90B5-6549-1645-574F2844C907" x="251" y="-46" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
-        <sprite guid="89E7DF19-A18A-2E99-9DF3-905E420580AC" x="6" y="-76" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
+      <spritelayer name="Sprites" id="4" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+        <sprite guid="602972CB-4E17-6654-B212-EA9DF642ED79" x="640" y="60" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1"/>
+        <sprite guid="A7786EBE-1C19-79A3-2B40-9C4776CC6C1F" x="850" y="30" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
+        <sprite guid="10267FED-193F-C01E-3FD7-434ADDF543A3" x="1120" y="90" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2"/>
       </spritelayer>
     </group>
   </layers>
-  <layerTemplates/>
-  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
+  <layerTemplates>
+    <maplayer name="FrontLayer" id="3" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+    </maplayer>
+  </layerTemplates>
+  <tileMatrix currentMatrix="2" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
     <row>
-      <tile>2</tile>
-      <tile>3</tile>
-      <tile>4</tile>
+      <tile>48</tile>
+      <tile>49</tile>
+      <tile>50</tile>
     </row>
     <row>
-      <tile>10</tile>
-      <tile>17</tile>
-      <tile>12</tile>
+      <tile>64</tile>
+      <tile>65</tile>
+      <tile>66</tile>
     </row>
     <row>
-      <tile>18</tile>
-      <tile>19</tile>
-      <tile>20</tile>
+      <tile>80</tile>
+      <tile>81</tile>
+      <tile>82</tile>
     </row>
     <specialConnections>
       <sets/>
       <rows/>
     </specialConnections>
   </tileMatrix>
-  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
-    <tiles>0,0,0,0,0,0,0,0,0</tiles>
+  <tileMatrixData name="rock1" rows="4" cols="4" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet2.png">
+    <tiles>2,3,3,4,18,33,17,20,18,16,33,20,34,35,35,36</tiles>
+  </tileMatrixData>
+  <tileMatrixData name="grass" rows="1" cols="3" randomizeMiddle="false" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet2.png">
+    <tiles>21,22,23</tiles>
+  </tileMatrixData>
+  <tileMatrixData name="cave" rows="4" cols="4" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet2.png">
+    <tiles>48,49,49,50,64,65,65,66,64,65,65,66,80,81,81,82</tiles>
   </tileMatrixData>
   <tileBrushes/>
   <colorSwatches/>
@@ -154,7 +273,7 @@
     <SaveGuidesSeparately>false</SaveGuidesSeparately>
     <ForceTilemapPositionChangesInUnits>false</ForceTilemapPositionChangesInUnits>
   </options>
-  <exporter name="C:\Program Files (x86)\DAME\lua\Exporters\flixelComplex.lua" spritepos="Top Left" rotatedSpritePos="false" relativePaths="true" useProjectExporterOnly="false">
+  <exporter name="c:\program files (x86)\dame\lua\Exporters\flixelComplex.lua" spritepos="Top Left" rotatedSpritePos="false" relativePaths="true" useProjectExporterOnly="false">
     <setting name="ExportOnlyCSV">false</setting>
     <setting name="Imports">import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;</setting>
     <setting name="TileMapClass">FlxTilemap</setting>
@@ -169,8 +288,8 @@
   </exporter>
   <customPropertyTypes/>
   <guides>
-    <snap>false</snap>
-    <visible>true</visible>
+    <snap>true</snap>
+    <visible>false</visible>
     <x>0</x>
     <y>0</y>
     <xspace>30</xspace>
