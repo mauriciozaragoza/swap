@@ -8,7 +8,7 @@ package org.dinosaurriders.swap {
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.levels.BaseLevel;
-	import org.dinosaurriders.swap.levels.Level_Level1;
+	import org.dinosaurriders.swap.levels.Level_Level2;
 	import org.dinosaurriders.swap.objects.PhysicalBody;
 	import org.dinosaurriders.swap.objects.Player;
 	import org.dinosaurriders.swap.objects.Trigger;
@@ -35,6 +35,7 @@ package org.dinosaurriders.swap {
 			// TODO fix this so that objects can sleep
 			world = new b2World(gravity, true);
 			world.SetContactListener(new WorldContactListener(world));
+			
 			debugDrawing();
 		}
 		
@@ -134,7 +135,7 @@ package org.dinosaurriders.swap {
 			setupWorld();
 			
 			// Creates the level
-			currentLevel = new Level_Level1(true, onObjectAddedCallback);
+			currentLevel = new Level_Level2(true, onObjectAddedCallback);
 			
 			FlxG.bgColor = currentLevel.bgColor;
 
@@ -191,8 +192,8 @@ package org.dinosaurriders.swap {
 
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			world.DrawDebugData();
-			//world.ClearForces();
+			//world.DrawDebugData();
+			world.ClearForces();
 			
 			// swap test
 			if (FlxG.keys.justPressed("X")) {

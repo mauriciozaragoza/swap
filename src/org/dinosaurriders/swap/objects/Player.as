@@ -11,7 +11,7 @@
 	import org.flixel.*;
 	
 	public class Player extends PhysicalBody {
-		private var _grounded : Boolean;
+		private var grounded : Boolean;
 		
 		public function Player(X:Number,Y:Number):void {
 			super(X, Y, 0.3, 0, 1);
@@ -31,34 +31,25 @@
 			
 			if (FlxG.keys.LEFT && velocity.x > -Settings.PLAYERMAXVELOCITY)
 			{
-				body.ApplyImpulse(new b2Vec2(-Settings.PLAYERSPEED), new b2Vec2());
+				body.ApplyImpulse(
+					new b2Vec2(grounded ? -Settings.PLAYERSPEED : -Settings.PLAYERAIRSPEED), 
+					new b2Vec2());
 			}
 			else if (FlxG.keys.RIGHT && velocity.x < Settings.PLAYERMAXVELOCITY)
 			{
-				body.ApplyImpulse(new b2Vec2(Settings.PLAYERSPEED), new b2Vec2());
+				body.ApplyImpulse(
+					new b2Vec2(grounded ? Settings.PLAYERSPEED : Settings.PLAYERAIRSPEED),
+					new b2Vec2());
 			}			
-			else if (FlxG.keys.justPressed("UP")) {
+			
+			if (FlxG.keys.justPressed("UP")) {
 				jump();
 			}
 			
-			if (velocity.y < 0)
-			{
-				play("jump");
-			}
-			else
-			{
-				if (velocity.y > 0)
-				{
-					play("fall");
-				}
-				else if (velocity.x == 0)
-				{
-					play("idle");
-				}
-				else
-				{
-					play("move");
-				}
+			if (Math.abs(velocity.x) > 0) {
+				play("move");
+			} else {
+				play("idle");
 			}
 			
 			super.update();
@@ -72,7 +63,7 @@
 			fixtureDefs[1] = new b2FixtureDef(); // foot sensor
 			fixtureDefs[2] = new b2FixtureDef(); // bottom circle
 			
-			boxDef.SetAsBox(width / Settings.ratio / 4.5, height / Settings.ratio / 4.5);
+			boxDef.SetAsBox(width / Settings.ratio / 4.1, height / Settings.ratio / 4.1);
 			fixtureDefs[0].shape = boxDef;
 			
 			var vertices : Array = new Array();
@@ -100,33 +91,31 @@
 		}
 		
 		public function jump() : void {
-			var direction : b2Vec2 = gravityVector.Copy();
-			direction.NegativeSelf();
-			direction.Normalize();
-			
-			body.ApplyImpulse(new b2Vec2(direction.x * Settings.PLAYERJUMP, direction.y * Settings.PLAYERJUMP), new b2Vec2());
+			if (grounded) {
+				var direction : b2Vec2 = gravityVector.Copy();
+				direction.NegativeSelf();
+				direction.Normalize();
+				
+				setFriction(0);
+				
+				body.ApplyImpulse(new b2Vec2(direction.x * Settings.PLAYERJUMP, direction.y * Settings.PLAYERJUMP), new b2Vec2());
+			}
 		}
 		
 		/*
 		 * WorldContactListener calls this function when the player just entered air space
 		 */
 		public function onAir() : void {
-			
+			setFriction(0);
+			grounded = false;
 		}
 		
 		/*
 		 * WorldContactListener calls this function when the player lands
 		 */
 		public function onLand() : void {
-			
-		}
-		
-		public function get grounded() : Boolean {
-			return _grounded;
-		}
-
-		public function set grounded(grounded : Boolean) : void {
-			this._grounded = grounded;
+			setFriction(1);
+			grounded = true;
 		}
 		
 		public function setFriction(friction : Number) : void {

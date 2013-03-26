@@ -34,7 +34,6 @@
 		}
 
 		private function iniciar() : void {
-			trace("lol");
 			FlxG.switchState(new LevelContainer());
 		}
 

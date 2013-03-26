@@ -63,7 +63,7 @@ package org.dinosaurriders.swap.objects {
 			gravityVector = new b2Vec2(0, 9.8);
 			
 			// if the body sleeps, gravityvector gets screwed up
-			body.SetSleepingAllowed(false);
+			// body.SetSleepingAllowed(false);
 			
 			return body;
 		}
@@ -72,7 +72,9 @@ package org.dinosaurriders.swap.objects {
 			x = (body.GetPosition().x * Settings.ratio) - width / 2;
 			y = (body.GetPosition().y * Settings.ratio) - height / 2;
 			
-			angle = body.GetAngle() * (180 / Math.PI);
+			//angle = body.GetAngle() * (180 / Math.PI);
+						
+			body.ApplyForce(this._gravityVector, body.GetWorldCenter());
 			
 			super.update();
 		}
@@ -107,8 +109,6 @@ package org.dinosaurriders.swap.objects {
 			this._gravityVector = gravityVector;
 			
 			this._gravityVector.Multiply(body.GetMass());
-			body.ApplyForce(this._gravityVector, body.GetWorldCenter());
-			trace("applying", gravityVector.y);
 		}
 
 		public function get body() : b2Body {
