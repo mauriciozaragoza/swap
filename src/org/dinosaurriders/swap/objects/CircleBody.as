@@ -1,5 +1,8 @@
 package org.dinosaurriders.swap.objects {
 	import Box2D.Collision.Shapes.b2CircleShape;
+	import Box2D.Dynamics.b2Body;
+	import Box2D.Dynamics.b2FixtureDef;
+	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.Settings;
 	/**
@@ -11,10 +14,16 @@ package org.dinosaurriders.swap.objects {
 			super(X, Y, density, restitution, friction);
 			
 			loadGraphic(image, false, false);
-			
+		}
+		
+		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var circleDef : b2CircleShape = new b2CircleShape();
 			circleDef.SetRadius(width / Settings.ratio / 2);
-			fixtureDef.shape = circleDef;
+			
+			fixtureDefs[0] = new b2FixtureDef();
+			fixtureDefs[0].shape = circleDef;
+			
+			return super.createPhysicsObject(world, properties);
 		}
 	}
 }

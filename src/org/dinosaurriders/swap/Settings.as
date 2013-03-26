@@ -9,8 +9,9 @@ package org.dinosaurriders.swap {
 		public static const SCREENY				: Number = 480;
 		
 		// PLAYER
-		public static const PLAYERSPEED 		: Number = 1;
-		public static const PLAYERMAXVELOCITY 	: Number = 2;
-		public static const PLAYERJUMP 			: Number = 1;
+		public static const PLAYERSPEED 		: Number = 0.4;
+		public static const PLAYERMAXVELOCITY 	: Number = 3;
+		public static const PLAYERJUMP 			: Number = 0.6;
+		public static const FOOTSENSORSIZE		: Number = 10;
 	}
 }

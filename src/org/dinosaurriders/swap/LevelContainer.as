@@ -12,6 +12,7 @@ package org.dinosaurriders.swap {
 	import org.dinosaurriders.swap.objects.PhysicalBody;
 	import org.dinosaurriders.swap.objects.Player;
 	import org.dinosaurriders.swap.objects.Trigger;
+	import org.dinosaurriders.swap.physics.WorldContactListener;
 	import org.flixel.*;
 
 	import flash.display.Sprite;
@@ -28,10 +29,12 @@ package org.dinosaurriders.swap {
 		private var debugSprite : Sprite;
 		
 		private function setupWorld() : void {
-			// TODO must be able to handle multiple gravities
-			var gravity : b2Vec2 = new b2Vec2(0, 9.8);
-			world = new b2World(gravity, true);
+			// Gravity is 0 because is handled individually by each object
+			var gravity : b2Vec2 = new b2Vec2(0, 0);
 			
+			// TODO fix this so that objects can sleep
+			world = new b2World(gravity, true);
+			world.SetContactListener(new WorldContactListener(world));
 			debugDrawing();
 		}
 		
@@ -42,11 +45,11 @@ package org.dinosaurriders.swap {
 			var currentHitLayer : Array;
 			
 			// DAME tile properties are stored in properties["%DAME_tiledata%"][tileId][key]
-			var tileProperties = properties[0];
+			var tileProperties : Dictionary = properties[0] as Dictionary;
 			
 			if (tileProperties == null) {
 				// if it has no properties, we still need to iterate over an empty array
-				tileProperties = new Array;
+				tileProperties = new Dictionary;
 			}
 			else if (tileProperties.name != "%DAME_tiledata%") {
 				throw new Error("Invalid tilemap properties index");
@@ -61,9 +64,13 @@ package org.dinosaurriders.swap {
 			if (level.hitTilemaps.members.lastIndexOf(tilemap) != -1) {
 				currentHitLayer = tilemap.getData();
 				
+				// iterates on y then x to special mark platform tiles
+				// var isPlatform : Boolean;
+				
 				for (var y : Number = 0, i : Number = 0; y < tilemap.heightInTiles; y++) {
 					for (var x : Number = 0; x < tilemap.widthInTiles; x++, i++) {
 						if (currentHitLayer[i] != 0) {
+//							isPlatform = i - tilemap.widthInTiles >= 0 ? currentHitLayer[i - tilemap.widthInTiles] == 0 : 0;
 							createTileBox(x, y, offsetX, offsetY);
 						}
 						
@@ -77,7 +84,7 @@ package org.dinosaurriders.swap {
 									if (properties[j].value == true) {
 										trace("omg danger at ", x, y);
 									}
-									break;								
+									break;
 								}
 							}
 						}
@@ -119,6 +126,7 @@ package org.dinosaurriders.swap {
 			
 			body = world.CreateBody(bodyDef);
 			body.CreateFixture(fixtureDef);
+			//body.SetUserData(isPlatform);
 		}
 
 		override public function create() : void {
@@ -136,7 +144,7 @@ package org.dinosaurriders.swap {
 			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);
 			
 			// Will be removed when box2d is implemented
-			FlxG.worldBounds = new FlxRect(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x, currentLevel.boundsMax.y);
+			// FlxG.worldBounds = new FlxRect(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x, currentLevel.boundsMax.y);
 		}
 
 		protected function onObjectAddedCallback(obj : Object, layer : FlxGroup, level : BaseLevel, scrollX : Number, scrollY : Number, properties : Array) : Object {
@@ -183,7 +191,7 @@ package org.dinosaurriders.swap {
 
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			//world.DrawDebugData();
+			world.DrawDebugData();
 			//world.ClearForces();
 			
 			// swap test
@@ -193,6 +201,8 @@ package org.dinosaurriders.swap {
 			
 			// map collisions
 			FlxG.overlap(triggersGroup, player, TriggerEntered);
+			//FlxG.collide(currentLevel.hitTilemaps, player);
+			//trace(player.isTouching(FlxObject.FLOOR));
 		}
 		
 		private function debugDrawing() : void {

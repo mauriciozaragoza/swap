@@ -9,10 +9,19 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 	public class Level_Level2 extends BaseLevel
 	{
 		//Embedded media...
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Background:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_BackLayer.csv", mimeType="application/octet-stream")] public var CSV_BackLayer:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_BackLayer:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_PlayerLayer.csv", mimeType="application/octet-stream")] public var CSV_PlayerLayer:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_PlayerLayer:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_FrontLayer.csv", mimeType="application/octet-stream")] public var CSV_FrontLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_FrontLayer:Class;
 
 		//Tilemaps
+		public var layerBackground:FlxTilemap;
+		public var layerBackLayer:FlxTilemap;
+		public var layerPlayerLayer:FlxTilemap;
 		public var layerFrontLayer:FlxTilemap;
 
 		//Sprites
@@ -28,9 +37,18 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			var tileProperties:Dictionary = new Dictionary;
 
 			properties = generateProperties( null );
-			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 640.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 640.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			properties = generateProperties( null );
+			layerBackLayer = addTilemap( CSV_BackLayer, Img_BackLayer, 640.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			properties = generateProperties( null );
+			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 640.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			properties = generateProperties( null );
+			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 640.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
+			masterLayer.add(layerBackground);
+			masterLayer.add(layerBackLayer);
+			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(layerFrontLayer);
 			masterLayer.add(SpritesGroup);
 
@@ -58,9 +76,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(null, Player, SpritesGroup , 640.000, 60.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(850.000, 30.000, Assets.ForestBoulderLarge, 6, 100), PolygonBody, SpritesGroup , 850.000, 30.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
-			addSpriteToLayer(new PolygonBody(1120.000, 90.000, Assets.ForestBoulderLarge, 6, 100), PolygonBody, SpritesGroup , 1120.000, 90.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new PolygonBody(1130.000, 224.000, Assets.ForestBoulderLarge, 12, 100), PolygonBody, SpritesGroup , 1130.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(null, Player, SpritesGroup , 640.000, 400.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
+			addSpriteToLayer(new PolygonBody(736.000, 384.000, Assets.ForestBoulderLarge, 12, 100), PolygonBody, SpritesGroup , 736.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

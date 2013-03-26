@@ -1,18 +1,27 @@
 package org.dinosaurriders.swap.objects {
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
+	import Box2D.Dynamics.b2Body;
+	import Box2D.Dynamics.b2FixtureDef;
+	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.Settings;
 	/**
 	 * @author Drakaen
 	 */
 	public class PolygonBody extends PhysicalBody {
-		public function PolygonBody(X : Number, Y : Number, image : Class, sides : Number = 4, 
+		private var sides : int;
+		
+		public function PolygonBody(X : Number, Y : Number, image : Class, sides : int = 4, 
 			density : Number = 1, restitution : Number = 0, friction : Number = 1) : void {
 			super(X, Y, density, restitution, friction);
 			
+			this.sides = sides;
+			
 			loadGraphic(image, false, false);
-				
+		}
+		
+		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var polyDef : b2PolygonShape = new b2PolygonShape();
 			
 			var vertices : Array = new Array;
@@ -33,7 +42,10 @@ package org.dinosaurriders.swap.objects {
 			
 			polyDef.SetAsVector(vertices, sides);
 			
-			fixtureDef.shape = polyDef;
+			fixtureDefs[0] = new b2FixtureDef();
+			fixtureDefs[0].shape = polyDef;
+			
+			return super.createPhysicsObject(world, properties);
 		}
 	}
 }
