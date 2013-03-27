@@ -2,19 +2,23 @@
 	import Box2D.Collision.Shapes.b2CircleShape;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
+	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.b2Body;
+	import Box2D.Dynamics.b2ContactImpulse;
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
+
 	import org.dinosaurriders.swap.Assets;
 	import org.dinosaurriders.swap.Settings;
 	import org.flixel.*;
 	
 	public class Player extends PhysicalBody {
 		private var grounded : Boolean;
+		private var feetContactCount : int;
 		
 		public function Player(X:Number,Y:Number):void {
-			super(X, Y, 0.3, 0, 1);
+			super(X, Y, 100, 0, 1);
 			loadGraphic(Assets.Player, true, true, 48, 48);
 			
 			addAnimation("jump", [1], 10);
@@ -23,6 +27,8 @@
 			addAnimation("idle", [1], 2);
 			
 			bodyDef.fixedRotation = true;
+			
+			bodyDef.type = b2Body.b2_dynamicBody;
 		}
 		
 		override public function update():void 
@@ -54,8 +60,66 @@
 			
 			super.update();
 		}
+	
+		override public function onStartCollision(contact : b2Contact) : void {
+			var playerFixture : b2Fixture, otherFixture : b2Fixture;
+			
+			// Gets the player contact, if there is no player contact, player == null
+			if (contact.GetFixtureA().GetUserData() == this) {
+				playerFixture = contact.GetFixtureA();
+				otherFixture = contact.GetFixtureB();
+			} else if (contact.GetFixtureB().GetUserData() == this) {
+				playerFixture = contact.GetFixtureB();
+				otherFixture = contact.GetFixtureA();
+			}
 
-		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {			
+			// if feet sensor touched something, then player landed somewhere
+			// fixtures[1] is the feet sensor
+			if (playerFixture == fixtures[1]) {
+				feetContactCount++;
+				onLand();
+			}
+		}
+		
+		override public function onEndCollision(contact : b2Contact) : void {
+			var playerFixture : b2Fixture, otherFixture : b2Fixture;
+			
+			// Gets the player contact, if there is no player contact, player == null
+			if (contact.GetFixtureA().GetUserData() == this) {
+				playerFixture = contact.GetFixtureA();
+				otherFixture = contact.GetFixtureB();
+			} else if (contact.GetFixtureB().GetUserData() == this) {
+				playerFixture = contact.GetFixtureB();
+				otherFixture = contact.GetFixtureA();
+			}
+
+			if (playerFixture == fixtures[1]) {
+				feetContactCount--;
+				
+				if (feetContactCount == 0) {
+					onAir();
+				}
+			}
+		}
+		
+		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {
+			var playerFixture : b2Fixture, otherFixture : b2Fixture;
+			
+			if (contact.GetFixtureA().GetUserData() == this) {
+				playerFixture = contact.GetFixtureA();
+				otherFixture = contact.GetFixtureB();
+			} else if (contact.GetFixtureB().GetUserData() == this) {
+				playerFixture = contact.GetFixtureB();
+				otherFixture = contact.GetFixtureA();
+			}
+			
+			//trace("force: ", impulse.normalImpulses[0]);
+			if (impulse.normalImpulses[0] > Settings.MAXFORCE) {
+				kill();
+			}
+		}
+
+		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var footSensorShape : b2PolygonShape = new b2PolygonShape();			
 			var boxDef : b2PolygonShape = new b2PolygonShape();
 			

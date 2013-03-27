@@ -73,7 +73,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
 			addSpriteToLayer(null, Player, SpritesGroup , 180.000, 90.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(1.000, 128.000, Assets.ForestBoulderLarge, 12, 100), PolygonBody, SpritesGroup , 1.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new PolygonBody(0.000, 128.000, Assets.ForestBoulderLarge, 8, 2000), PolygonBody, SpritesGroup , 0.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

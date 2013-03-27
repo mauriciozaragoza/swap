@@ -1,11 +1,13 @@
 package org.dinosaurriders.swap.objects {
+	import Box2D.Collision.b2Manifold;
+	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import Box2D.Common.Math.b2Vec2;
+	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2BodyDef;
+	import Box2D.Dynamics.b2ContactImpulse;
 	import Box2D.Dynamics.b2Fixture;
-	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
-
 	import org.dinosaurriders.swap.Settings;
 	import org.flixel.FlxSprite;
 
@@ -41,12 +43,12 @@ package org.dinosaurriders.swap.objects {
 			fixtures = new Array();
 			
 			bodyDef = new b2BodyDef();
-			bodyDef.position.Set((x + width * 2) / Settings.ratio, (y + height * 2) / Settings.ratio);
-			bodyDef.type = b2Body.b2_dynamicBody;
 		}
 
 		public virtual function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			this.world = world;
+			
+			bodyDef.position.Set((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio);
 			
 			body = world.CreateBody(bodyDef);			
 			body.SetUserData(this);
@@ -62,9 +64,6 @@ package org.dinosaurriders.swap.objects {
 			
 			gravityVector = new b2Vec2(0, 9.8);
 			
-			// if the body sleeps, gravityvector gets screwed up
-			// body.SetSleepingAllowed(false);
-			
 			return body;
 		}
 		
@@ -78,6 +77,11 @@ package org.dinosaurriders.swap.objects {
 			
 			super.update();
 		}
+		
+		public virtual function onStartCollision(contact : b2Contact) : void { }
+		public virtual function onEndCollision(contact : b2Contact) : void { }
+		public virtual function onBeforeSolveCollision(contact : b2Contact, oldManifold : b2Manifold) : void { }
+		public virtual function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void { }
 				
 		public function swap(swapSprite : PhysicalBody) : void {
 			// linear velocities
@@ -94,7 +98,8 @@ package org.dinosaurriders.swap.objects {
 		}
 		
 		public override function kill() : void {
-			world.DestroyBody(body);
+			PhysicsUtil.enqueueDeletedBody(body);
+			
 			super.kill();
 		}
 

@@ -14,6 +14,7 @@ package org.dinosaurriders.swap.objects {
 			super(X, Y, density, restitution, friction);
 			
 			loadGraphic(image, false, false);
+			bodyDef.type = b2Body.b2_dynamicBody;
 		}
 		
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {

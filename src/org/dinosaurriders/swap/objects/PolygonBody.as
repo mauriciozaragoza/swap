@@ -6,6 +6,7 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.Settings;
+	
 	/**
 	 * @author Drakaen
 	 */
@@ -19,6 +20,7 @@ package org.dinosaurriders.swap.objects {
 			this.sides = sides;
 			
 			loadGraphic(image, false, false);
+			bodyDef.type = b2Body.b2_dynamicBody;
 		}
 		
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
@@ -33,10 +35,10 @@ package org.dinosaurriders.swap.objects {
 				initAngle = dtheta / 2.0;
 			}
 			
-			for (var i : int = initAngle; i < sides + initAngle; i++) {
+			for (var i : int = 0; i < sides; i++) {
 				vertices.push(new b2Vec2(
-					Math.cos(dtheta * i) * radius,
-					Math.sin(dtheta * i) * radius
+					Math.cos(dtheta * i + initAngle) * radius,
+					Math.sin(dtheta * i + initAngle) * radius
 				));
 			}
 			

@@ -1,4 +1,5 @@
 package org.dinosaurriders.swap {
+	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
@@ -7,8 +8,7 @@ package org.dinosaurriders.swap {
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
-	import org.dinosaurriders.swap.levels.BaseLevel;
-	import org.dinosaurriders.swap.levels.Level_Level2;
+	import org.dinosaurriders.swap.levels.*;
 	import org.dinosaurriders.swap.objects.PhysicalBody;
 	import org.dinosaurriders.swap.objects.Player;
 	import org.dinosaurriders.swap.objects.Trigger;
@@ -189,6 +189,9 @@ package org.dinosaurriders.swap {
 
 		override public function update() : void {
 			super.update();
+
+			// destroy disposed objects
+			PhysicsUtil.destroyPhysicObjects(world);
 
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
