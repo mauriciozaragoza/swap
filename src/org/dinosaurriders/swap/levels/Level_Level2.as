@@ -76,10 +76,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(new PolygonBody(1151.000, 256.000, Assets.ForestBoulderLarge, 8, 2000), PolygonBody, SpritesGroup , 1151.000, 256.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
 			addSpriteToLayer(new BreakableWall(1024.000, 224.000, Assets.BreakableWall1, 10000), BreakableWall, SpritesGroup , 1024.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(new PolygonBody(1118.000, 257.000, Assets.ForestBoulderLarge, 10, 2000), PolygonBody, SpritesGroup , 1118.000, 257.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
 			addSpriteToLayer(null, Player, SpritesGroup , 640.000, 400.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(736.000, 384.000, Assets.ForestBoulderLarge, 8, 2000), PolygonBody, SpritesGroup , 736.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new PolygonBody(736.000, 384.000, Assets.ForestBoulderLarge, 10, 2000), PolygonBody, SpritesGroup , 736.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"ForestBoulderLarge"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

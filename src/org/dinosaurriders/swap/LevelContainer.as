@@ -135,7 +135,7 @@ package org.dinosaurriders.swap {
 			setupWorld();
 			
 			// Creates the level
-			currentLevel = new Level_Level2(true, onObjectAddedCallback);
+			currentLevel = new Level_Level1(true, onObjectAddedCallback);
 			
 			FlxG.bgColor = currentLevel.bgColor;
 

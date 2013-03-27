@@ -71,7 +71,7 @@ package org.dinosaurriders.swap.objects {
 			x = (body.GetPosition().x * Settings.ratio) - width / 2;
 			y = (body.GetPosition().y * Settings.ratio) - height / 2;
 			
-			//angle = body.GetAngle() * (180 / Math.PI);
+			angle = body.GetAngle() * (180 / Math.PI);
 						
 			body.ApplyForce(this._gravityVector, body.GetWorldCenter());
 			

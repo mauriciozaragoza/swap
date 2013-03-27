@@ -10,6 +10,9 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/BreakableWall1.png")]
 		public static var BreakableWall1 : Class;
 		
+		[Embed(source="../assets/SquareRock1.png")]
+		public static var SquareRock1 : Class;
+		
 		[Embed(source='../assets/player2.png')] 
 		public static var Player:Class;
 	}
