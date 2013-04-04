@@ -9,15 +9,15 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 	public class Level_Level1 extends BaseLevel
 	{
 		//Embedded media...
-		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level1_BackLayer.csv", mimeType="application/octet-stream")] public var CSV_BackLayer:Class;
-		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_BackLayer:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level1_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Background:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level1_PlayerLayer.csv", mimeType="application/octet-stream")] public var CSV_PlayerLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_PlayerLayer:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level1_FrontLayer.csv", mimeType="application/octet-stream")] public var CSV_FrontLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_FrontLayer:Class;
 
 		//Tilemaps
-		public var layerBackLayer:FlxTilemap;
+		public var layerBackground:FlxTilemap;
 		public var layerPlayerLayer:FlxTilemap;
 		public var layerFrontLayer:FlxTilemap;
 
@@ -34,16 +34,14 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			var tileProperties:Dictionary = new Dictionary;
 
 			properties = generateProperties( null );
-			layerBackLayer = addTilemap( CSV_BackLayer, Img_BackLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 640.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			tileProperties[24]=generateProperties( { name:"kill", value:true }, null );
-			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 640.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 640.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
-			masterLayer.add(layerBackLayer);
+			masterLayer.add(layerBackground);
 			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(layerFrontLayer);
 			masterLayer.add(SpritesGroup);
@@ -51,12 +49,12 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
 
-			boundsMinX = 0;
+			boundsMinX = 640;
 			boundsMinY = 0;
-			boundsMaxX = 640;
+			boundsMaxX = 1280;
 			boundsMaxY = 512;
-			boundsMin = new FlxPoint(0, 0);
-			boundsMax = new FlxPoint(640, 512);
+			boundsMin = new FlxPoint(640, 0);
+			boundsMax = new FlxPoint(1280, 512);
 			bgColor = 0xff99cccc;
 		}
 
@@ -72,8 +70,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(null, Player, SpritesGroup , 180.000, 90.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(0.000, 128.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 0.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new Exit(1216.000, 384.000, Assets.Exit), Exit, SpritesGroup , 1216.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level2" }, null ), onAddCallback );//"Exit"
+			addSpriteToLayer(null, Player, SpritesGroup , 640.000, 400.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

@@ -48,6 +48,7 @@ package org.dinosaurriders.swap.objects {
 
 			fixtureDefs[0] = new b2FixtureDef();
 			fixtureDefs[0].shape = polyDef;
+			
 			return super.createPhysicsObject(world, properties);
 		}
 	}

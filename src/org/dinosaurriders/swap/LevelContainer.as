@@ -1,5 +1,4 @@
 package org.dinosaurriders.swap {
-	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.b2Body;
@@ -11,7 +10,8 @@ package org.dinosaurriders.swap {
 	import org.dinosaurriders.swap.levels.*;
 	import org.dinosaurriders.swap.objects.PhysicalBody;
 	import org.dinosaurriders.swap.objects.Player;
-	import org.dinosaurriders.swap.objects.Trigger;
+	import org.dinosaurriders.swap.objects.PropertyField;
+	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.dinosaurriders.swap.physics.WorldContactListener;
 	import org.flixel.*;
 
@@ -21,8 +21,6 @@ package org.dinosaurriders.swap {
 	public class LevelContainer extends FlxState {
 		private var currentLevel : BaseLevel;
 		private var player : Player;
-		private var tempSprite : PhysicalBody;
-		private var triggersGroup : FlxGroup = new FlxGroup;
 		private var camera : FlxCamera;
 		// box2d physics
 		protected var world : b2World;
@@ -135,7 +133,7 @@ package org.dinosaurriders.swap {
 			setupWorld();
 			
 			// Creates the level
-			currentLevel = new Level_Level1(true, onObjectAddedCallback);
+			currentLevel = new Level_Level7(true, onObjectAddedCallback);
 			
 			FlxG.bgColor = currentLevel.bgColor;
 
@@ -151,21 +149,33 @@ package org.dinosaurriders.swap {
 		protected function onObjectAddedCallback(obj : Object, layer : FlxGroup, level : BaseLevel, scrollX : Number, scrollY : Number, properties : Array) : Object {
 			if (obj is Player) {
 				player = obj as Player;
-				player.createPhysicsObject(world);
+				player.createPhysicsObject(world, properties);
 			} else if (obj is FlxTilemap) {
 				var map : FlxTilemap = obj as FlxTilemap;
 				createTilemapPhysics(map, properties, level, map.x / Settings.TILESIZE, map.y / Settings.TILESIZE);
 			} else if (obj is PhysicalBody) {
 				var physicsBody : PhysicalBody = obj as PhysicalBody;
-				tempSprite = physicsBody;
-				physicsBody.createPhysicsObject(world);				
-			} /*else if (obj is TextData) {
+				physicsBody.createPhysicsObject(world, properties);				
+			} else if (obj is ObjectLink) {
+				var link : ObjectLink = obj as ObjectLink;
+				
+				// should always be physicalbody anyway
+				if (link.fromObject is PhysicalBody) {
+					((PhysicalBody)(link.fromObject)).addObjectLink(properties[0].name, properties[0].value, link.toObject);
+				}
+			} else if (obj is BoxData) {
+                var field : PropertyField = new PropertyField(obj.x, obj.y);
+                field.width = obj.width;
+                field.height = obj.height;
+                field.createPhysicsObject(world, properties);
+            } /*else if (obj is TextData) {
 				var tData : TextData = obj as TextData;
 				if ( tData.fontName != "" && tData.fontName != "system" ) {
 					tData.fontName += "Font";
 				}
 				
 				return level.addTextToLayer(tData, layer, scrollX, scrollY, true, properties, onObjectAddedCallback);
+            }
 			} else if (obj is BoxData) {
 				
 				// Create the trigger.
@@ -177,12 +187,7 @@ package org.dinosaurriders.swap {
 				box.ParseProperties(properties);
 
 				return box;
-			} else if (obj is ObjectLink ) {
-				var link : ObjectLink = obj as ObjectLink;
-				var fromBox : Trigger = link.fromObject as Trigger;
-
-				fromBox.AddLinkTo(link.toObject);
-			}*/
+			} */
 
 			return obj;
 		}
@@ -192,21 +197,13 @@ package org.dinosaurriders.swap {
 
 			// destroy disposed objects
 			PhysicsUtil.destroyPhysicObjects(world);
-
+                        
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
 			//world.DrawDebugData();
 			world.ClearForces();
-			
-			// swap test
-			if (FlxG.keys.justPressed("X")) {
-				player.swap(tempSprite);
-			}
-			
-			// map collisions
-			FlxG.overlap(triggersGroup, player, TriggerEntered);
-			//FlxG.collide(currentLevel.hitTilemaps, player);
-			//trace(player.isTouching(FlxObject.FLOOR));
+            
+            PhysicsUtil.callSwaps();
 		}
 		
 		private function debugDrawing() : void {
@@ -225,13 +222,6 @@ package org.dinosaurriders.swap {
 			debugDraw.SetFillAlpha(0.5);
 			debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
 			world.SetDebugDraw(debugDraw);
-		}
-
-		private function TriggerEntered(trigger : Trigger, plr : FlxSprite) : void {
-			var target : Object = trigger.targetObject;
-
-			trace("die plz!");
-			target.kill();
 		}
 	}
 }

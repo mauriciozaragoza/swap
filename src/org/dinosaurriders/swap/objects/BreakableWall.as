@@ -36,7 +36,7 @@ package org.dinosaurriders.swap.objects {
 		}
 			
 		override public function onBeforeSolveCollision(contact : b2Contact, oldManifold : b2Manifold) : void {
-			var impulseApplied : Number;
+			var forceApplied : Number;
 			var otherBody : b2Body;
 			
 			if (contact.GetFixtureA().GetUserData() != this) {
@@ -47,11 +47,11 @@ package org.dinosaurriders.swap.objects {
 			
 			// kg * m / s
 			// FIXME only takes velocity x component into account
-			impulseApplied = Math.abs(otherBody.GetLinearVelocity().x) * otherBody.GetMass(); 
+			forceApplied = Math.abs(otherBody.GetLinearVelocity().x) * otherBody.GetMass(); 
 			
-			trace("impulse: ", impulseApplied);
+			trace("impulse: ", forceApplied);
 			
-			if (impulseApplied > forceToBreak) {
+			if (forceApplied > forceToBreak) {
 				trace("omg kill");
 				kill();
 			}

@@ -1,4 +1,5 @@
 ﻿package org.dinosaurriders.swap.objects {
+	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import Box2D.Collision.Shapes.b2CircleShape;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
@@ -16,6 +17,7 @@
 	public class Player extends PhysicalBody {
 		private var grounded : Boolean;
 		private var feetContactCount : int;
+		private var tempSwapObject : PhysicalBody;
 		
 		public function Player(X:Number,Y:Number):void {
 			super(X, Y, 100, 0, 1);
@@ -38,18 +40,23 @@
 			if (FlxG.keys.LEFT && velocity.x > -Settings.PLAYERMAXVELOCITY)
 			{
 				body.ApplyImpulse(
-					new b2Vec2(grounded ? -Settings.PLAYERSPEED : -Settings.PLAYERAIRSPEED), 
+					new b2Vec2(grounded ? -Settings.PLAYERSPEED * body.GetMass() : -Settings.PLAYERAIRSPEED * body.GetMass()), 
 					new b2Vec2());
 			}
 			else if (FlxG.keys.RIGHT && velocity.x < Settings.PLAYERMAXVELOCITY)
 			{
 				body.ApplyImpulse(
-					new b2Vec2(grounded ? Settings.PLAYERSPEED : Settings.PLAYERAIRSPEED),
+					new b2Vec2(grounded ? Settings.PLAYERSPEED * body.GetMass() : Settings.PLAYERAIRSPEED * body.GetMass()),
 					new b2Vec2());
 			}			
 			
 			if (FlxG.keys.justPressed("UP")) {
 				jump();
+			}
+			
+			
+			if (FlxG.keys.justPressed("X") && tempSwapObject != null) {
+				PhysicsUtil.enqueueSwap(this, tempSwapObject);
 			}
 			
 			if (Math.abs(velocity.x) > 0) {
@@ -75,9 +82,15 @@
 
 			// if feet sensor touched something, then player landed somewhere
 			// fixtures[1] is the feet sensor
-			if (playerFixture == fixtures[1]) {
+			if (playerFixture == fixtures[1] && !otherFixture.IsSensor()) {
 				feetContactCount++;
 				onLand();
+				
+				var other : PhysicalBody = otherFixture.GetUserData() as PhysicalBody;
+					
+				if (other != null && other.swappable) {
+					tempSwapObject = other;
+				}
 			}
 		}
 		
@@ -93,7 +106,7 @@
 				otherFixture = contact.GetFixtureA();
 			}
 
-			if (playerFixture == fixtures[1]) {
+			if (playerFixture == fixtures[1] && !otherFixture.IsSensor()) {
 				feetContactCount--;
 				
 				if (feetContactCount == 0) {
@@ -103,14 +116,14 @@
 		}
 		
 		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {
-			var playerFixture : b2Fixture, otherFixture : b2Fixture;
+			var playerBody : PhysicalBody, otherBody : PhysicalBody;
 			
 			if (contact.GetFixtureA().GetUserData() == this) {
-				playerFixture = contact.GetFixtureA();
-				otherFixture = contact.GetFixtureB();
+				playerBody = contact.GetFixtureA().GetUserData();
+				otherBody = contact.GetFixtureB().GetUserData();
 			} else if (contact.GetFixtureB().GetUserData() == this) {
-				playerFixture = contact.GetFixtureB();
-				otherFixture = contact.GetFixtureA();
+				playerBody = contact.GetFixtureB().GetUserData();
+				otherBody = contact.GetFixtureA().GetUserData();
 			}
 			
 			//trace("force: ", impulse.normalImpulses[0]);
@@ -157,12 +170,16 @@
 		public function jump() : void {
 			if (grounded) {
 				var direction : b2Vec2 = gravityVector.Copy();
+				var jumpVector : b2Vec2;
+				
 				direction.NegativeSelf();
 				direction.Normalize();
 				
+				jumpVector = new b2Vec2(direction.x * Settings.PLAYERJUMP, direction.y * Settings.PLAYERJUMP);
+				jumpVector.Multiply(body.GetMass());
 				setFriction(0);
 				
-				body.ApplyImpulse(new b2Vec2(direction.x * Settings.PLAYERJUMP, direction.y * Settings.PLAYERJUMP), new b2Vec2());
+				body.ApplyImpulse(jumpVector, new b2Vec2());
 			}
 		}
 		
