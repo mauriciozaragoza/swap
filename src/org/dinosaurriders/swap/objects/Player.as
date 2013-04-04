@@ -16,6 +16,7 @@
 	public class Player extends PhysicalBody {
 		private var grounded : Boolean;
 		private var feetContactCount : int;
+		private var _dead : Boolean = false;
 		
 		public function Player(X:Number,Y:Number):void {
 			super(X, Y, 100, 0, 1);
@@ -116,6 +117,7 @@
 			//trace("force: ", impulse.normalImpulses[0]);
 			if (impulse.normalImpulses[0] > Settings.MAXFORCE) {
 				kill();
+				_dead=true;
 			}
 		}
 
@@ -186,6 +188,10 @@
 			for each (var fixture : b2Fixture in fixtures) {
 				fixture.SetFriction(friction);
 			}
+		}
+
+		public function get dead() : Boolean {
+			return _dead;
 		}
 	}
 }

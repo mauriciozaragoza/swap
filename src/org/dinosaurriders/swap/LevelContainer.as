@@ -202,11 +202,34 @@ package org.dinosaurriders.swap {
 			if (FlxG.keys.justPressed("X")) {
 				player.swap(tempSprite);
 			}
-			
+			if(FlxG.keys.justPressed("R")){
+				this.reset();
+			}
+			if(this.player.dead){
+				this.reset();
+			}
 			// map collisions
 			FlxG.overlap(triggersGroup, player, TriggerEntered);
 			//FlxG.collide(currentLevel.hitTilemaps, player);
 			//trace(player.isTouching(FlxObject.FLOOR));
+		}
+		
+		private function reset():void{
+			/*var temp:Player=this.player;
+			player.kill();
+			player.revive();
+			player=temp;*/
+			
+			
+			this.kill();
+			currentLevel=new Level_Level2(true, onObjectAddedCallback);
+			
+			/*FlxG.resetCameras(camera);
+			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
+			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);*/
+			
+			FlxG.flash(0xffffff,2);
+			//FlxG.switchState(new LevelContainer());
 		}
 		
 		private function debugDrawing() : void {
