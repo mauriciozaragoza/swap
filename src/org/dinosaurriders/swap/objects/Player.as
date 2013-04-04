@@ -17,7 +17,30 @@
 	public class Player extends PhysicalBody {
 		private var grounded : Boolean;
 		private var feetContactCount : int;
+		private var _dead : Boolean = false;
 		private var tempSwapObject : PhysicalBody;
+		
+		public function Player(X:Number,Y:Number):void {
+			super(X, Y, 100, 0, 1);
+			loadGraphic(Assets.Player, true, true, 48, 48);
+			
+			addAnimation("jump", [1], 10);
+			addAnimation("move", [0, 1, 2], 10);
+			addAnimation("fall", [1], 10);
+			addAnimation("idle", [1], 2);
+			
+			bodyDef.fixedRotation = true;
+			
+			bodyDef.type = b2Body.b2_dynamicBody;
+		}
+		
+		override public function update():void 
+		{
+			var velocity : b2Vec2 = body.GetLinearVelocity();
+			
+			if (FlxG.keys.LEFT && velocity.x > -Settings.PLAYERMAXVELOCITY)
+			{
+				body.ApplyImpulse(
 		
 		public function Player(X:Number,Y:Number):void {
 			super(X, Y, 100, 0, 1);
@@ -129,6 +152,7 @@
 			//trace("force: ", impulse.normalImpulses[0]);
 			if (impulse.normalImpulses[0] > Settings.MAXFORCE) {
 				kill();
+				_dead=true;
 			}
 		}
 
@@ -203,6 +227,10 @@
 			for each (var fixture : b2Fixture in fixtures) {
 				fixture.SetFriction(friction);
 			}
+		}
+
+		public function get dead() : Boolean {
+			return _dead;
 		}
 	}
 }
