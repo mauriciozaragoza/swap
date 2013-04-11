@@ -2,42 +2,42 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.b2Body;
+	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.Settings;
+
 	/**
-	 * @author Drakaen
+	 * @author Mau
 	 */
-	public class Exit extends PhysicalBody {
-		public function Exit(X : Number, Y : Number, image : Class) {
-			super(X, Y, 0, 0, 0);
+	public class SolidTile extends PhysicalBody {
+		private var kills : Boolean;
+		
+		public function SolidTile(X : Number, Y : Number, kills : Boolean, density : Number = 1, restitution : Number = 0, friction : Number = 1) {
+			super(X, Y, density, restitution, friction);
 			
-			loadGraphic(image, false, false);
+			this.kills = kills;
+			
 			bodyDef.type = b2Body.b2_staticBody;
 		}
 			
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var polyDef : b2PolygonShape = new b2PolygonShape();
 
-			polyDef.SetAsBox(width / Settings.ratio / 2, height / Settings.ratio / 2);
-			bodyDef.fixedRotation = true;
+			polyDef.SetAsBox(Settings.TILESIZE / Settings.ratio / 2, Settings.TILESIZE / Settings.ratio / 2);
 			
 			fixtureDefs[0] = new b2FixtureDef();
 			fixtureDefs[0].shape = polyDef;
-			fixtureDefs[0].isSensor = true;
 			
 			return super.createPhysicsObject(world, properties);
 		}
-		
+
 		override public function onStartCollision(contact : b2Contact) : void {
-			super.onStartCollision(contact);
+			var collision : Vector.<b2Fixture> = identifyCollision(contact);
 			
-			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
-			
-			if (otherBody is Player) {
-				trace("exit");
-				otherBody.kill();
+			if (kills && collision[1].GetUserData() is Player) {
+				(collision[1].GetUserData() as Player).kill();
 			}
 		}
 	}

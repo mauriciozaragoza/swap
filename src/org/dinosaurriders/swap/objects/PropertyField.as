@@ -52,14 +52,7 @@ package org.dinosaurriders.swap.objects {
 		override public function onStartCollision(contact : b2Contact) : void {
 			super.onStartCollision(contact);
 			
-			var otherBody : PhysicalBody;
-			
-			// Gets the player contact, if there is no player contact, player == null
-			if (contact.GetFixtureA().GetUserData() == this) {
-				otherBody = contact.GetFixtureB().GetUserData() as PhysicalBody;
-			} else {
-				otherBody = contact.GetFixtureA().GetUserData() as PhysicalBody;
-			}
+			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 			
 			if (otherBody != null && affectedByField[otherBody] == null) {
 				affectedByField[otherBody] = true;
@@ -70,14 +63,7 @@ package org.dinosaurriders.swap.objects {
 		override public function onEndCollision(contact : b2Contact) : void {
 			super.onEndCollision(contact);
 			
-			var otherBody : PhysicalBody;
-			
-			// Gets the player contact, if there is no player contact, player == null
-			if (contact.GetFixtureA().GetUserData() == this) {
-				otherBody = contact.GetFixtureB().GetUserData() as PhysicalBody;
-			} else {
-				otherBody = contact.GetFixtureA().GetUserData() as PhysicalBody;
-			}
+			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 			
 			if (otherBody != null && affectedByField[otherBody] != null) {
 				affectedByField[otherBody] = null;

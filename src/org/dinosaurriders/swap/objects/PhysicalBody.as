@@ -13,8 +13,6 @@ package org.dinosaurriders.swap.objects {
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.FlxSprite;
 
-	import flash.utils.Dictionary;
-
 	/**
 	 * @author Mau
 	 */
@@ -135,6 +133,20 @@ package org.dinosaurriders.swap.objects {
 			}
 
 			return resultArray;
+		}
+		
+		protected function identifyCollision(contact : b2Contact) : Vector.<b2Fixture> {
+			var outputFixtures : Vector.<b2Fixture> = new Vector.<b2Fixture>();
+			
+			if (contact.GetFixtureA().GetUserData() == this) {
+				outputFixtures[0] = contact.GetFixtureA();
+				outputFixtures[1] = contact.GetFixtureB();
+			} else if (contact.GetFixtureB().GetUserData() == this) {
+				outputFixtures[0] = contact.GetFixtureB();
+				outputFixtures[1] = contact.GetFixtureA();
+			}
+			
+			return outputFixtures;
 		}
 
 		public function onStartCollision(contact : b2Contact) : void {

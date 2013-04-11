@@ -387,7 +387,7 @@
         </sprite>
       </spritelayer>
       <shapelayer name="GravityFields" id="14" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true" selected="true">
-        <shape guid="56A7E00A-54C4-15AE-FF7B-A300B45AB443" type="square" x="2022" y="105" Z="0" angle="0" width="150.00" height="150.00" scaleX="4.286" scaleY="4.286">
+        <shape guid="56A7E00A-54C4-15AE-FF7B-A300B45AB443" type="square" x="2009" y="120" Z="0" angle="0" width="150.00" height="150.00" scaleX="4.286" scaleY="4.286">
           <properties>
             <type typeof="Float" name="gravityx" value="0.000000" hidden="false"/>
             <type typeof="Float" name="gravityy" value="-11.000000" hidden="false"/>

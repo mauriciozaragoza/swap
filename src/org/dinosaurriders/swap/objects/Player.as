@@ -41,28 +41,6 @@
 			if (FlxG.keys.LEFT && velocity.x > -Settings.PLAYERMAXVELOCITY)
 			{
 				body.ApplyImpulse(
-		
-		public function Player(X:Number,Y:Number):void {
-			super(X, Y, 100, 0, 1);
-			loadGraphic(Assets.Player, true, true, 48, 48);
-			
-			addAnimation("jump", [1], 10);
-			addAnimation("move", [0, 1, 2], 10);
-			addAnimation("fall", [1], 10);
-			addAnimation("idle", [1], 2);
-			
-			bodyDef.fixedRotation = true;
-			
-			bodyDef.type = b2Body.b2_dynamicBody;
-		}
-		
-		override public function update():void 
-		{
-			var velocity : b2Vec2 = body.GetLinearVelocity();
-			
-			if (FlxG.keys.LEFT && velocity.x > -Settings.PLAYERMAXVELOCITY)
-			{
-				body.ApplyImpulse(
 					new b2Vec2(grounded ? -Settings.PLAYERSPEED * body.GetMass() : -Settings.PLAYERAIRSPEED * body.GetMass()), 
 					new b2Vec2());
 			}
@@ -90,18 +68,11 @@
 			
 			super.update();
 		}
-	
+		
 		override public function onStartCollision(contact : b2Contact) : void {
-			var playerFixture : b2Fixture, otherFixture : b2Fixture;
-			
-			// Gets the player contact, if there is no player contact, player == null
-			if (contact.GetFixtureA().GetUserData() == this) {
-				playerFixture = contact.GetFixtureA();
-				otherFixture = contact.GetFixtureB();
-			} else if (contact.GetFixtureB().GetUserData() == this) {
-				playerFixture = contact.GetFixtureB();
-				otherFixture = contact.GetFixtureA();
-			}
+			var collision : Vector.<b2Fixture> = identifyCollision(contact);
+			var playerFixture : b2Fixture = collision[0];
+			var otherFixture : b2Fixture = collision[1];
 
 			// if feet sensor touched something, then player landed somewhere
 			// fixtures[1] is the feet sensor
@@ -118,16 +89,9 @@
 		}
 		
 		override public function onEndCollision(contact : b2Contact) : void {
-			var playerFixture : b2Fixture, otherFixture : b2Fixture;
-			
-			// Gets the player contact, if there is no player contact, player == null
-			if (contact.GetFixtureA().GetUserData() == this) {
-				playerFixture = contact.GetFixtureA();
-				otherFixture = contact.GetFixtureB();
-			} else if (contact.GetFixtureB().GetUserData() == this) {
-				playerFixture = contact.GetFixtureB();
-				otherFixture = contact.GetFixtureA();
-			}
+			var collision : Vector.<b2Fixture> = identifyCollision(contact);
+			var playerFixture : b2Fixture = collision[0];
+			var otherFixture : b2Fixture = collision[1];
 
 			if (playerFixture == fixtures[1] && !otherFixture.IsSensor()) {
 				feetContactCount--;
@@ -138,17 +102,7 @@
 			}
 		}
 		
-		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {
-			var playerBody : PhysicalBody, otherBody : PhysicalBody;
-			
-			if (contact.GetFixtureA().GetUserData() == this) {
-				playerBody = contact.GetFixtureA().GetUserData();
-				otherBody = contact.GetFixtureB().GetUserData();
-			} else if (contact.GetFixtureB().GetUserData() == this) {
-				playerBody = contact.GetFixtureB().GetUserData();
-				otherBody = contact.GetFixtureA().GetUserData();
-			}
-			
+		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {			
 			//trace("force: ", impulse.normalImpulses[0]);
 			if (impulse.normalImpulses[0] > Settings.MAXFORCE) {
 				kill();

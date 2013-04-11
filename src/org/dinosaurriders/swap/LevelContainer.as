@@ -1,16 +1,13 @@
 package org.dinosaurriders.swap {
-	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
-	import Box2D.Dynamics.b2Body;
-	import Box2D.Dynamics.b2BodyDef;
 	import Box2D.Dynamics.b2DebugDraw;
-	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.levels.*;
 	import org.dinosaurriders.swap.objects.PhysicalBody;
 	import org.dinosaurriders.swap.objects.Player;
 	import org.dinosaurriders.swap.objects.PropertyField;
+	import org.dinosaurriders.swap.objects.SolidTile;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.dinosaurriders.swap.physics.WorldContactListener;
 	import org.flixel.*;
@@ -22,9 +19,32 @@ package org.dinosaurriders.swap {
 		private var currentLevel : BaseLevel;
 		private var player : Player;
 		private var camera : FlxCamera;
+		
 		// box2d physics
 		protected var world : b2World;
+		protected var worldGroup : FlxGroup;
+		
 		private var debugSprite : Sprite;
+		
+		override public function create() : void {
+			worldGroup = new FlxGroup();
+			
+			// sets up the world physics
+			setupWorld();
+			
+			// Creates the level
+			currentLevel = new Level_Level1(true, onObjectAddedCallback);
+			
+			FlxG.bgColor = currentLevel.bgColor;
+
+			camera = new FlxCamera(0, 0, FlxG.width, FlxG.height);
+			FlxG.resetCameras(camera);
+			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
+			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);
+			
+			// Will be removed when box2d is implemented
+			// FlxG.worldBounds = new FlxRect(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x, currentLevel.boundsMax.y);
+		}
 		
 		private function setupWorld() : void {
 			// Gravity is 0 because is handled individually by each object
@@ -69,23 +89,7 @@ package org.dinosaurriders.swap {
 				for (var y : Number = 0, i : Number = 0; y < tilemap.heightInTiles; y++) {
 					for (var x : Number = 0; x < tilemap.widthInTiles; x++, i++) {
 						if (currentHitLayer[i] != 0) {
-//							isPlatform = i - tilemap.widthInTiles >= 0 ? currentHitLayer[i - tilemap.widthInTiles] == 0 : 0;
-							createTileBox(x, y, offsetX, offsetY);
-						}
-						
-						// checks for specific properties of the tile
-						// POTENTIALLY SLOW
-						currentProperties = tileProperties[currentHitLayer[i]];
-						if (currentProperties != null) {
-							for (var j : int = 0; j < currentProperties.length; j++) {
-								switch (properties[j].name) {
-									case "kill":
-									if (properties[j].value == true) {
-										trace("omg danger at ", x, y);
-									}
-									break;
-								}
-							}
+							createTileBox(x, y, offsetX, offsetY, tileProperties[currentHitLayer[i]]);
 						}
 					}
 				}
@@ -93,57 +97,36 @@ package org.dinosaurriders.swap {
 			
 			// Create border tiles
 			for (var y1 : int = -1; y1 <= tilemap.heightInTiles; y1++) {
-				createTileBox(-1, y1, offsetX, offsetY);
-				createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY);
+				createTileBox(-1, y1, offsetX, offsetY, []);
+				createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY, []);
 			}
 			
 			for (var x1 : int = -1; x1 < tilemap.widthInTiles; x1++) {
-				createTileBox(x1, tilemap.heightInTiles, offsetX, offsetY);
+				createTileBox(x1, tilemap.heightInTiles, offsetX, offsetY, [{name : "kills", value : true}]);
 			}
 		}
 		
 		/*
 		 * Creates a solid and static tile block, all sizes expressed in tiles
 		 */
-		private function createTileBox(tileX : Number, tileY : Number, offsetX : Number, offsetY : Number) : void {
-			var body:b2Body;
-            var bodyDef:b2BodyDef;
-            var fixtureDef:b2FixtureDef = new b2FixtureDef();
+		private function createTileBox(tileX : Number, tileY : Number, offsetX : Number, offsetY : Number, properties : Array) : void {
+			var tile : SolidTile;
+			var kills : Boolean;
 			
-			var boxDef : b2PolygonShape = new b2PolygonShape();
-			boxDef.SetAsBox(Settings.TILESIZE / Settings.ratio / 2, Settings.TILESIZE / Settings.ratio / 2);
+			for each (var property : Object in properties) {
+				switch (property.name) {
+					case "kills":
+					kills = property.value;
+					break;
+				}
+			}
 			
-			fixtureDef.shape = boxDef;
-			fixtureDef.density = 0;
-			fixtureDef.friction = 5;
+			tile = new SolidTile(offsetX + tileX * Settings.TILESIZE, offsetY + tileY * Settings.TILESIZE, kills);
+			tile.width = Settings.TILESIZE;
+			tile.height = Settings.TILESIZE;
+			tile.createPhysicsObject(world, properties);
 			
-			bodyDef = new b2BodyDef();
-			bodyDef.position.Set(
-				((offsetX + tileX) * Settings.TILESIZE + Settings.TILESIZE / 2) / Settings.ratio,
-				((offsetY + tileY) * Settings.TILESIZE + Settings.TILESIZE / 2) / Settings.ratio);
-			bodyDef.type = b2Body.b2_staticBody;
-			
-			body = world.CreateBody(bodyDef);
-			body.CreateFixture(fixtureDef);
-			//body.SetUserData(isPlatform);
-		}
-
-		override public function create() : void {
-			// sets up the world physics
-			setupWorld();
-			
-			// Creates the level
-			currentLevel = new Level_Level7(true, onObjectAddedCallback);
-			
-			FlxG.bgColor = currentLevel.bgColor;
-
-			camera = new FlxCamera(0, 0, FlxG.width, FlxG.height);
-			FlxG.resetCameras(camera);
-			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
-			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);
-			
-			// Will be removed when box2d is implemented
-			// FlxG.worldBounds = new FlxRect(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x, currentLevel.boundsMax.y);
+			worldGroup.add(tile);
 		}
 
 		protected function onObjectAddedCallback(obj : Object, layer : FlxGroup, level : BaseLevel, scrollX : Number, scrollY : Number, properties : Array) : Object {
@@ -153,9 +136,6 @@ package org.dinosaurriders.swap {
 			} else if (obj is FlxTilemap) {
 				var map : FlxTilemap = obj as FlxTilemap;
 				createTilemapPhysics(map, properties, level, map.x / Settings.TILESIZE, map.y / Settings.TILESIZE);
-			} else if (obj is PhysicalBody) {
-				var physicsBody : PhysicalBody = obj as PhysicalBody;
-				physicsBody.createPhysicsObject(world, properties);				
 			} else if (obj is ObjectLink) {
 				var link : ObjectLink = obj as ObjectLink;
 				
@@ -168,27 +148,14 @@ package org.dinosaurriders.swap {
                 field.width = obj.width;
                 field.height = obj.height;
                 field.createPhysicsObject(world, properties);
-            } /*else if (obj is TextData) {
-				var tData : TextData = obj as TextData;
-				if ( tData.fontName != "" && tData.fontName != "system" ) {
-					tData.fontName += "Font";
-				}
-				
-				return level.addTextToLayer(tData, layer, scrollX, scrollY, true, properties, onObjectAddedCallback);
-            }
-			} else if (obj is BoxData) {
-				
-				// Create the trigger.
-				var bData : BoxData = obj as BoxData;
-				var box : Trigger = new Trigger(bData.x, bData.y, bData.width, bData.height);
-				level.addSpriteToLayer(box, FlxSprite, layer, box.x, box.y, bData.angle, scrollX, scrollY);
-				triggersGroup.add(box);
-
-				box.ParseProperties(properties);
-
-				return box;
-			} */
-
+            } 
+            
+            if (obj is PhysicalBody) {
+				var physicsBody : PhysicalBody = obj as PhysicalBody;
+				physicsBody.createPhysicsObject(world, properties);
+				worldGroup.add(physicsBody);				
+			}
+            
 			return obj;
 		}
 
@@ -200,7 +167,7 @@ package org.dinosaurriders.swap {
                         
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			//world.DrawDebugData();
+			world.DrawDebugData();
 			world.ClearForces();
             
             PhysicsUtil.callSwaps();
@@ -220,7 +187,7 @@ package org.dinosaurriders.swap {
 			
 			
 			this.kill();
-			currentLevel=new Level_Level2(true, onObjectAddedCallback);
+			currentLevel=new Level_Level7(true, onObjectAddedCallback);
 			
 			/*FlxG.resetCameras(camera);
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);

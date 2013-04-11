@@ -83,9 +83,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		{
 			var obj:Object;
 
-			obj = new BoxData(2022.000, 105.000, 0.000, 150.000, 165.000, GravityFieldsGroup );
+			obj = new BoxData(2009.000, 120.000, 0.000, 150.000, 150.000, GravityFieldsGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, GravityFieldsGroup, generateProperties( { name:"gravityx", value:0.000000 }, { name:"gravityy", value:-11.000000 }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, GravityFieldsGroup, generateProperties( { name:"gravityx", value:0 }, { name:"gravityy", value:-11 }, null ), 1, 1 );
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
