@@ -33,7 +33,7 @@ package org.dinosaurriders.swap {
 			setupWorld();
 			
 			// Creates the level
-			currentLevel = new Level_Level1(true, onObjectAddedCallback);
+			currentLevel = new Level_Level7(true, onObjectAddedCallback);
 			
 			FlxG.bgColor = currentLevel.bgColor;
 
@@ -41,9 +41,6 @@ package org.dinosaurriders.swap {
 			FlxG.resetCameras(camera);
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);
-			
-			// Will be removed when box2d is implemented
-			// FlxG.worldBounds = new FlxRect(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x, currentLevel.boundsMax.y);
 		}
 		
 		private function setupWorld() : void {
@@ -96,13 +93,13 @@ package org.dinosaurriders.swap {
 			}
 			
 			// Create border tiles
-			for (var y1 : int = -1; y1 <= tilemap.heightInTiles; y1++) {
+			for (var y1 : int = -10; y1 <= tilemap.heightInTiles; y1++) {
 				createTileBox(-1, y1, offsetX, offsetY, []);
 				createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY, []);
 			}
 			
 			for (var x1 : int = -1; x1 < tilemap.widthInTiles; x1++) {
-				createTileBox(x1, tilemap.heightInTiles, offsetX, offsetY, [{name : "kills", value : true}]);
+				createTileBox(x1, tilemap.heightInTiles + 1, offsetX, offsetY, [{name : "kills", value : true}]);
 			}
 		}
 		
@@ -121,7 +118,7 @@ package org.dinosaurriders.swap {
 				}
 			}
 			
-			tile = new SolidTile(offsetX + tileX * Settings.TILESIZE, offsetY + tileY * Settings.TILESIZE, kills);
+			tile = new SolidTile((offsetX + tileX) * Settings.TILESIZE, (offsetY + tileY) * Settings.TILESIZE, kills);
 			tile.width = Settings.TILESIZE;
 			tile.height = Settings.TILESIZE;
 			tile.createPhysicsObject(world, properties);
@@ -132,7 +129,7 @@ package org.dinosaurriders.swap {
 		protected function onObjectAddedCallback(obj : Object, layer : FlxGroup, level : BaseLevel, scrollX : Number, scrollY : Number, properties : Array) : Object {
 			if (obj is Player) {
 				player = obj as Player;
-				player.createPhysicsObject(world, properties);
+				player.setOnKill(onKillPlayerCallback);
 			} else if (obj is FlxTilemap) {
 				var map : FlxTilemap = obj as FlxTilemap;
 				createTilemapPhysics(map, properties, level, map.x / Settings.TILESIZE, map.y / Settings.TILESIZE);
@@ -147,9 +144,9 @@ package org.dinosaurriders.swap {
                 var field : PropertyField = new PropertyField(obj.x, obj.y);
                 field.width = obj.width;
                 field.height = obj.height;
-                field.createPhysicsObject(world, properties);
+				field.createPhysicsObject(world, properties);
             } 
-            
+			
             if (obj is PhysicalBody) {
 				var physicsBody : PhysicalBody = obj as PhysicalBody;
 				physicsBody.createPhysicsObject(world, properties);
@@ -167,16 +164,17 @@ package org.dinosaurriders.swap {
                         
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			world.DrawDebugData();
+			//world.DrawDebugData();
 			world.ClearForces();
             
             PhysicsUtil.callSwaps();
 			if(FlxG.keys.justPressed("R")){
 				this.reset();
 			}
-			if(this.player.dead){
-				this.reset();
-			}
+		}
+		
+		private function onKillPlayerCallback() {
+			reset();
 		}
 		
 		private function reset():void{
@@ -185,15 +183,23 @@ package org.dinosaurriders.swap {
 			player.revive();
 			player=temp;*/
 			
+			FlxG.flash(0xffffff,2);
+			//FlxG.stage.removeChild(debugSprite);
+			worldGroup.kill();
+			
+			// destroy disposed objects
+			PhysicsUtil.destroyPhysicObjects(world);
 			
 			this.kill();
-			currentLevel=new Level_Level7(true, onObjectAddedCallback);
+			
+			FlxG.switchState(new LevelContainer());
+			//currentLevel=new Level_Level7(true, onObjectAddedCallback);
 			
 			/*FlxG.resetCameras(camera);
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);*/
 			
-			FlxG.flash(0xffffff,2);
+			
 			//FlxG.switchState(new LevelContainer());
 		}
 		

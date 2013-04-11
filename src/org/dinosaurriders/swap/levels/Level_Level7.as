@@ -28,7 +28,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public var SpritesGroup:FlxGroup = new FlxGroup;
 
 		//Shapes
-		public var GravityFieldsGroup:FlxGroup = new FlxGroup;
+		public var PropertyFieldsGroup:FlxGroup = new FlxGroup;
 
 		//Properties
 
@@ -54,7 +54,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(layerFrontLayer);
 			masterLayer.add(SpritesGroup);
-			masterLayer.add(GravityFieldsGroup);
+			masterLayer.add(PropertyFieldsGroup);
 
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
@@ -70,7 +70,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		override public function createObjects(onAddCallback:Function = null, parentObject:Object = null):void
 		{
-			addShapesForLayerGravityFields(onAddCallback);
+			addShapesForLayerPropertyFields(onAddCallback);
 			addSpritesForLayerSprites(onAddCallback);
 			generateObjectLinks(onAddCallback);
 			if ( parentObject != null )
@@ -79,13 +79,13 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 				FlxG.state.add(masterLayer);
 		}
 
-		public function addShapesForLayerGravityFields(onAddCallback:Function = null):void
+		public function addShapesForLayerPropertyFields(onAddCallback:Function = null):void
 		{
 			var obj:Object;
 
-			obj = new BoxData(2009.000, 120.000, 0.000, 150.000, 150.000, GravityFieldsGroup );
+			obj = new BoxData(2009.000, 120.000, 0.000, 150.000, 150.000, PropertyFieldsGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, GravityFieldsGroup, generateProperties( { name:"gravityx", value:0 }, { name:"gravityy", value:-11 }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityx", value:0 }, { name:"gravityy", value:-20.000000 }, null ), 1, 1 );
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void

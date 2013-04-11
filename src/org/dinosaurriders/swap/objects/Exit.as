@@ -10,6 +10,8 @@ package org.dinosaurriders.swap.objects {
 	 * @author Drakaen
 	 */
 	public class Exit extends PhysicalBody {
+		private var warpTo : String;
+		
 		public function Exit(X : Number, Y : Number, image : Class) {
 			super(X, Y, 0, 0, 0);
 			
@@ -27,6 +29,14 @@ package org.dinosaurriders.swap.objects {
 			fixtureDefs[0].shape = polyDef;
 			fixtureDefs[0].isSensor = true;
 			
+			for each (var property in properties) {
+				switch (property.name) {
+					case "warp":
+						warpTo = property.value;
+						break;
+				}
+			}
+			
 			return super.createPhysicsObject(world, properties);
 		}
 		
@@ -36,8 +46,8 @@ package org.dinosaurriders.swap.objects {
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 			
 			if (otherBody is Player) {
-				trace("exit");
-				otherBody.kill();
+				var player : Player = otherBody as Player;
+				player.exitLevel(warpTo);
 			}
 		}
 	}

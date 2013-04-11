@@ -54,6 +54,8 @@ package org.dinosaurriders.swap.objects {
 			
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 			
+			trace("colided");
+			
 			if (otherBody != null && affectedByField[otherBody] == null) {
 				affectedByField[otherBody] = true;
 				otherBody.gravityVector.Add(gravityField);

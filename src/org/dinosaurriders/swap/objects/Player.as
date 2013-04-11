@@ -20,7 +20,10 @@
 		private var _dead : Boolean = false;
 		private var tempSwapObject : PhysicalBody;
 		
-		public function Player(X:Number,Y:Number):void {
+		private var onKillCallback : Function;
+		private var onExitCallback : Function;
+		
+		public function Player(X:Number, Y:Number):void {
 			super(X, Y, 100, 0, 1);
 			loadGraphic(Assets.Player, true, true, 48, 48);
 			
@@ -32,6 +35,20 @@
 			bodyDef.fixedRotation = true;
 			
 			bodyDef.type = b2Body.b2_dynamicBody;
+		}
+		
+		public function setOnKill(callback : Function) : void {
+			this.onKillCallback = callback;
+		}
+		
+		public function setOnExit(callback : Function) : void {
+			this.onExitCallback = callback;
+		}
+		
+		public function exitLevel(warpToLevel : String) : void {
+			if (onExitCallback != null) {
+				onExitCallback(warpToLevel);
+			}
 		}
 		
 		override public function update():void 
@@ -107,6 +124,14 @@
 			if (impulse.normalImpulses[0] > Settings.MAXFORCE) {
 				kill();
 				_dead=true;
+			}
+		}
+			
+		override public function kill() : void {
+			super.kill();
+			
+			if (onKillCallback != null) {
+				onKillCallback();
 			}
 		}
 
