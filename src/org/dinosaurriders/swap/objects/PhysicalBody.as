@@ -1,7 +1,9 @@
 package org.dinosaurriders.swap.objects {
+	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Collision.b2Manifold;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import Box2D.Dynamics.Joints.b2PrismaticJointDef;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2BodyDef;
 	import Box2D.Dynamics.b2ContactImpulse;
@@ -28,6 +30,7 @@ package org.dinosaurriders.swap.objects {
 		protected var _gravityVector : b2Vec2;
 		protected var _enabled : Boolean = true;
 		protected var _swappable : Boolean = false;
+		protected var _affectsPlayer : Boolean = true;
 		
 		private var objectLinks : Array;
 		private var density : Number, restitution : Number, friction : Number;
@@ -56,21 +59,67 @@ package org.dinosaurriders.swap.objects {
 			this.world = world;
 
 			bodyDef.position.Set((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio);
-
-			body = world.CreateBody(bodyDef);
-			body.SetUserData(this);
 			
-			// check default properties
+			// pre-creation property check
 			for each (var property in properties) {
 				switch (property.name) {
-					case "enabled":
-						enabled = property.value;
-						break;
 					case "sensor":
 						isSensor = property.value;
 						break;
 					case "swappable":
 						swappable = property.value;
+						break;
+					case "fixedrotation":
+						bodyDef.fixedRotation = property.value;
+						break;
+					case "friction":
+						friction = property.value;
+						break;
+					case "affectsplayer":
+						affectsPlayer = property.value;
+						break;
+				}
+			}
+			
+			body = world.CreateBody(bodyDef);
+			body.SetUserData(this);
+			
+			// post-creation properties
+			for each (var property in properties) {
+				switch (property.name) {
+					case "enabled":
+						enabled = property.value;
+						break;
+					
+					case "fixedx":
+						var worldAxis:b2Vec2 = new b2Vec2(0.0, 1.0);
+						var jointDef:b2PrismaticJointDef = new b2PrismaticJointDef();
+						
+						var polyDef : b2PolygonShape = new b2PolygonShape();
+						var baseFixture : b2FixtureDef = new b2FixtureDef();
+						var baseBody : b2Body;
+						var baseBodyDef : b2BodyDef = new b2BodyDef();
+						
+						baseBodyDef.position = bodyDef.position.Copy();
+						//baseBodyDef.position.y -= 100;	
+						baseBodyDef.type = b2Body.b2_staticBody;
+						polyDef.SetAsBox(0.01, 0.01);
+						baseBodyDef.fixedRotation = true;
+						baseFixture.isSensor = true;
+						
+						baseFixture.shape = polyDef;
+						
+						baseBody = world.CreateBody(baseBodyDef);
+						baseBody.CreateFixture(baseFixture);
+						
+						jointDef.Initialize(body, baseBody, body.GetWorldCenter(), worldAxis);
+						jointDef.lowerTranslation= -100;
+						jointDef.upperTranslation= 100;
+						jointDef.enableLimit     = true;
+//						jointDef.maxMotorForce   = 1.0;
+//						jointDef.motorSpeed      = 0.0;
+//						jointDef.enableMotor     = true;
+						world.CreateJoint(jointDef);
 						break;
 				}
 			}
@@ -88,7 +137,7 @@ package org.dinosaurriders.swap.objects {
 				fixtures[i] = body.CreateFixture(fixtureDefs[i]);
 			}
 
-			gravityVector = new b2Vec2(0, Settings.DEFAULTGRAVITY);
+			gravityVector = new b2Vec2(Settings.DEFAULTGRAVITYX, Settings.DEFAULTGRAVITYY);
 
 			return body;
 		}
@@ -189,8 +238,6 @@ package org.dinosaurriders.swap.objects {
 
 		public function set gravityVector(gravityVector : b2Vec2) : void {
 			this._gravityVector = gravityVector;
-
-			//this._gravityVector.Multiply(body.GetMass());
 		}
 
 		public function get body() : b2Body {
@@ -234,6 +281,14 @@ package org.dinosaurriders.swap.objects {
 
 		public function set swappable(swappable : Boolean) : void {
 			this._swappable = swappable;
+		}
+
+		public function get affectsPlayer() : Boolean {
+			return _affectsPlayer;
+		}
+
+		public function set affectsPlayer(affectsPlayer : Boolean) : void {
+			this._affectsPlayer = affectsPlayer;
 		}
 	}
 }

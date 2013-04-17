@@ -7,24 +7,36 @@ package org.dinosaurriders.swap {
 	import org.dinosaurriders.swap.objects.PhysicalBody;
 	import org.dinosaurriders.swap.objects.Player;
 	import org.dinosaurriders.swap.objects.PropertyField;
-	import org.dinosaurriders.swap.objects.SolidTile;
+	import org.dinosaurriders.swap.objects.Tileblock;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.dinosaurriders.swap.physics.WorldContactListener;
 	import org.flixel.*;
 
 	import flash.display.Sprite;
 	import flash.utils.Dictionary;
+	import flash.utils.getDefinitionByName;
 
 	public class LevelContainer extends FlxState {
 		private var currentLevel : BaseLevel;
+		private var currentLevelName : String;
 		private var player : Player;
 		private var camera : FlxCamera;
+		private var exitTo : String;
 		
 		// box2d physics
 		protected var world : b2World;
 		protected var worldGroup : FlxGroup;
 		
 		private var debugSprite : Sprite;
+
+		public function LevelContainer(level : String) {
+			this.currentLevelName = level;
+		}
+		
+		public function loadLevelByName(level : String) : Object {
+			var myLevel : Class = getDefinitionByName("org.dinosaurriders.swap.levels.Level_" + level) as Class;
+			return new myLevel(true, onObjectAddedCallback);
+		}
 		
 		override public function create() : void {
 			worldGroup = new FlxGroup();
@@ -33,7 +45,7 @@ package org.dinosaurriders.swap {
 			setupWorld();
 			
 			// Creates the level
-			currentLevel = new Level_Level7(true, onObjectAddedCallback);
+			currentLevel = loadLevelByName(currentLevelName) as BaseLevel;
 			
 			FlxG.bgColor = currentLevel.bgColor;
 
@@ -61,17 +73,17 @@ package org.dinosaurriders.swap {
 			var currentHitLayer : Array;
 			
 			// DAME tile properties are stored in properties["%DAME_tiledata%"][tileId][key]
-			var tileProperties : Dictionary = properties[0] as Dictionary;
+			var tileProperties : Dictionary;
 			
-			if (tileProperties == null) {
+			if (properties[0] == null) {
 				// if it has no properties, we still need to iterate over an empty array
 				tileProperties = new Dictionary;
 			}
-			else if (tileProperties.name != "%DAME_tiledata%") {
+			else if (properties[0].name != "%DAME_tiledata%") {
 				throw new Error("Invalid tilemap properties index");
 			}
 			else {
-				tileProperties = tileProperties.value;
+				tileProperties = properties[0].value;
 			}	
 					
 			var currentProperties : Array;
@@ -85,21 +97,21 @@ package org.dinosaurriders.swap {
 				
 				for (var y : Number = 0, i : Number = 0; y < tilemap.heightInTiles; y++) {
 					for (var x : Number = 0; x < tilemap.widthInTiles; x++, i++) {
-						if (currentHitLayer[i] != 0) {
+						if (currentHitLayer[i] != 0) {							
 							createTileBox(x, y, offsetX, offsetY, tileProperties[currentHitLayer[i]]);
 						}
 					}
 				}
-			}
-			
-			// Create border tiles
-			for (var y1 : int = -10; y1 <= tilemap.heightInTiles; y1++) {
-				createTileBox(-1, y1, offsetX, offsetY, []);
-				createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY, []);
-			}
-			
-			for (var x1 : int = -1; x1 < tilemap.widthInTiles; x1++) {
-				createTileBox(x1, tilemap.heightInTiles + 1, offsetX, offsetY, [{name : "kills", value : true}]);
+				
+				// Create border tiles on the hit layer
+				for (var y1 : int = -10; y1 <= tilemap.heightInTiles; y1++) {
+					createTileBox(-1, y1, offsetX, offsetY, []);
+					createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY, []);
+				}
+				
+				for (var x1 : int = -1; x1 < tilemap.widthInTiles; x1++) {
+					createTileBox(x1, tilemap.heightInTiles + 5, offsetX, offsetY, [{name : "kills", value : true}, {name : "sensor", value : false}]);
+				}
 			}
 		}
 		
@@ -107,18 +119,7 @@ package org.dinosaurriders.swap {
 		 * Creates a solid and static tile block, all sizes expressed in tiles
 		 */
 		private function createTileBox(tileX : Number, tileY : Number, offsetX : Number, offsetY : Number, properties : Array) : void {
-			var tile : SolidTile;
-			var kills : Boolean;
-			
-			for each (var property : Object in properties) {
-				switch (property.name) {
-					case "kills":
-					kills = property.value;
-					break;
-				}
-			}
-			
-			tile = new SolidTile((offsetX + tileX) * Settings.TILESIZE, (offsetY + tileY) * Settings.TILESIZE, kills);
+			var tile : Tileblock = new Tileblock((offsetX + tileX) * Settings.TILESIZE, (offsetY + tileY) * Settings.TILESIZE);
 			tile.width = Settings.TILESIZE;
 			tile.height = Settings.TILESIZE;
 			tile.createPhysicsObject(world, properties);
@@ -130,6 +131,7 @@ package org.dinosaurriders.swap {
 			if (obj is Player) {
 				player = obj as Player;
 				player.setOnKill(onKillPlayerCallback);
+				player.setOnExit(onExitPlayerCallback);
 			} else if (obj is FlxTilemap) {
 				var map : FlxTilemap = obj as FlxTilemap;
 				createTilemapPhysics(map, properties, level, map.x / Settings.TILESIZE, map.y / Settings.TILESIZE);
@@ -166,15 +168,25 @@ package org.dinosaurriders.swap {
 			world.Step(FlxG.elapsed, 10, 10);
 			//world.DrawDebugData();
 			world.ClearForces();
-            
+			
             PhysicsUtil.callSwaps();
 			if(FlxG.keys.justPressed("R")){
 				this.reset();
+			}
+			
+			if (exitTo != null) {
+				currentLevelName = exitTo;
+				exitTo = null;
+				reset();
 			}
 		}
 		
 		private function onKillPlayerCallback() {
 			reset();
+		}
+		
+		private function onExitPlayerCallback(levelName : String) {
+			exitTo = levelName;
 		}
 		
 		private function reset():void{
@@ -192,7 +204,7 @@ package org.dinosaurriders.swap {
 			
 			this.kill();
 			
-			FlxG.switchState(new LevelContainer());
+			FlxG.switchState(new LevelContainer(currentLevelName));
 			//currentLevel=new Level_Level7(true, onObjectAddedCallback);
 			
 			/*FlxG.resetCameras(camera);

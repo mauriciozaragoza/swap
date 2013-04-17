@@ -11,13 +11,11 @@ package org.dinosaurriders.swap.objects {
 	/**
 	 * @author Mau
 	 */
-	public class SolidTile extends PhysicalBody {
+	public class Tileblock extends PhysicalBody {		
 		private var kills : Boolean;
 		
-		public function SolidTile(X : Number, Y : Number, kills : Boolean, density : Number = 1, restitution : Number = 0, friction : Number = 1) {
+		public function Tileblock(X : Number, Y : Number, density : Number = 1, restitution : Number = 0, friction : Number = 2) {
 			super(X, Y, density, restitution, friction);
-			
-			this.kills = kills;
 			
 			bodyDef.type = b2Body.b2_staticBody;
 		}
@@ -25,10 +23,18 @@ package org.dinosaurriders.swap.objects {
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var polyDef : b2PolygonShape = new b2PolygonShape();
 
+			fixtureDefs[0] = new b2FixtureDef();
+			fixtureDefs[0].shape = polyDef;			
+
 			polyDef.SetAsBox(Settings.TILESIZE / Settings.ratio / 2, Settings.TILESIZE / Settings.ratio / 2);
 			
-			fixtureDefs[0] = new b2FixtureDef();
-			fixtureDefs[0].shape = polyDef;
+			for each (var property : Object in properties) {
+				switch (property.name) {
+					case "kills":
+					kills = property.value;
+					break;
+				}
+			}
 			
 			return super.createPhysicsObject(world, properties);
 		}

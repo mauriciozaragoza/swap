@@ -4,6 +4,10 @@ package org.dinosaurriders.swap {
 	 * @author Mau
 	 */
 	public class Assets {
+		// ANIMATIONS
+		[Embed(source="../assets/SWAP.swf")]
+		public static var StartAnimation:Class;
+		
 		[Embed(source="../assets/ForestBoulderLarge.png")]
 		public static var ForestBoulderLarge : Class;
 		

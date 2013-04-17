@@ -1,7 +1,7 @@
 ﻿package org.dinosaurriders.swap.objects {
-	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import Box2D.Collision.Shapes.b2CircleShape;
 	import Box2D.Collision.Shapes.b2PolygonShape;
+	import Box2D.Collision.b2Manifold;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.b2Body;
@@ -12,7 +12,10 @@
 
 	import org.dinosaurriders.swap.Assets;
 	import org.dinosaurriders.swap.Settings;
+	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.*;
+
+	import flash.utils.Dictionary;
 	
 	public class Player extends PhysicalBody {
 		private var grounded : Boolean;
@@ -22,10 +25,16 @@
 		
 		private var onKillCallback : Function;
 		private var onExitCallback : Function;
+		private var controls : Dictionary;
+		private var groundMoveVector : b2Vec2, airMoveVector : b2Vec2;
 		
 		public function Player(X:Number, Y:Number):void {
 			super(X, Y, 100, 0, 1);
 			loadGraphic(Assets.Player, true, true, 48, 48);
+			
+			controls = new Dictionary();
+			controls["JUMP"] = Settings.JUMPKEY;
+			controls["SWAP"] = Settings.SWAPKEY;
 			
 			addAnimation("jump", [1], 10);
 			addAnimation("move", [0, 1, 2], 10);
@@ -54,30 +63,37 @@
 		override public function update():void 
 		{
 			var velocity : b2Vec2 = body.GetLinearVelocity();
-			
-			if (FlxG.keys.LEFT && velocity.x > -Settings.PLAYERMAXVELOCITY)
+			var moveDirection : b2Vec2 = groundMoveVector.Copy();
+			moveDirection.Normalize();
+			 
+			// dot product
+			if (FlxG.keys.pressed(controls["LEFT"]) && 
+				velocity.x * moveDirection.x + velocity.y * moveDirection.y > -Settings.PLAYERMAXVELOCITY)
 			{
+//				body.SetLinearVelocity(groundMoveVector.Copy().GetNegative());
+				//trace("applying", groundMoveVector.GetNegative().x, groundMoveVector.GetNegative().y);
 				body.ApplyImpulse(
-					new b2Vec2(grounded ? -Settings.PLAYERSPEED * body.GetMass() : -Settings.PLAYERAIRSPEED * body.GetMass()), 
+					grounded ? groundMoveVector.Copy().GetNegative() : airMoveVector.Copy().GetNegative(), 
 					new b2Vec2());
 			}
-			else if (FlxG.keys.RIGHT && velocity.x < Settings.PLAYERMAXVELOCITY)
+			else if (FlxG.keys.pressed(controls["RIGHT"]) && 
+				velocity.x * moveDirection.x + velocity.y * moveDirection.y < Settings.PLAYERMAXVELOCITY)
 			{
+//				body.SetLinearVelocity(groundMoveVector.Copy());
 				body.ApplyImpulse(
-					new b2Vec2(grounded ? Settings.PLAYERSPEED * body.GetMass() : Settings.PLAYERAIRSPEED * body.GetMass()),
+					grounded ? groundMoveVector.Copy() : airMoveVector.Copy(), 
 					new b2Vec2());
 			}			
 			
-			if (FlxG.keys.justPressed("UP")) {
+			if (FlxG.keys.justPressed(controls["JUMP"])) {
 				jump();
 			}
 			
-			
-			if (FlxG.keys.justPressed("X") && tempSwapObject != null) {
+			if (FlxG.keys.justPressed(controls["SWAP"]) && tempSwapObject != null) {
 				PhysicsUtil.enqueueSwap(this, tempSwapObject);
 			}
 			
-			if (Math.abs(velocity.x) > 0) {
+			if (Math.abs(velocity.x) > 0.1) {
 				play("move");
 			} else {
 				play("idle");
@@ -118,6 +134,16 @@
 				}
 			}
 		}
+			
+		override public function onBeforeSolveCollision(contact : b2Contact, oldManifold : b2Manifold) : void {
+			var otherObject : PhysicalBody = identifyCollision(contact)[1].GetUserData() as PhysicalBody;
+			
+			if (otherObject != null && !otherObject.affectsPlayer) {
+				contact.SetEnabled(false); 
+			}
+			
+			super.onBeforeSolveCollision(contact, oldManifold);
+		}
 		
 		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {			
 			//trace("force: ", impulse.normalImpulses[0]);
@@ -138,19 +164,22 @@
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var footSensorShape : b2PolygonShape = new b2PolygonShape();			
 			var boxDef : b2PolygonShape = new b2PolygonShape();
+			const widthSizeRatio : Number = 0.25, heightSizeRatio : Number = 2.0/3.0;
+			var w1 : Number = width * widthSizeRatio / Settings.ratio, 
+				h1 : Number = height * heightSizeRatio / Settings.ratio;
 			
 			fixtureDefs[0] = new b2FixtureDef(); // rectangle
 			fixtureDefs[1] = new b2FixtureDef(); // foot sensor
 			fixtureDefs[2] = new b2FixtureDef(); // bottom circle
 			
-			boxDef.SetAsBox(width / Settings.ratio / 4.1, height / Settings.ratio / 4.1);
+			boxDef.SetAsBox(w1 / 2.2, h1 / 3);
 			fixtureDefs[0].shape = boxDef;
 			
 			var vertices : Array = new Array();
-			vertices[0] = new b2Vec2(-width / 8 / Settings.ratio, height / 2 / Settings.ratio);
-			vertices[1] = new b2Vec2(-width / 8 / Settings.ratio, (height + Settings.FOOTSENSORSIZE) / 2 / Settings.ratio);
-			vertices[2] = new b2Vec2(width / 8 / Settings.ratio, (height + Settings.FOOTSENSORSIZE) / 2 / Settings.ratio);
-			vertices[3] = new b2Vec2(width / 8 / Settings.ratio, height / 2 / Settings.ratio);			
+			vertices[0] = new b2Vec2(-w1 / 3.5, h1 / 2);
+			vertices[1] = new b2Vec2(-w1 / 3.5, h1 / 2 + Settings.FOOTSENSORSIZE / Settings.ratio);
+			vertices[2] = new b2Vec2(w1 / 3.5, h1 / 2 + Settings.FOOTSENSORSIZE / Settings.ratio);
+			vertices[3] = new b2Vec2(w1 / 3.5, h1 / 2);			
 			footSensorShape.SetAsArray(vertices, 4);
 			
 			fixtureDefs[1].shape = footSensorShape;
@@ -159,8 +188,8 @@
 			
 			var circleDef : b2CircleShape = new b2CircleShape();
 			
-			circleDef.SetRadius(width / Settings.ratio / 4);
-			circleDef.SetLocalPosition(new b2Vec2(0, width / Settings.ratio / 4));
+			circleDef.SetRadius(w1 / 2);
+			circleDef.SetLocalPosition(new b2Vec2(0, h1 * 1.0 / 3.0));
 			fixtureDefs[2].shape = circleDef;
 			
 			// Creates the body
@@ -191,6 +220,9 @@
 		 */
 		public function onAir() : void {
 			setFriction(0);
+//			var newAirVel : b2Vec2 = body.GetLinearVelocity().Copy();
+//			newAirVel.x = 0;
+//			body.SetLinearVelocity(newAirVel);
 			grounded = false;
 		}
 		
@@ -210,6 +242,52 @@
 
 		public function get dead() : Boolean {
 			return _dead;
+		}
+
+		// This rotates the player and the controls if the gravity changes
+		override public function set gravityVector(gravityVector : b2Vec2) : void {
+			super.gravityVector = gravityVector;
+			
+			var unitVector : b2Vec2 = gravityVector.Copy();
+			unitVector.Normalize();
+			
+			// Currently it only supports 4 directions
+			if (unitVector.x > 0.9) {
+				controls["LEFT"] = Settings.DOWNKEY;
+				controls["RIGHT"] = Settings.UPKEY;
+				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
+				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
+				angle = 270.0;
+				body.SetAngle(angle / 180.0 * Math.PI);	
+				trace("lol1");
+			}
+			else if (unitVector.x < -0.9) {
+				controls["LEFT"] = Settings.UPKEY;
+				controls["RIGHT"] = Settings.DOWNKEY;
+				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
+				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
+				angle = 90.0;
+				body.SetAngle(angle / 180.0 * Math.PI);	
+				trace("lol2");
+			}
+			else if (unitVector.y > 0.9) {
+				controls["LEFT"] = Settings.LEFTKEY;
+				controls["RIGHT"] = Settings.RIGHTKEY;
+				groundMoveVector = new b2Vec2(Settings.PLAYERSPEED * body.GetMass());
+				airMoveVector = new b2Vec2(Settings.PLAYERAIRSPEED * body.GetMass());
+				angle = 0;
+				body.SetAngle(angle / 180.0 * Math.PI);	
+				trace("lol3");
+			}
+			else if (unitVector.y < 0.9) {
+				controls["LEFT"] = Settings.RIGHTKEY;
+				controls["RIGHT"] = Settings.LEFTKEY;
+				groundMoveVector = new b2Vec2(-Settings.PLAYERSPEED * body.GetMass());
+				airMoveVector = new b2Vec2(-Settings.PLAYERAIRSPEED * body.GetMass());
+				angle = 180.0;
+				body.SetAngle(angle / 180.0 * Math.PI);	
+				trace("lol3");
+			}
 		}
 	}
 }

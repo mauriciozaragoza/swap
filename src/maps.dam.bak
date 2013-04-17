@@ -2,10 +2,10 @@
 <project>
   <version>3.1.3</version>
   <bgColor>0x99cccc</bgColor>
-  <viewPos x="291" y="-99"/>
+  <viewPos x="-508" y="-50"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="8">
-    <sprite name="Player" idx="1" className="Player" image="../assets/player2.png" width="48" height="48" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="48" boundsHeight="48" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="-1" canEditFrames="true" lockRotation="false">
+  <spriteEntries currentId="10">
+    <sprite name="Player" idx="1" className="Player" image="../assets/player2.png" width="48" height="48" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="48" boundsHeight="48" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false">
       <properties>
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
@@ -15,7 +15,7 @@
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
     </tileEntry>
-    <tileEntry name="BreakableWall1" idx="3" className="BreakableWall" image="../assets/BreakableWall1.png" offsetX="0" offsetY="0" width="32" height="96" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="96" constructor="new BreakableWall(%xpos%, %ypos%, Assets.%spritename%, 7000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false" selected="true"/>
+    <tileEntry name="BreakableWall1" idx="3" className="BreakableWall" image="../assets/BreakableWall1.png" offsetX="0" offsetY="0" width="32" height="96" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="96" constructor="new BreakableWall(%xpos%, %ypos%, Assets.%spritename%, 7000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false"/>
     <tileEntry name="SquareRock1" idx="4" className="PolygonBody" image="../assets/SquareRock1.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 2000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
       <properties>
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
@@ -26,10 +26,20 @@
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
     </tileEntry>
-    <tileEntry name="Switch1" idx="6" className="WeightSwitch" image="../assets/switch1.png" offsetX="0" offsetY="0" width="32" height="8" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="8" constructor="new WeightSwitch(%xpos%, %ypos%, Assets.%spritename%, 1000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false"/>
+    <tileEntry name="Switch1" idx="6" className="WeightSwitch" image="../assets/switch1.png" offsetX="0" offsetY="0" width="32" height="8" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="8" constructor="new WeightSwitch(%xpos%, %ypos%, Assets.%spritename%, 1000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false" selected="true"/>
     <tileEntry name="Exit" idx="7" className="Exit" image="../assets/exit.png" offsetX="0" offsetY="0" width="32" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="64" constructor="new Exit(%xpos%, %ypos%, Assets.%spritename%)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
       <properties>
         <type typeof="Boolean" name="sensor" value="true" hidden="false"/>
+      </properties>
+    </tileEntry>
+    <tileEntry name="SquareRock3" idx="8" className="PolygonBody" image="../assets/SquareRock4.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 2000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
+      <properties>
+        <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
+      </properties>
+    </tileEntry>
+    <tileEntry name="SquareRock4" idx="9" className="PolygonBody" image="../assets/SquareRock3.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 2000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
+      <properties>
+        <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
     </tileEntry>
   </spriteEntries>
@@ -39,15 +49,15 @@
         <type typeof="String" name="onActivate" value="ENABLE" hidden="false"/>
       </properties>
     </link>
-    <link from="D494A895-D08C-0C34-2812-FDE015AC2B8B" to="02E24797-F0DF-9A13-9D85-18B3F87EEB4F">
+    <link from="5053F898-1D00-1ADC-C017-CE8777609274" to="6DF63D3F-3CB4-0C43-EE88-0B04041B2336">
       <properties>
-        <type typeof="String" name="require" value="AND" hidden="false"/>
+        <type typeof="String" name="onActivate" value="ENABLE" hidden="false"/>
       </properties>
     </link>
   </links>
   <layers>
-    <group name="Level1" id="46" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="Background" id="0" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+    <group name="Level1" id="46" xScroll="1" yScroll="1" visible="true" open="false" locked="false" exports="true">
+      <maplayer name="Background" id="0" xScroll="1" yScroll="1" x="0" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -64,8 +74,40 @@
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
       </maplayer>
-      <maplayer name="PlayerLayer" id="1" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="true" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="PlayerLayer" id="1" xScroll="1" yScroll="1" x="0" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="true" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -82,8 +124,40 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>3,3,3,3,3,3,3,3,3,4,0,0,0,2,3,3,3,3,3,3</row>
         <row>33,17,33,17,17,16,17,33,16,20,0,0,0,18,33,33,16,33,17,33</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="2" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="FrontLayer" id="2" xScroll="1" yScroll="1" x="0" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -100,20 +174,53 @@
         <row>0,6,0,0,6,0,0,5,0,0,0,0,0,0,6,0,0,7,0,37</row>
         <row>22,22,22,22,22,22,22,22,22,23,0,0,0,21,22,22,22,22,22,22</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true" selected="true">
-        <sprite guid="EB60392F-C0FB-DC91-EE40-0D8A58D17CA9" x="0" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
+      <spritelayer name="Sprites" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+        <sprite guid="EB60392F-C0FB-DC91-EE40-0D8A58D17CA9" x="0" y="352" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
           <properties/>
         </sprite>
-        <sprite guid="E16BBA93-9381-449B-DAEC-4EDEB909E5AF" x="576" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+        <sprite guid="E16BBA93-9381-449B-DAEC-4EDEB909E5AF" x="576" y="352" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties>
-            <type typeof="String" name="warp" value="Level2" hidden="false"/>
+            <type typeof="String" name="warp" value="Level5" hidden="false"/>
           </properties>
         </sprite>
       </spritelayer>
+      <shapelayer name="PropertyFields" id="61" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
     </group>
-    <group name="Level5" id="9" xScroll="1" yScroll="1" visible="true" open="false" locked="false" exports="true">
-      <maplayer name="Background" id="4" xScroll="1" yScroll="1" x="1280" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+    <group name="Level5" id="9" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
+      <maplayer name="Background" id="4" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -130,55 +237,11 @@
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
-      </maplayer>
-      <maplayer name="BackLayer" id="5" xScroll="1" yScroll="1" x="1280" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48</row>
-        <row>0,0,0,0,0,0,0,48,49,49,49,49,50,0,0,0,0,0,48,68</row>
-        <row>0,0,0,0,0,0,0,64,65,51,81,52,67,50,0,0,48,49,68,65</row>
-        <row>49,49,49,50,0,0,0,80,81,82,0,64,65,67,49,49,68,65,65,65</row>
-        <row>65,65,65,66,0,48,49,50,25,0,0,64,65,65,65,51,81,81,52,65</row>
-        <row>65,65,65,67,50,80,52,66,0,48,49,68,65,65,51,82,0,0,64,65</row>
-        <row>65,51,81,52,67,50,64,67,49,68,65,65,65,65,66,0,48,49,68,65</row>
-        <row>51,82,0,64,65,67,68,65,65,65,65,65,65,65,67,49,68,65,65,65</row>
-        <row>67,50,0,64,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65</row>
-        <row>65,67,49,68,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65,65</row>
-      </maplayer>
-      <maplayer name="PlayerLayer" id="6" xScroll="1" yScroll="1" x="1280" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,2,3,3,4,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,2,3,4,0,0,18,16,33,20,0,0,0,0,0,0</row>
-        <row>3,3,3,3,3,16,16,33,3,3,33,17,33,20,0,0,0,0,0,0</row>
-        <row>33,17,17,33,33,16,33,16,33,33,33,33,17,20,0,0,0,0,0,0</row>
-        <row>33,17,17,33,16,16,33,16,17,33,17,16,17,20,0,0,0,0,0,0</row>
-        <row>35,35,35,35,35,35,35,35,35,35,35,35,35,36,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>3,3,3,3,3,3,3,3,3,4,0,0,0,0,0,0,0,0,0,0</row>
-        <row>33,16,16,33,33,17,17,33,16,20,0,0,0,0,0,0,0,0,0,0</row>
         <tileProperties>
           <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
           <properties/>
           <properties/>
           <properties/>
@@ -192,29 +255,143 @@
           <properties/>
           <properties/>
           <properties>
-            <type typeof="Boolean" name="kill" value="true" hidden="false"/>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
           </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="7" xScroll="1" yScroll="1" x="1280" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="BackLayer" id="5" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,6,5,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,5,0,0,0,21,22,22,23,0,0,0,0,0,0</row>
-        <row>0,6,0,7,6,21,22,23,37,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>22,22,22,22,22,39,0,38,22,22,39,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,9,31,0,0,0,0,0,0,10,0,0,0,0,0,0,0</row>
-        <row>0,25,24,0,26,0,0,0,25,0,0,0,26,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <maplayer name="PlayerLayer" id="6" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,2,3,3,3,3,3,3,3,51,51,52,0,0,0,0,0,0,0</row>
+        <row>3,3,17,33,16,33,33,33,33,20,0,0,0,0,0,0,0,0,0,0</row>
+        <row>33,17,17,33,17,33,33,33,33,20,0,0,0,0,0,0,0,0,0,0</row>
+        <row>35,35,35,35,35,35,35,35,35,36,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>3,3,3,3,3,3,3,3,3,4,0,0,0,0,0,0,0,0,0,0</row>
+        <row>33,16,16,33,33,17,17,33,16,20,14,15,14,15,14,15,14,15,14,15</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <maplayer name="FrontLayer" id="7" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true" selected="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,7,0,0,5,0,0,6,0,0,0,0,0,0,0,0</row>
+        <row>0,0,21,22,22,22,22,22,22,22,22,22,23,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>22,22,22,22,22,22,22,22,22,23,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <tileProperties>
           <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
           <properties/>
           <properties/>
           <properties/>
@@ -227,7 +404,9 @@
           <properties/>
           <properties/>
           <properties/>
-          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
           <properties/>
           <properties/>
           <properties/>
@@ -242,21 +421,198 @@
         </tileProperties>
       </maplayer>
       <spritelayer name="Sprites" id="8" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true">
-        <sprite guid="85CCD2D1-AC98-1C63-4DB2-552255E3FA62" x="1460" y="90" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
+        <sprite guid="85CCD2D1-AC98-1C63-4DB2-552255E3FA62" x="704" y="143" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
           <properties/>
         </sprite>
-        <sprite guid="E2CE7B2E-D0B5-FC8E-B82C-95D6ADCBE521" x="1280" y="128" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
+        <sprite guid="E2CE7B2E-D0B5-FC8E-B82C-95D6ADCBE521" x="640" y="160" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
           <properties/>
         </sprite>
-        <sprite guid="D085E132-A9D0-AB47-29B8-F4C3146733AA" x="1410" y="390" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+        <sprite guid="D085E132-A9D0-AB47-29B8-F4C3146733AA" x="770" y="358" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties>
-            <type typeof="String" name="warp" value="Level7" hidden="false"/>
+            <type typeof="String" name="warp" value="Level6" hidden="false"/>
           </properties>
         </sprite>
       </spritelayer>
+      <shapelayer name="PropertyFields" id="9" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
     </group>
-    <group name="Level7" id="4" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="Background" id="9" xScroll="1" yScroll="1" x="1920" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+    <group name="Level6" id="40" xScroll="1" yScroll="1" visible="true" open="false" locked="false" exports="true">
+      <maplayer name="PlayerLayer" id="12" xScroll="1" yScroll="1" x="1280" y="0" width="33" height="25" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="true" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>3,3,3,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,3,3,3</row>
+        <row>33,33,33,16,33,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,16,33,17,33,17</row>
+        <row>33,33,33,33,33,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,16,16,33,16</row>
+        <row>33,33,17,16,33,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,16,16,33,33,33</row>
+        <row>33,17,16,17,33,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,17,33,33,33,33</row>
+        <row>16,17,16,33,33,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,16,16,33,33</row>
+        <row>33,17,33,33,16,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,16,16,33,33</row>
+        <row>16,16,17,17,16,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,33,33,16,17</row>
+        <row>17,17,17,33,33,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,17,17,16,33,16</row>
+        <row>16,33,16,17,16,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,17,33,17,16</row>
+        <row>33,33,33,33,17,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,33,33,33,33</row>
+        <row>17,16,33,16,17,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,16,33,33,33,17</row>
+        <row>33,33,33,33,17,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,33,17,33,33</row>
+        <row>33,33,33,16,33,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,33,17,16,33,33</row>
+        <row>33,17,16,33,33,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,18,33,33,33,17,16</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <maplayer name="FrontLayer" id="59" xScroll="1" yScroll="1" x="1280" y="0" width="33" height="25" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0</row>
+        <row>22,22,22,22,22,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,22,22,22,22,22</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <spritelayer name="Sprites" id="14" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+        <sprite guid="6DF63D3F-3CB4-0C43-EE88-0B04041B2336" x="1408" y="256" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+          <properties>
+            <type typeof="String" name="warp" value="Level7" hidden="false"/>
+            <type typeof="Boolean" name="enabled" value="false" hidden="false"/>
+          </properties>
+        </sprite>
+        <sprite guid="5053F898-1D00-1ADC-C017-CE8777609274" x="2176" y="312" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
+        <sprite guid="F00E9B72-E35E-F84D-76E7-49E22AD1D3BD" x="1545" y="298" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
+          <properties>
+            <type typeof="Boolean" name="fixedrotation" value="true" hidden="false"/>
+          </properties>
+        </sprite>
+        <sprite guid="9B28F84E-6A50-2328-7B1B-04EA36E84221" x="1312" y="288" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
+        </sprite>
+        <sprite guid="D6951662-554A-3DAA-88ED-C3C43A6C18F7" x="1530" y="330" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
+          <properties>
+            <dataOverride name="swappable" typeof="Boolean" value="false" idx="0"/>
+            <type typeof="Boolean" name="fixedx" value="true" hidden="false"/>
+            <type typeof="Float" name="friction" value="1.000000" hidden="false"/>
+          </properties>
+        </sprite>
+        <sprite guid="5F7CC583-F680-5FCC-8CD8-36721597FC1F" x="2043" y="330" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
+          <properties>
+            <dataOverride name="swappable" typeof="Boolean" value="false" idx="0"/>
+            <type typeof="Boolean" name="fixedx" value="true" hidden="false"/>
+          </properties>
+        </sprite>
+        <sprite guid="F40ECFAC-666D-968F-F4DC-517B4640BBB7" x="1790" y="333" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
+          <properties>
+            <dataOverride name="swappable" typeof="Boolean" value="false" idx="0"/>
+            <type typeof="Boolean" name="fixedx" value="true" hidden="false"/>
+          </properties>
+        </sprite>
+        <sprite guid="9992A927-2679-92F3-7D76-57487A5F837A" x="1920" y="420" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
+          <properties>
+            <dataOverride name="swappable" typeof="Boolean" value="false" idx="0"/>
+            <type typeof="Boolean" name="fixedx" value="true" hidden="false"/>
+          </properties>
+        </sprite>
+        <sprite guid="B78B008D-B571-48EE-4748-863476D4EF67" x="1650" y="420" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
+          <properties>
+            <dataOverride name="swappable" typeof="Boolean" value="false" idx="0"/>
+            <type typeof="Boolean" name="fixedx" value="true" hidden="false"/>
+          </properties>
+        </sprite>
+      </spritelayer>
+      <shapelayer name="PropertyFields" id="15" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+        <shape guid="73ECC3DF-1BFB-4E6E-D078-A58BB9304863" type="square" x="1470" y="600" Z="0" angle="0" width="690.00" height="225.45" scaleX="20.617" scaleY="6.973">
+          <properties>
+            <type typeof="String" name="gravityy" value="-20" hidden="false"/>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+        </shape>
+      </shapelayer>
+    </group>
+    <group name="Level7" id="4" xScroll="1" yScroll="1" visible="true" open="false" locked="false" exports="true">
+      <maplayer name="Background" id="16" xScroll="1" yScroll="1" x="2336" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -273,62 +629,11 @@
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
         <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
-      </maplayer>
-      <maplayer name="BackLayer" id="10" xScroll="1" yScroll="1" x="1920" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>67,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>65,66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>51,82,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>82,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>67,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>65,67,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>65,65,66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>81,52,67,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,80,52,67,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>50,48,68,65,66,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>67,68,65,65,67,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>65,65,65,65,65,66,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>65,65,65,65,65,67,50,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>65,65,65,65,65,65,67,50,0,0,0,0,0,0,0,0,0,0,0,0</row>
-      </maplayer>
-      <maplayer name="PlayerLayer" id="11" xScroll="1" yScroll="1" x="1920" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="true" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,2,3,32,3,3,3,3,16,3</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,34,35,35,35,35,35,35,35,35</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>3,3,17,3,3,32,3,4,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>35,35,35,35,35,35,35,36,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,2,3,32,3,4,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,34,35,35,35,36,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>3,16,3,3,3,3,16,3,3,3,3,3,3,3,3,3,3,3,3,3</row>
-        <row>33,33,16,33,33,17,33,33,16,33,33,16,33,17,33,33,16,33,33,33</row>
-      </maplayer>
-      <maplayer name="FrontLayer" id="12" xScroll="1" yScroll="1" x="1920" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,1,1,7,0,37</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,21,22,22,22,22,22,22,22,22</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0,0,0</row>
-        <row>0,0,0,5,1,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>22,22,22,22,22,22,22,23,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,9,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0</row>
-        <row>0,0,0,25,0,0,24,0,0,0,0,21,22,22,22,23,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0,0,0</row>
-        <row>0,0,6,0,0,0,6,0,0,0,5,0,0,0,6,6,0,0,6,7</row>
-        <row>22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <tileProperties>
           <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
           <properties/>
           <properties/>
           <properties/>
@@ -341,7 +646,9 @@
           <properties/>
           <properties/>
           <properties/>
-          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
           <properties/>
           <properties/>
           <properties/>
@@ -355,49 +662,181 @@
           <properties/>
         </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="13" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
-        <sprite guid="C9423FA3-AD53-AE94-ECA7-EDE8AD4ED212" x="2336" y="96" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
+      <maplayer name="BackLayer" id="17" xScroll="1" yScroll="1" x="2336" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <maplayer name="PlayerLayer" id="18" xScroll="1" yScroll="1" x="2336" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,2,3,32,3,3,3,3,16,3</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,34,35,35,35,35,35,35,35,35</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>51,51,51,51,51,51,51,51,52,0,0,50,51,51,51,52,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>3,16,3,3,3,3,16,3,3,3,3,3,3,3,3,3,3,3,3,3</row>
+        <row>33,33,16,33,33,17,33,33,16,33,33,16,33,17,33,33,16,33,33,33</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <maplayer name="FrontLayer" id="19" xScroll="1" yScroll="1" x="2336" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,1,1,7,0,37</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,21,22,22,22,22,22,22,22,22</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,5,1,0,6,0,0,0,0,0,0,6,0,0,0,0,0,0</row>
+        <row>22,22,22,22,22,22,22,22,23,0,0,21,22,22,22,23,0,0,0,0</row>
+        <row>0,0,0,25,0,0,24,0,0,0,0,0,0,26,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,6,0,0,0,6,0,0,0,5,0,0,0,6,6,0,0,6,7</row>
+        <row>22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+        </tileProperties>
+      </maplayer>
+      <spritelayer name="Sprites" id="20" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+        <sprite guid="D494A895-D08C-0C34-2812-FDE015AC2B8B" x="2832" y="152" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
+        <sprite guid="C9423FA3-AD53-AE94-ECA7-EDE8AD4ED212" x="2760" y="128" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
           <properties/>
         </sprite>
-        <sprite guid="6ABECA48-8D04-E072-9E5D-91F7ABB77F5A" x="2304" y="224" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
-          <properties/>
-        </sprite>
-        <sprite guid="8DBCC742-BD70-8CFE-D2B6-C740905E0227" x="1952" y="160" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3"/>
-        <sprite guid="7902A615-3108-5049-C6B9-A4A4FC99B684" x="2304" y="256" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
-          <properties/>
-        </sprite>
-        <sprite guid="FB091B05-6780-F771-0236-5FCBF67A9D4F" x="2368" y="256" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+        <sprite guid="8DBCC742-BD70-8CFE-D2B6-C740905E0227" x="2720" y="224" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3"/>
+        <sprite guid="FB091B05-6780-F771-0236-5FCBF67A9D4F" x="2784" y="256" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties>
             <type typeof="Boolean" name="enabled" value="false" hidden="false"/>
           </properties>
         </sprite>
-        <sprite guid="2A4BB865-F828-9261-5A28-27549D841C43" x="2304" y="288" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
+        <sprite guid="A7786EBE-1C19-79A3-2B40-9C4776CC6C1F" x="2814" y="257" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
           <properties/>
         </sprite>
-        <sprite guid="A7786EBE-1C19-79A3-2B40-9C4776CC6C1F" x="2398" y="257" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
+        <sprite guid="602972CB-4E17-6654-B212-EA9DF642ED79" x="2336" y="400" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
           <properties/>
         </sprite>
-        <sprite guid="02E24797-F0DF-9A13-9D85-18B3F87EEB4F" x="2124" y="440" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
-        <sprite guid="D494A895-D08C-0C34-2812-FDE015AC2B8B" x="2208" y="440" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
-        <sprite guid="602972CB-4E17-6654-B212-EA9DF642ED79" x="1920" y="400" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
-          <properties/>
-        </sprite>
-        <sprite guid="10267FED-193F-C01E-3FD7-434ADDF543A3" x="2016" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
+        <sprite guid="10267FED-193F-C01E-3FD7-434ADDF543A3" x="2432" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
           <properties/>
         </sprite>
       </spritelayer>
-      <shapelayer name="GravityFields" id="14" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true">
-        <shape guid="56A7E00A-54C4-15AE-FF7B-A300B45AB443" type="square" x="2009" y="120" Z="0" angle="0" width="150.00" height="150.00" scaleX="4.286" scaleY="4.286">
-          <properties>
-            <type typeof="Float" name="gravityx" value="0" hidden="false"/>
-            <type typeof="Float" name="gravityy" value="-11" hidden="false"/>
-          </properties>
-        </shape>
-      </shapelayer>
     </group>
   </layers>
   <layerTemplates>
-    <maplayer name="FrontLayer" id="3" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+    <maplayer name="FrontLayer" id="3" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true">
       <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -414,30 +853,72 @@
       <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <tileProperties>
+        <properties/>
+        <properties>
+          <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+        </properties>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties>
+          <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+        </properties>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+        <properties/>
+      </tileProperties>
     </maplayer>
   </layerTemplates>
-  <tileMatrix currentMatrix="1" rows="1" cols="3" randomizeMiddle="false" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
+  <tileMatrix currentMatrix="0" rows="4" cols="4" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
     <row>
-      <tile>21</tile>
-      <tile>22</tile>
-      <tile>23</tile>
+      <tile>2</tile>
+      <tile>3</tile>
+      <tile>3</tile>
+      <tile>4</tile>
+    </row>
+    <row>
+      <tile>18</tile>
+      <tile>16</tile>
+      <tile>33</tile>
+      <tile>20</tile>
+    </row>
+    <row>
+      <tile>18</tile>
+      <tile>17</tile>
+      <tile>33</tile>
+      <tile>20</tile>
+    </row>
+    <row>
+      <tile>34</tile>
+      <tile>35</tile>
+      <tile>35</tile>
+      <tile>36</tile>
     </row>
     <specialConnections>
       <sets/>
       <rows/>
     </specialConnections>
   </tileMatrix>
-  <tileMatrixData name="rock1" rows="4" cols="4" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
-    <tiles>2,3,3,4,18,33,17,20,18,16,33,20,34,35,35,36</tiles>
-  </tileMatrixData>
-  <tileMatrixData name="grass" rows="1" cols="3" randomizeMiddle="false" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
-    <tiles>21,22,23</tiles>
-  </tileMatrixData>
-  <tileMatrixData name="cave" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
-    <tiles>48,49,50,64,65,66,80,81,82</tiles>
-  </tileMatrixData>
-  <tileMatrixData name="forestbg" rows="2" cols="4" randomizeMiddle="false" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
-    <tiles>101,102,103,104,117,118,119,120</tiles>
+  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
+    <tiles>0,0,0,0,0,0,0,0,0</tiles>
   </tileMatrixData>
   <tileBrushes/>
   <colorSwatches/>

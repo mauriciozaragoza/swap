@@ -24,6 +24,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		//Sprites
 		public var SpritesGroup:FlxGroup = new FlxGroup;
 
+		//Shapes
+		public var PropertyFieldsGroup:FlxGroup = new FlxGroup;
+
 		//Properties
 
 
@@ -34,32 +37,43 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			var tileProperties:Dictionary = new Dictionary;
 
 			properties = generateProperties( null );
-			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
+			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
+			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerBackground);
 			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(layerFrontLayer);
 			masterLayer.add(SpritesGroup);
+			masterLayer.add(PropertyFieldsGroup);
 
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
 
 			boundsMinX = 0;
-			boundsMinY = 0;
+			boundsMinY = -32;
 			boundsMaxX = 640;
-			boundsMaxY = 512;
-			boundsMin = new FlxPoint(0, 0);
-			boundsMax = new FlxPoint(640, 512);
+			boundsMaxY = 480;
+			boundsMin = new FlxPoint(0, -32);
+			boundsMax = new FlxPoint(640, 480);
 			bgColor = 0xff99cccc;
 		}
 
 		override public function createObjects(onAddCallback:Function = null, parentObject:Object = null):void
 		{
+			addShapesForLayerPropertyFields(onAddCallback);
 			addSpritesForLayerSprites(onAddCallback);
 			generateObjectLinks(onAddCallback);
 			if ( parentObject != null )
@@ -68,10 +82,16 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 				FlxG.state.add(masterLayer);
 		}
 
+		public function addShapesForLayerPropertyFields(onAddCallback:Function = null):void
+		{
+			var obj:Object;
+
+		}
+
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
-			addSpriteToLayer(new Exit(576.000, 384.000, Assets.Exit), Exit, SpritesGroup , 576.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level2" }, null ), onAddCallback );//"Exit"
+			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
+			addSpriteToLayer(new Exit(576.000, 352.000, Assets.Exit), Exit, SpritesGroup , 576.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level5" }, null ), onAddCallback );//"Exit"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

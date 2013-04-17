@@ -35,7 +35,7 @@ package org.dinosaurriders.swap.objects {
 				initAngle : Number = 0;
 
 				// dtheta / 2 is so that it starts with flat side below
-				if (sides % 2 == 0) {
+				if (sides % 2 == 1) {
 					initAngle = dtheta / 2.0;
 				}
 

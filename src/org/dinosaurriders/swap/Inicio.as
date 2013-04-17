@@ -34,7 +34,7 @@
 		}
 
 		private function iniciar() : void {
-			FlxG.switchState(new LevelContainer());
+			FlxG.switchState(new LevelContainer("Level1"));
 		}
 
 		override public function update():void
