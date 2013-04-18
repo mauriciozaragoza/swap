@@ -5,6 +5,7 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
+	import org.dinosaurriders.swap.Assets;
 	import org.dinosaurriders.swap.Settings;
 	/**
 	 * @author Drakaen
@@ -13,10 +14,16 @@ package org.dinosaurriders.swap.objects {
 		private var warpTo : String;
 		
 		public function Exit(X : Number, Y : Number, image : Class) {
-			super(X, Y, 0, 0, 0);
+			super(X, Y-100, 0, 0, 0);
 			
-			loadGraphic(image, false, false);
+			loadGraphic(Assets.Exit, true, true, 48, 48);
+			
+			addAnimation("idle", [0,1,2,3,4,5,6,7,8,9,10], 8,true);
+			
+			bodyDef.fixedRotation = true;
+			
 			bodyDef.type = b2Body.b2_staticBody;
+			play("idle");
 		}
 			
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
