@@ -14,12 +14,13 @@ package org.dinosaurriders.swap {
 		
 		// PLAYER
 		public static const PLAYERSPEED 		: Number = 0.50;
-		public static const PLAYERAIRSPEED 		: Number = 0.25;
-		public static const PLAYERMAXVELOCITY 	: Number = 5;
-		public static const PLAYERJUMP 			: Number = 6;
+		public static const PLAYERAIRSPEED 		: Number = 0.15;
+		public static const PLAYERMAXVELOCITY 	: Number = 4;
+		public static const PLAYERJUMP 			: Number = 6.6;
 		public static const FOOTSENSORSIZE		: Number = 10;
 		public static const MAXFORCE			: Number = 1000;
 		public static const SWAPKEY				: String = "X";
+		public static const TOUCHSWAPKEY		: String = "S";
 		public static const JUMPKEY				: String = "SPACE";
 		public static const LEFTKEY				: String = "LEFT";
 		public static const RIGHTKEY			: String = "RIGHT";

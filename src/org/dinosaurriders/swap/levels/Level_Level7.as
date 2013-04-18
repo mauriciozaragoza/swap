@@ -9,18 +9,18 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 	public class Level_Level7 extends BaseLevel
 	{
 		//Embedded media...
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level7_Sky.csv", mimeType="application/octet-stream")] public var CSV_Sky:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Sky:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level7_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Background:Class;
-		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level7_BackLayer.csv", mimeType="application/octet-stream")] public var CSV_BackLayer:Class;
-		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_BackLayer:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level7_PlayerLayer.csv", mimeType="application/octet-stream")] public var CSV_PlayerLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_PlayerLayer:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level7_FrontLayer.csv", mimeType="application/octet-stream")] public var CSV_FrontLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_FrontLayer:Class;
 
 		//Tilemaps
+		public var layerSky:FlxTilemap;
 		public var layerBackground:FlxTilemap;
-		public var layerBackLayer:FlxTilemap;
 		public var layerPlayerLayer:FlxTilemap;
 		public var layerFrontLayer:FlxTilemap;
 
@@ -40,12 +40,12 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerBackground = addTilemap( CSV_Background, Img_Background, 2336.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, -32.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerBackLayer = addTilemap( CSV_BackLayer, Img_BackLayer, 2336.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 1024.000, -32.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
@@ -58,8 +58,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 2336.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
+			masterLayer.add(layerSky);
 			masterLayer.add(layerBackground);
-			masterLayer.add(layerBackLayer);
 			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(layerFrontLayer);
 			masterLayer.add(SpritesGroup);
@@ -73,7 +73,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			boundsMaxY = 512;
 			boundsMin = new FlxPoint(2336, 0);
 			boundsMax = new FlxPoint(2976, 512);
-			bgColor = 0xff99cccc;
+			bgColor = 0xff88beef;
 		}
 
 		override public function createObjects(onAddCallback:Function = null, parentObject:Object = null):void
@@ -88,7 +88,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			linkedObjectDictionary[1] = addSpriteToLayer(new Exit(2790.000, 95.000, Assets.Exit), Exit, SpritesGroup , 2790.000, 95.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"enabled", value:false }, null ), onAddCallback );//"Exit"
+			linkedObjectDictionary[1] = addSpriteToLayer(new Exit(2790.000, 95.000, Assets.Exit), Exit, SpritesGroup , 2790.000, 95.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"enabled", value:false }, { name:"warp", value:"Level8" }, null ), onAddCallback );//"Exit"
 			addSpriteToLayer(new PolygonBody(2431.000, 127.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 2431.000, 127.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			linkedObjectDictionary[0] = addSpriteToLayer(new WeightSwitch(2370.000, 152.000, Assets.Switch1, 1000), WeightSwitch, SpritesGroup , 2370.000, 152.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
 			addSpriteToLayer(new BreakableWall(2720.000, 224.000, Assets.BreakableWall1, 7000), BreakableWall, SpritesGroup , 2720.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"

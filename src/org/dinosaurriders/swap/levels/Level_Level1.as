@@ -9,6 +9,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 	public class Level_Level1 extends BaseLevel
 	{
 		//Embedded media...
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level1_Sky.csv", mimeType="application/octet-stream")] public var CSV_Sky:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Sky:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level1_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Background:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level1_PlayerLayer.csv", mimeType="application/octet-stream")] public var CSV_PlayerLayer:Class;
@@ -17,6 +19,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_FrontLayer:Class;
 
 		//Tilemaps
+		public var layerSky:FlxTilemap;
 		public var layerBackground:FlxTilemap;
 		public var layerPlayerLayer:FlxTilemap;
 		public var layerFrontLayer:FlxTilemap;
@@ -40,7 +43,12 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, -32.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
+			properties = generateProperties( null );
+			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -32.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
@@ -53,6 +61,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
+			masterLayer.add(layerSky);
 			masterLayer.add(layerBackground);
 			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(layerFrontLayer);
@@ -68,7 +77,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			boundsMaxY = 480;
 			boundsMin = new FlxPoint(0, -32);
 			boundsMax = new FlxPoint(640, 480);
-			bgColor = 0xff99cccc;
+			bgColor = 0xff88beef;
 		}
 
 		override public function createObjects(onAddCallback:Function = null, parentObject:Object = null):void

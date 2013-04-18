@@ -20,6 +20,12 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/SquareRock2.png")]
 		public static var SquareRock2 : Class;
 		
+		[Embed(source="../assets/SquareRock3.png")]
+		public static var SquareRock3 : Class;
+		
+		[Embed(source="../assets/SquareRock4.png")]
+		public static var SquareRock4 : Class;
+		
 		[Embed(source="../assets/Switch1.png")]
 		public static var Switch1 : Class;
 		
