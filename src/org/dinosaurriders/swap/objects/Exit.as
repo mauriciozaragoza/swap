@@ -7,6 +7,10 @@ package org.dinosaurriders.swap.objects {
 
 	import org.dinosaurriders.swap.Assets;
 	import org.dinosaurriders.swap.Settings;
+
+	import flash.filters.GlowFilter;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	/**
 	 * @author Drakaen
 	 */
@@ -14,7 +18,7 @@ package org.dinosaurriders.swap.objects {
 		private var warpTo : String;
 		
 		public function Exit(X : Number, Y : Number, image : Class) {
-			super(X, Y-100, 0, 0, 0);
+			super(X, Y+10, 0, 0, 0);
 			
 			loadGraphic(Assets.Exit, true, true, 48, 48);
 			
@@ -23,8 +27,17 @@ package org.dinosaurriders.swap.objects {
 			bodyDef.fixedRotation = true;
 			
 			bodyDef.type = b2Body.b2_staticBody;
+			
 			play("idle");
 		}
+		
+		
+		override public function update() : void {
+			super.update();
+			
+			framePixels.applyFilter(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0), new GlowFilter(0xcc00ff, 0.3, 12, 12, 1, 3, true));
+		}
+		
 			
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var polyDef : b2PolygonShape = new b2PolygonShape();

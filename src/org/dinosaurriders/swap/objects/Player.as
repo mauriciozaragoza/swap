@@ -1,4 +1,4 @@
-﻿package org.dinosaurriders.swap.objects {
+package org.dinosaurriders.swap.objects {
 	import Box2D.Collision.Shapes.b2CircleShape;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Collision.b2Manifold;

@@ -27,6 +27,6 @@ package org.dinosaurriders.swap {
 		public static const UPKEY				: String = "UP";
 		public static const DOWNKEY				: String = "DOWN";
 		
-		public static const SWAPSKIPCOUNT		: Number = 5;
+		public static const SWAPSKIPCOUNT		: Number = 20;
 	}
 }

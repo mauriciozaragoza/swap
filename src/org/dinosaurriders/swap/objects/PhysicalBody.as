@@ -15,6 +15,10 @@ package org.dinosaurriders.swap.objects {
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.FlxSprite;
 
+	import flash.filters.GlowFilter;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+
 	/**
 	 * @author Mau
 	 */
@@ -281,6 +285,10 @@ package org.dinosaurriders.swap.objects {
 
 		public function set swappable(swappable : Boolean) : void {
 			this._swappable = swappable;
+			
+			if (swappable) {
+				framePixels.applyFilter(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0), new GlowFilter(0x6600cc, 0.5, 12, 12, 1.5, 3, true));
+			}
 		}
 
 		public function get affectsPlayer() : Boolean {
