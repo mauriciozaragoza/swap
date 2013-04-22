@@ -91,6 +91,7 @@
 			
 			if (FlxG.keys.justPressed(controls["SWAP"]) && tempSwapObject != null) {
 				PhysicsUtil.enqueueSwap(this, tempSwapObject);
+				
 			}
 			
 			if (Math.abs(velocity.x) > 0.1) {
