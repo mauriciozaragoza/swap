@@ -158,6 +158,10 @@ package org.dinosaurriders.swap.objects {
 
 			super.update();
 		}
+		
+		public function update2() : void {
+			super.update();
+		}
 
 		/*
 		 * Saves an object link in a dictionary indexed by property name, k -> [v, target]

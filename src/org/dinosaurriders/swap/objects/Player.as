@@ -14,6 +14,8 @@ package org.dinosaurriders.swap.objects {
 	import org.dinosaurriders.swap.Settings;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.*;
+	import org.flixel.plugin.photonstorm.FlxControl;
+	import org.flixel.plugin.photonstorm.FlxControlHandler;
 
 	import flash.utils.Dictionary;
 
@@ -26,6 +28,7 @@ package org.dinosaurriders.swap.objects {
 		private var onExitCallback : Function;
 		private var controls : Dictionary;
 		private var groundMoveVector : b2Vec2, airMoveVector : b2Vec2;
+		private var _levelHitLayers : FlxGroup;
 
 		public function Player(X : Number, Y : Number) : void {
 			super(X, Y, 100, 0, 1);
@@ -40,10 +43,40 @@ package org.dinosaurriders.swap.objects {
 			addAnimation("move", [0, 1, 2], 10);
 			addAnimation("fall", [1], 10);
 			addAnimation("idle", [1], 2);
-
+			
+			solid = true;
+			immovable = false;
+			
 			bodyDef.fixedRotation = true;
-
+			bodyDef.allowSleep = false;
+			
+			if (FlxG.getPlugin(FlxControl) == null)
+			{
+				FlxG.addPlugin(new FlxControl);
+			}
+			
+			FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES, 1, true, false);
+			FlxControl.player1.setCustomKeys(Settings.UPKEY, Settings.DOWNKEY, Settings.LEFTKEY, Settings.RIGHTKEY);
+			
+			FlxControl.player1.setJumpButton(controls["JUMP"], FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
+			FlxControl.player1.setGravity(0, 400);
+			FlxControl.player1.setMovementSpeed(400, 0, 100, 200, 400, 0);
+//			FlxControl.player1.setMovementSpeed(
+//				Settings.PLAYERSPEED, Settings.PLAYERSPEED,
+//				Settings.PLAYERMAXVELOCITY, Settings.PLAYERMAXVELOCITY, 400, 0);
+			FlxControl.player1.setCursorControl(false, false, true, true);
+			
 			bodyDef.type = b2Body.b2_dynamicBody;
+			
+			// Bring up the Flixel debugger if you'd like to watch these values in real-time
+			FlxG.watch(acceleration, "x", "ax");
+			FlxG.watch(acceleration, "y", "ay");
+			FlxG.watch(velocity, "x", "vx");
+			FlxG.watch(velocity, "y", "vy");
+			FlxG.watch(maxVelocity, "x", "mx");
+			FlxG.watch(maxVelocity, "y", "my");
+			FlxG.watch(drag, "x", "dx");
+			FlxG.watch(drag, "y", "dy");
 		}
 
 		public function setOnKill(callback : Function) : void {
@@ -59,30 +92,38 @@ package org.dinosaurriders.swap.objects {
 				onExitCallback(warpToLevel);
 			}
 		}
+			
+		override public function swap(swapObject : PhysicalBody) : void {
+			super.swap(swapObject);
+			x = body.GetPosition().x;
+			y = body.GetPosition().y;
+		}
 
 		override public function update() : void {
-			var velocity : b2Vec2 = body.GetLinearVelocity();
-			var moveDirection : b2Vec2 = groundMoveVector.Copy();
-			moveDirection.Normalize();
+			super.update2();
+			//trace(FlxG.collide(this, levelHitLayers));
+//			var velocity : b2Vec2 = body.GetLinearVelocity();
+//			var moveDirection : b2Vec2 = groundMoveVector.Copy();
+//			moveDirection.Normalize();
 
-			if (grounded) {
-				if (FlxG.keys.justPressed(controls["LEFT"]) || FlxG.keys.justPressed(controls["RIGHT"])) {
-					setFriction(0.1);
-				}
-				if (FlxG.keys.justReleased(controls["LEFT"]) || FlxG.keys.justReleased(controls["RIGHT"])) {
-					setFriction(1);
-				}	
-			}
-			
-			// dot product
-			if (FlxG.keys.pressed(controls["LEFT"]) && velocity.x * moveDirection.x + velocity.y * moveDirection.y > -Settings.PLAYERMAXVELOCITY) {
-				// body.SetLinearVelocity(groundMoveVector.Copy().GetNegative());
-				// trace("applying", groundMoveVector.GetNegative().x, groundMoveVector.GetNegative().y);
-				body.ApplyImpulse(grounded ? groundMoveVector.Copy().GetNegative() : airMoveVector.Copy().GetNegative(), new b2Vec2());
-			} else if (FlxG.keys.pressed(controls["RIGHT"]) && velocity.x * moveDirection.x + velocity.y * moveDirection.y < Settings.PLAYERMAXVELOCITY) {
-				// body.SetLinearVelocity(groundMoveVector.Copy());
-				body.ApplyImpulse(grounded ? groundMoveVector.Copy() : airMoveVector.Copy(), new b2Vec2());
-			}
+//			if (grounded) {
+//				if (FlxG.keys.justPressed(controls["LEFT"]) || FlxG.keys.justPressed(controls["RIGHT"])) {
+//					setFriction(0.1);
+//				}
+//				if (FlxG.keys.justReleased(controls["LEFT"]) || FlxG.keys.justReleased(controls["RIGHT"])) {
+//					setFriction(1);
+//				}	
+//			}
+//			
+//			// dot product
+//			if (FlxG.keys.pressed(controls["LEFT"]) && velocity.x * moveDirection.x + velocity.y * moveDirection.y > -Settings.PLAYERMAXVELOCITY) {
+//				// body.SetLinearVelocity(groundMoveVector.Copy().GetNegative());
+//				// trace("applying", groundMoveVector.GetNegative().x, groundMoveVector.GetNegative().y);
+//				body.ApplyImpulse(grounded ? groundMoveVector.Copy().GetNegative() : airMoveVector.Copy().GetNegative(), new b2Vec2());
+//			} else if (FlxG.keys.pressed(controls["RIGHT"]) && velocity.x * moveDirection.x + velocity.y * moveDirection.y < Settings.PLAYERMAXVELOCITY) {
+//				// body.SetLinearVelocity(groundMoveVector.Copy());
+//				body.ApplyImpulse(grounded ? groundMoveVector.Copy() : airMoveVector.Copy(), new b2Vec2());
+//			}
 
 			if (FlxG.keys.justPressed(controls["JUMP"])) {
 				jump();
@@ -97,10 +138,13 @@ package org.dinosaurriders.swap.objects {
 			} else {
 				play("idle");
 			}
-
-			super.update();
+			
+			//trace(this.overlaps(levelHitLayers));
+			//trace(FlxG.collide(this, levelHitLayers.members[0], lolz));
+			
+			body.SetPosition(new b2Vec2((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio));
 		}
-
+		
 		override public function onStartCollision(contact : b2Contact) : void {
 			var collision : Vector.<b2Fixture> = identifyCollision(contact);
 			var playerFixture : b2Fixture = collision[0];
@@ -202,19 +246,19 @@ package org.dinosaurriders.swap.objects {
 		}
 
 		public function jump() : void {
-			if (grounded) {
-				var direction : b2Vec2 = gravityVector.Copy();
-				var jumpVector : b2Vec2;
-
-				direction.NegativeSelf();
-				direction.Normalize();
-
-				jumpVector = new b2Vec2(direction.x * Settings.PLAYERJUMP, direction.y * Settings.PLAYERJUMP);
-				jumpVector.Multiply(body.GetMass());
-				setFriction(0);
-
-				body.ApplyImpulse(jumpVector, new b2Vec2());
-			}
+//			if (grounded) {
+//				var direction : b2Vec2 = gravityVector.Copy();
+//				var jumpVector : b2Vec2;
+//
+//				direction.NegativeSelf();
+//				direction.Normalize();
+//
+//				jumpVector = new b2Vec2(direction.x * Settings.PLAYERJUMP, direction.y * Settings.PLAYERJUMP);
+//				jumpVector.Multiply(body.GetMass());
+//				setFriction(0);
+//
+//				body.ApplyImpulse(jumpVector, new b2Vec2());
+//			}
 		}
 
 		/*
@@ -252,41 +296,48 @@ package org.dinosaurriders.swap.objects {
 
 			var unitVector : b2Vec2 = gravityVector.Copy();
 			unitVector.Normalize();
+			
+//			// Currently it only supports 4 directions
+//			if (unitVector.x > 0.9) {
+//				
+//				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
+//				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
+//				angle = 270.0;
+//				body.SetAngle(angle / 180.0 * Math.PI);
+//				trace("lol1");
+//			} else if (unitVector.x < -0.9) {
+//				controls["LEFT"] = Settings.UPKEY;
+//				controls["RIGHT"] = Settings.DOWNKEY;
+//				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
+//				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
+//				angle = 90.0;
+//				body.SetAngle(angle / 180.0 * Math.PI);
+//				trace("lol2");
+//			} else if (unitVector.y > 0.9) {
+//				controls["LEFT"] = Settings.LEFTKEY;
+//				controls["RIGHT"] = Settings.RIGHTKEY;
+//				groundMoveVector = new b2Vec2(Settings.PLAYERSPEED * body.GetMass());
+//				airMoveVector = new b2Vec2(Settings.PLAYERAIRSPEED * body.GetMass());
+//				angle = 0;
+//				body.SetAngle(angle / 180.0 * Math.PI);
+//				trace("lol3");
+//			} else if (unitVector.y < 0.9) {
+//				controls["LEFT"] = Settings.RIGHTKEY;
+//				controls["RIGHT"] = Settings.LEFTKEY;
+//				groundMoveVector = new b2Vec2(-Settings.PLAYERSPEED * body.GetMass());
+//				airMoveVector = new b2Vec2(-Settings.PLAYERAIRSPEED * body.GetMass());
+//				angle = 180.0;
+//				body.SetAngle(angle / 180.0 * Math.PI);
+//				trace("lol3");
+			// }
+		}
 
-			// Currently it only supports 4 directions
-			if (unitVector.x > 0.9) {
-				controls["LEFT"] = Settings.DOWNKEY;
-				controls["RIGHT"] = Settings.UPKEY;
-				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
-				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
-				angle = 270.0;
-				body.SetAngle(angle / 180.0 * Math.PI);
-				trace("lol1");
-			} else if (unitVector.x < -0.9) {
-				controls["LEFT"] = Settings.UPKEY;
-				controls["RIGHT"] = Settings.DOWNKEY;
-				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
-				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
-				angle = 90.0;
-				body.SetAngle(angle / 180.0 * Math.PI);
-				trace("lol2");
-			} else if (unitVector.y > 0.9) {
-				controls["LEFT"] = Settings.LEFTKEY;
-				controls["RIGHT"] = Settings.RIGHTKEY;
-				groundMoveVector = new b2Vec2(Settings.PLAYERSPEED * body.GetMass());
-				airMoveVector = new b2Vec2(Settings.PLAYERAIRSPEED * body.GetMass());
-				angle = 0;
-				body.SetAngle(angle / 180.0 * Math.PI);
-				trace("lol3");
-			} else if (unitVector.y < 0.9) {
-				controls["LEFT"] = Settings.RIGHTKEY;
-				controls["RIGHT"] = Settings.LEFTKEY;
-				groundMoveVector = new b2Vec2(-Settings.PLAYERSPEED * body.GetMass());
-				airMoveVector = new b2Vec2(-Settings.PLAYERAIRSPEED * body.GetMass());
-				angle = 180.0;
-				body.SetAngle(angle / 180.0 * Math.PI);
-				trace("lol3");
-			}
+		public function get levelHitLayers() : FlxGroup {
+			return _levelHitLayers;
+		}
+
+		public function set levelHitLayers(levelHitLayers : FlxGroup) : void {
+			this._levelHitLayers = levelHitLayers;
 		}
 	}
 }

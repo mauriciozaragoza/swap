@@ -46,6 +46,7 @@ package org.dinosaurriders.swap {
 			
 			// Creates the level
 			currentLevel = loadLevelByName(currentLevelName) as BaseLevel;
+			player.levelHitLayers = currentLevel.hitTilemaps;
 			
 			FlxG.bgColor = currentLevel.bgColor;
 
@@ -53,6 +54,7 @@ package org.dinosaurriders.swap {
 			FlxG.resetCameras(camera);
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);
+			FlxG.worldBounds = new FlxRect(-1000, -1000, 10000, 10000);
 		}
 		
 		private function setupWorld() : void {
@@ -152,21 +154,23 @@ package org.dinosaurriders.swap {
             if (obj is PhysicalBody) {
 				var physicsBody : PhysicalBody = obj as PhysicalBody;
 				physicsBody.createPhysicsObject(world, properties);
-				worldGroup.add(physicsBody);				
+				worldGroup.add(physicsBody);
 			}
-            
+			
 			return obj;
 		}
 
 		override public function update() : void {
 			super.update();
-
+			
+			FlxG.collide(player, currentLevel.hitTilemaps);
+			
 			// destroy disposed objects
 			PhysicsUtil.destroyPhysicObjects(world);
                         
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			//world.DrawDebugData();
+			world.DrawDebugData();
 			world.ClearForces();
 			
             PhysicsUtil.callSwaps();
@@ -210,8 +214,7 @@ package org.dinosaurriders.swap {
 			/*FlxG.resetCameras(camera);
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);*/
-			
-			
+
 			//FlxG.switchState(new LevelContainer());
 		}
 		
