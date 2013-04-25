@@ -9,6 +9,7 @@ package org.dinosaurriders.swap.objects {
 	import org.dinosaurriders.swap.Settings;
 	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
+	import org.flixel.FlxState;
 	import org.flixel.plugin.photonstorm.FX.BlurFX;
 	import org.flixel.plugin.photonstorm.FlxSpecialFX;
 
@@ -22,6 +23,9 @@ package org.dinosaurriders.swap.objects {
 		private var affectedByField : Dictionary;
 		private var blurs : Boolean;
 		private var onlyPlayer : Boolean;
+		private var _currentState : FlxState;
+		private var blur : BlurFX;
+		private var blurEffect : FlxSprite;
 
 		public function PropertyField(X : Number, Y : Number) {
 			super(X, Y, 0, 0, 0);
@@ -31,6 +35,8 @@ package org.dinosaurriders.swap.objects {
 
 			bodyDef.type = b2Body.b2_staticBody;
 		}
+		
+		
 
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var polyDef : b2PolygonShape = new b2PolygonShape();
@@ -72,7 +78,8 @@ package org.dinosaurriders.swap.objects {
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 			
 			if (otherBody != null && affectedByField[otherBody] == null) {
-				if ((affectsPlayer && otherBody is Player) || (!affectsPlayer && !(otherBody is Player))) {
+				if ((onlyPlayer && otherBody is Player) || (!affectsPlayer && !(otherBody is Player))) {
+					trace("lo");
 					applyProperties(otherBody);
 				}
 			}
@@ -84,8 +91,9 @@ package org.dinosaurriders.swap.objects {
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 
 			if (otherBody != null && affectedByField[otherBody] != null) {
-				if ((affectsPlayer && otherBody is Player) || (!affectsPlayer && !(otherBody is Player))) {
-					ripProperties(otherBody)
+				if ((onlyPlayer && otherBody is Player) || (!affectsPlayer && !(otherBody is Player))) {
+					trace("l");
+					ripProperties(otherBody);
 				}
 			}
 		}
@@ -95,12 +103,14 @@ package org.dinosaurriders.swap.objects {
 				if (FlxG.getPlugin(FlxSpecialFX) == null) {
 					FlxG.addPlugin(new FlxSpecialFX);
 				}
-				var blur : BlurFX;
-				var blurEffect : FlxSprite;
+				
 				blur = FlxSpecialFX.blur();
-				blurEffect = blur.create(320, 240, 2, 2, 1);
+				trace(width, height);
+				blurEffect = blur.create(x + width, y + height, 6, 6, 1);
 				blur.addSprite(affectedBody);
-				blur.start(2);
+				blur.start(1);
+				
+				currentState.add(blurEffect);
 			}
 			affectedByField[affectedBody] = true;
 			var newGravity : b2Vec2 = affectedBody.gravityVector.Copy();
@@ -110,12 +120,23 @@ package org.dinosaurriders.swap.objects {
 
 		public function ripProperties(affectedBody : PhysicalBody) : void {
 			if (blurs) {
+				FlxG.flash(0xffffff, 1);
+				blur.stop();
+				currentState.remove(blurEffect);
 				FlxG.removePluginType(FlxSpecialFX);
 			}
 			affectedByField[affectedBody] = null;
 			var newGravity : b2Vec2 = affectedBody.gravityVector.Copy();
 			newGravity.Subtract(gravityField);
 			affectedBody.gravityVector = newGravity;
+		}
+
+		public function get currentState() : FlxState {
+			return _currentState;
+		}
+
+		public function set currentState(currentState : FlxState) : void {
+			this._currentState = currentState;
 		}
 	}
 }

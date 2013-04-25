@@ -148,6 +148,7 @@ package org.dinosaurriders.swap {
                 var field : PropertyField = new PropertyField(obj.x, obj.y);
                 field.width = obj.width;
                 field.height = obj.height;
+				field.currentState = this;
 				field.createPhysicsObject(world, properties);
             } 
 			
@@ -170,7 +171,7 @@ package org.dinosaurriders.swap {
                         
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			world.DrawDebugData();
+			//world.DrawDebugData();
 			world.ClearForces();
 			
             PhysicsUtil.callSwaps();

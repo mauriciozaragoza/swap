@@ -60,7 +60,7 @@ package org.dinosaurriders.swap.objects {
 			
 			FlxControl.player1.setJumpButton(controls["JUMP"], FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
 			FlxControl.player1.setGravity(0, 400);
-			FlxControl.player1.setMovementSpeed(400, 0, 100, 200, 400, 0);
+			FlxControl.player1.setMovementSpeed(300, 0, 200, 10000, 400, 0);
 //			FlxControl.player1.setMovementSpeed(
 //				Settings.PLAYERSPEED, Settings.PLAYERSPEED,
 //				Settings.PLAYERMAXVELOCITY, Settings.PLAYERMAXVELOCITY, 400, 0);
