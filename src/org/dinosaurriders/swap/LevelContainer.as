@@ -181,7 +181,7 @@ package org.dinosaurriders.swap {
                         
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			world.DrawDebugData();
+//			world.DrawDebugData();
 			world.ClearForces();
 			
             PhysicsUtil.callSwaps();
@@ -220,13 +220,6 @@ package org.dinosaurriders.swap {
 			this.kill();
 			
 			FlxG.switchState(new LevelContainer(currentLevelName));
-			//currentLevel=new Level_Level7(true, onObjectAddedCallback);
-			
-			/*FlxG.resetCameras(camera);
-			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
-			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);*/
-
-			//FlxG.switchState(new LevelContainer());
 		}
 		
 		private function debugDrawing() : void {

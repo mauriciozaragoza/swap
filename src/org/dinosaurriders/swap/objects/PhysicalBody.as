@@ -83,7 +83,8 @@ package org.dinosaurriders.swap.objects {
 						friction = property.value;
 						break;
 					case "affectsplayer":
-						affectsPlayer = property.value;
+						affectsPlayer = solid = property.value;
+						trace("s", solid);
 						break;
 				}
 			}

@@ -40,22 +40,22 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, -32.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
+			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 0.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerBackground = addTilemap( CSV_Background, Img_Background, 1024.000, -32.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, 0.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 2336.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 2336.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerSky);
@@ -67,12 +67,12 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
 
-			boundsMinX = 2336;
+			boundsMinX = 0;
 			boundsMinY = 0;
-			boundsMaxX = 2976;
+			boundsMaxX = 640;
 			boundsMaxY = 512;
-			boundsMin = new FlxPoint(2336, 0);
-			boundsMax = new FlxPoint(2976, 512);
+			boundsMin = new FlxPoint(0, 0);
+			boundsMax = new FlxPoint(640, 512);
 			bgColor = 0xff88beef;
 		}
 

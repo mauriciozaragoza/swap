@@ -23,6 +23,7 @@ package org.dinosaurriders.swap.objects {
 			loadGraphic(Assets.Exit, true, true, 48, 48);
 			
 			addAnimation("idle", [0,1,2,3,4,5,6,7,8,9,10], 8,true);
+			solid = immovable = false;
 			
 			bodyDef.fixedRotation = true;
 			
