@@ -10,7 +10,6 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
-	import org.dinosaurriders.swap.Assets;
 	import org.dinosaurriders.swap.Settings;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.*;
@@ -28,11 +27,14 @@ package org.dinosaurriders.swap.objects {
 		private var onExitCallback : Function;
 		private var controls : Dictionary;
 		private var groundMoveVector : b2Vec2, airMoveVector : b2Vec2;
-		private var _levelHitLayers : FlxGroup;
 
 		public function Player(X : Number, Y : Number) : void {
 			super(X, Y, 100, 0, 1);
-			loadGraphic(Assets.Player, true, true, 48, 48);
+			//loadGraphic(Assets.Player, true, true, 48, 48);
+			
+			width = 16;
+			height = 32;
+			makeGraphic(width, height);
 
 			controls = new Dictionary();
 			controls["JUMP"] = Settings.JUMPKEY;
@@ -44,7 +46,6 @@ package org.dinosaurriders.swap.objects {
 			addAnimation("fall", [1], 10);
 			addAnimation("idle", [1], 2);
 			
-			solid = true;
 			immovable = false;
 			
 			bodyDef.fixedRotation = true;
@@ -58,9 +59,9 @@ package org.dinosaurriders.swap.objects {
 			FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES, 1, true, false);
 			FlxControl.player1.setCustomKeys(Settings.UPKEY, Settings.DOWNKEY, Settings.LEFTKEY, Settings.RIGHTKEY);
 			
-			FlxControl.player1.setJumpButton(controls["JUMP"], FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
+			FlxControl.player1.setJumpButton(controls["JUMP"], FlxControlHandler.KEYMODE_PRESSED, 250, FlxObject.FLOOR, 250, 200);
 			FlxControl.player1.setGravity(0, 400);
-			FlxControl.player1.setMovementSpeed(300, 0, 200, 10000, 400, 0);
+			FlxControl.player1.setMovementSpeed(500, 0, 300, 10000, 800, 0);
 //			FlxControl.player1.setMovementSpeed(
 //				Settings.PLAYERSPEED, Settings.PLAYERSPEED,
 //				Settings.PLAYERMAXVELOCITY, Settings.PLAYERMAXVELOCITY, 400, 0);
@@ -94,9 +95,24 @@ package org.dinosaurriders.swap.objects {
 		}
 			
 		override public function swap(swapObject : PhysicalBody) : void {
-			super.swap(swapObject);
-			x = body.GetPosition().x;
-			y = body.GetPosition().y;
+			if (swapObject.swappable) {
+				// linear velocities
+				var tmpLin : FlxPoint = new FlxPoint();
+				velocity.copyTo(tmpLin);
+				velocity.x = swapObject.body.GetLinearVelocity().x;
+				velocity.y = swapObject.body.GetLinearVelocity().y;
+				swapObject.body.SetLinearVelocity(new b2Vec2(tmpLin.x / Settings.ratio, tmpLin.y / Settings.ratio));
+	
+				var tmpPos : b2Vec2 = body.GetPosition().Copy();
+				body.SetPosition(swapObject.body.GetPosition());
+				swapObject.body.SetPosition(tmpPos);
+				
+				// Prevents freezing in midair
+				swapObject.body.SetAwake(true);
+				
+				x = (body.GetPosition().x * Settings.ratio) - width / 2;
+				y = (body.GetPosition().y * Settings.ratio) - height / 2;
+			}
 		}
 
 		override public function update() : void {
@@ -130,7 +146,8 @@ package org.dinosaurriders.swap.objects {
 			}
 
 			if (FlxG.keys.justPressed(controls["SWAP"]) && tempSwapObject != null) {
-				PhysicsUtil.enqueueSwap(this, tempSwapObject);
+				// WARNING: order IS important
+				PhysicsUtil.enqueueSwap(tempSwapObject, this);
 			}
 
 			if (Math.abs(velocity.x) > 0.1) {
@@ -330,14 +347,6 @@ package org.dinosaurriders.swap.objects {
 //				body.SetAngle(angle / 180.0 * Math.PI);
 //				trace("lol3");
 			// }
-		}
-
-		public function get levelHitLayers() : FlxGroup {
-			return _levelHitLayers;
-		}
-
-		public function set levelHitLayers(levelHitLayers : FlxGroup) : void {
-			this._levelHitLayers = levelHitLayers;
 		}
 	}
 }

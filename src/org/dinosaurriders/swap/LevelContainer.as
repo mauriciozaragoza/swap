@@ -26,6 +26,7 @@ package org.dinosaurriders.swap {
 		// box2d physics
 		protected var world : b2World;
 		protected var worldGroup : FlxGroup;
+		protected var spriteGroup : FlxGroup;
 		
 		private var debugSprite : Sprite;
 
@@ -40,13 +41,15 @@ package org.dinosaurriders.swap {
 		
 		override public function create() : void {
 			worldGroup = new FlxGroup();
+			spriteGroup = new FlxGroup();
 			
 			// sets up the world physics
 			setupWorld();
 			
 			// Creates the level
 			currentLevel = loadLevelByName(currentLevelName) as BaseLevel;
-			player.levelHitLayers = currentLevel.hitTilemaps;
+			spriteGroup.add(currentLevel.hitTilemaps);
+			trace("omg", spriteGroup.members.length);
 			
 			FlxG.bgColor = currentLevel.bgColor;
 
@@ -107,12 +110,12 @@ package org.dinosaurriders.swap {
 				
 				// Create border tiles on the hit layer
 				for (var y1 : int = -10; y1 <= tilemap.heightInTiles; y1++) {
-					createTileBox(-1, y1, offsetX, offsetY, []);
-					createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY, []);
+					spriteGroup.add(createTileBox(-1, y1, offsetX, offsetY, []));
+					spriteGroup.add(createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY, []));
 				}
 				
 				for (var x1 : int = -1; x1 < tilemap.widthInTiles; x1++) {
-					createTileBox(x1, tilemap.heightInTiles + 5, offsetX, offsetY, [{name : "kills", value : true}, {name : "sensor", value : false}]);
+					spriteGroup.add(createTileBox(x1, tilemap.heightInTiles + 5, offsetX, offsetY, [{name : "kills", value : true}, {name : "sensor", value : false}]));
 				}
 			}
 		}
@@ -120,13 +123,14 @@ package org.dinosaurriders.swap {
 		/*
 		 * Creates a solid and static tile block, all sizes expressed in tiles
 		 */
-		private function createTileBox(tileX : Number, tileY : Number, offsetX : Number, offsetY : Number, properties : Array) : void {
+		private function createTileBox(tileX : Number, tileY : Number, offsetX : Number, offsetY : Number, properties : Array) : Tileblock {
 			var tile : Tileblock = new Tileblock((offsetX + tileX) * Settings.TILESIZE, (offsetY + tileY) * Settings.TILESIZE);
 			tile.width = Settings.TILESIZE;
 			tile.height = Settings.TILESIZE;
 			tile.createPhysicsObject(world, properties);
 			
 			worldGroup.add(tile);
+			return tile;
 		}
 
 		protected function onObjectAddedCallback(obj : Object, layer : FlxGroup, level : BaseLevel, scrollX : Number, scrollY : Number, properties : Array) : Object {
@@ -156,6 +160,11 @@ package org.dinosaurriders.swap {
 				var physicsBody : PhysicalBody = obj as PhysicalBody;
 				physicsBody.createPhysicsObject(world, properties);
 				worldGroup.add(physicsBody);
+				
+				if (!(obj is Player)) {
+					spriteGroup.add(physicsBody);
+					trace("omg physical", spriteGroup.members.length);
+				}
 			}
 			
 			return obj;
@@ -164,14 +173,15 @@ package org.dinosaurriders.swap {
 		override public function update() : void {
 			super.update();
 			
-			FlxG.collide(player, currentLevel.hitTilemaps);
+//			FlxG.collide(player, currentLevel.hitTilemaps);
+			trace(FlxG.collide(player, spriteGroup));
 			
 			// destroy disposed objects
 			PhysicsUtil.destroyPhysicObjects(world);
                         
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			//world.DrawDebugData();
+			world.DrawDebugData();
 			world.ClearForces();
 			
             PhysicsUtil.callSwaps();

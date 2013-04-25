@@ -37,7 +37,7 @@ package org.dinosaurriders.swap.physics {
 			if (currentSkipCount == Settings.SWAPSKIPCOUNT) {
 				while (swapQueue.length > 0) {
 					swapQueue[0].enabled = swapQueue[1].enabled = true;
-					(swapQueue.pop() as PhysicalBody).swap(swapQueue.pop());
+					swapQueue.pop().swap(swapQueue.pop());
 				}
 				
 				currentSkipCount = 0;

@@ -1,4 +1,5 @@
 package org.dinosaurriders.swap.objects {
+	import org.flixel.plugin.photonstorm.FX.BlurFxRectangle;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
@@ -24,7 +25,7 @@ package org.dinosaurriders.swap.objects {
 		private var blurs : Boolean;
 		private var onlyPlayer : Boolean;
 		private var _currentState : FlxState;
-		private var blur : BlurFX;
+		private var blur : BlurFxRectangle;
 		private var blurEffect : FlxSprite;
 
 		public function PropertyField(X : Number, Y : Number) {
@@ -104,9 +105,9 @@ package org.dinosaurriders.swap.objects {
 					FlxG.addPlugin(new FlxSpecialFX);
 				}
 				
-				blur = FlxSpecialFX.blur();
+				blur = FlxSpecialFX.blurRect();
 				trace(width, height);
-				blurEffect = blur.create(x + width, y + height, 6, 6, 1);
+				blurEffect = blur.create(x, y, width, height, 6, 6, 1, 6);
 				blur.addSprite(affectedBody);
 				blur.start(1);
 				

@@ -17,9 +17,9 @@
 
 package org.flixel.plugin.photonstorm 
 {
-	import flash.utils.Dictionary;
 	import org.flixel.*;
 	import org.flixel.plugin.photonstorm.FX.BlurFX;
+	import org.flixel.plugin.photonstorm.FX.BlurFxRectangle;
 	import org.flixel.plugin.photonstorm.FX.CenterSlideFX;
 	import org.flixel.plugin.photonstorm.FX.FloodFillFX;
 	import org.flixel.plugin.photonstorm.FX.GlitchFX;
@@ -29,6 +29,8 @@ package org.flixel.plugin.photonstorm
 	import org.flixel.plugin.photonstorm.FX.SineWaveFX;
 	import org.flixel.plugin.photonstorm.FX.StarfieldFX;
 	import org.flixel.plugin.photonstorm.FX.WowCopperFX;
+
+	import flash.utils.Dictionary;
 	
 	/**
 	 * FlxSpecialFX is a single point of access to all of the FX Plugins available in the Flixel Power Tools
@@ -135,6 +137,20 @@ package org.flixel.plugin.photonstorm
 		public static function blur():BlurFX
 		{
 			var temp:BlurFX = new BlurFX;
+			
+			members[temp] = temp;
+			
+			return members[temp];
+		}
+		
+		/**
+		 * Creates a Blur Rectangle Effect
+		 * 
+		 * @return	BlurFX
+		 */
+		public static function blurRect():BlurFxRectangle
+		{
+			var temp:BlurFxRectangle = new BlurFxRectangle();
 			
 			members[temp] = temp;
 			

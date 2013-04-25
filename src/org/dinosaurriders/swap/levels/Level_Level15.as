@@ -104,7 +104,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		{
 			var obj:Object;
 
-			obj = new BoxData(900.000, 300.000, 0.000, 780.000, 238.940, PropertyFieldsGroup );
+			obj = new BoxData(896.000, 300.034, 0.000, 800.000, 271.066, PropertyFieldsGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"onlyPlayer", value:true }, { name:"blur", value:true }, null ), 1, 1 );
 		}
@@ -112,8 +112,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public function addSpritesForLayerLayer5(onAddCallback:Function = null):void
 		{
 			addSpriteToLayer(new BreakableWall(448.000, 288.000, Assets.BreakableWall1, 7000), BreakableWall, Layer5Group , 448.000, 288.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
-			addSpriteToLayer(null, Player, Layer5Group , 0.000, 390.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
 			addSpriteToLayer(new PolygonBody(160.000, 384.000, Assets.ForestBoulderLarge, 10, 2000), PolygonBody, Layer5Group , 160.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(null, Player, Layer5Group , 608.000, 480.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
 			addSpriteToLayer(new PolygonBody(96.000, 864.000, Assets.SquareRock2, 4, 2500), PolygonBody, Layer5Group , 96.000, 864.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(128.000, 864.000, Assets.SquareRock2, 4, 2500), PolygonBody, Layer5Group , 128.000, 864.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(160.000, 864.000, Assets.SquareRock2, 4, 2500), PolygonBody, Layer5Group , 160.000, 864.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"

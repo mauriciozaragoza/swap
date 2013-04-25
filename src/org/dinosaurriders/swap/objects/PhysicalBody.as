@@ -46,6 +46,9 @@ package org.dinosaurriders.swap.objects {
 			this.restitution = restitution;
 			this.friction = friction;
 
+			solid = true;
+			immovable = true;
+
 			objectLinks = new Array();
 
 			// looks ugly when it rotates
@@ -147,6 +150,8 @@ package org.dinosaurriders.swap.objects {
 		}
 
 		public override function update() : void {
+			super.update();
+			
 			x = (body.GetPosition().x * Settings.ratio) - width / 2;
 			y = (body.GetPosition().y * Settings.ratio) - height / 2;
 
@@ -155,8 +160,6 @@ package org.dinosaurriders.swap.objects {
 			var forceVector : b2Vec2 = gravityVector.Copy();
 			forceVector.Multiply(body.GetMass());
 			body.ApplyForce(forceVector, body.GetWorldCenter());
-
-			super.update();
 		}
 		
 		public function update2() : void {
@@ -291,7 +294,7 @@ package org.dinosaurriders.swap.objects {
 			this._swappable = swappable;
 			
 			if (swappable) {
-				framePixels.applyFilter(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0), new GlowFilter(0x6600cc, 0.5, 12, 12, 1.5, 3, true));
+				applyInnerGlow();
 			}
 		}
 
@@ -301,6 +304,10 @@ package org.dinosaurriders.swap.objects {
 
 		public function set affectsPlayer(affectsPlayer : Boolean) : void {
 			this._affectsPlayer = affectsPlayer;
+		}
+		
+		public function applyInnerGlow() {
+			framePixels.applyFilter(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0), new GlowFilter(0x6600cc, 0.5, 12, 12, 1.5, 3, true));
 		}
 	}
 }
