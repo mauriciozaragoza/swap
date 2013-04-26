@@ -60,24 +60,22 @@ package org.dinosaurriders.swap.objects {
 			FlxControl.player1.setCustomKeys(Settings.UPKEY, Settings.DOWNKEY, Settings.LEFTKEY, Settings.RIGHTKEY);
 			
 			FlxControl.player1.setJumpButton(controls["JUMP"], FlxControlHandler.KEYMODE_PRESSED, 250, FlxObject.FLOOR, 250, 200);
-			FlxControl.player1.setGravity(0, 400);
-			FlxControl.player1.setMovementSpeed(500, 0, 150, 10000, 800, 0);
+			FlxControl.player1.setGravity(0, Settings.DEFAULTPLAYERGRAV);
+			FlxControl.player1.setMovementSpeed(
+				Settings.PLAYERSPEED, 
+				0, 
+				Settings.PLAYERMAXVELOCITY, 
+				Settings.PLAYERMAXFALLSPEED, 
+				Settings.PLAYERDECCELERATION,
+				0);
+				
 //			FlxControl.player1.setMovementSpeed(
 //				Settings.PLAYERSPEED, Settings.PLAYERSPEED,
 //				Settings.PLAYERMAXVELOCITY, Settings.PLAYERMAXVELOCITY, 400, 0);
+
 			FlxControl.player1.setCursorControl(false, false, true, true);
 			
 			bodyDef.type = b2Body.b2_dynamicBody;
-			
-			// Bring up the Flixel debugger if you'd like to watch these values in real-time
-			FlxG.watch(acceleration, "x", "ax");
-			FlxG.watch(acceleration, "y", "ay");
-			FlxG.watch(velocity, "x", "vx");
-			FlxG.watch(velocity, "y", "vy");
-			FlxG.watch(maxVelocity, "x", "mx");
-			FlxG.watch(maxVelocity, "y", "my");
-			FlxG.watch(drag, "x", "dx");
-			FlxG.watch(drag, "y", "dy");
 		}
 
 		public function setOnKill(callback : Function) : void {

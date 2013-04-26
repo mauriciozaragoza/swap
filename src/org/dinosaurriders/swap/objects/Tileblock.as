@@ -31,7 +31,7 @@ package org.dinosaurriders.swap.objects {
 			for each (var property : Object in properties) {
 				switch (property.name) {
 					case "kills":
-					kills = property.value;
+					kills = property.value;	
 					break;
 				}
 			}
@@ -42,8 +42,9 @@ package org.dinosaurriders.swap.objects {
 		override public function onStartCollision(contact : b2Contact) : void {
 			var collision : Vector.<b2Fixture> = identifyCollision(contact);
 			
+			// FIXME kills flag is not set properly
 			if (kills && collision[1].GetUserData() is Player) {
-				(collision[1].GetUserData() as Player).kill();
+				collision[1].GetUserData().kill();
 			}
 		}
 	}

@@ -49,15 +49,16 @@ package org.dinosaurriders.swap {
 			// Creates the level
 			currentLevel = loadLevelByName(currentLevelName) as BaseLevel;
 			spriteGroup.add(currentLevel.hitTilemaps);
-			trace("omg", spriteGroup.members.length);
 			
 			FlxG.bgColor = currentLevel.bgColor;
 
 			camera = new FlxCamera(0, 0, FlxG.width, FlxG.height);
 			FlxG.resetCameras(camera);
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
-			camera.setBounds(currentLevel.boundsMin.x, currentLevel.boundsMin.y, currentLevel.boundsMax.x - currentLevel.boundsMin.x, currentLevel.boundsMax.y - currentLevel.boundsMin.y);
-			FlxG.worldBounds = new FlxRect(-1000, -1000, 10000, 10000);
+			var hitTilemap : FlxTilemap = (currentLevel.hitTilemaps.members[0] as FlxTilemap);
+			
+			camera.setBounds(hitTilemap.x, hitTilemap.y, hitTilemap.width, hitTilemap.height);
+			FlxG.worldBounds = new FlxRect(hitTilemap.x - 100, hitTilemap.y, hitTilemap.width + 200, hitTilemap.height + 200);
 		}
 		
 		private function setupWorld() : void {
@@ -163,7 +164,6 @@ package org.dinosaurriders.swap {
 				
 				if (!(obj is Player)) {
 					spriteGroup.add(physicsBody);
-					trace("omg physical", spriteGroup.members.length);
 				}
 			}
 			
@@ -174,7 +174,7 @@ package org.dinosaurriders.swap {
 			super.update();
 			
 //			FlxG.collide(player, currentLevel.hitTilemaps);
-			trace(FlxG.collide(player, spriteGroup));
+			FlxG.collide(player, spriteGroup);
 			
 			// destroy disposed objects
 			PhysicsUtil.destroyPhysicObjects(world);

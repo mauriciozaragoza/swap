@@ -84,7 +84,6 @@ package org.dinosaurriders.swap.objects {
 						break;
 					case "affectsplayer":
 						affectsPlayer = solid = property.value;
-						trace("s", solid);
 						break;
 				}
 			}
