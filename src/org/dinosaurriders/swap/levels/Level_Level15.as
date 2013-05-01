@@ -154,10 +154,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(new BreakableWall(448.000, 288.000, Assets.BreakableWall1, 7000), BreakableWall, SpritesGroup , 448.000, 288.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(null, Player, SpritesGroup , 360.000, 180.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
+			addSpriteToLayer(new BreakableWall(448.000, 288.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 448.000, 288.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
 			addSpriteToLayer(new PolygonBody(159.000, 384.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 159.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
 			addSpriteToLayer(new Exit(3870.000, 480.000, Assets.Exit), Exit, SpritesGroup , 3870.000, 480.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level16" }, null ), onAddCallback );//"Exit"
-			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 848.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
 			addSpriteToLayer(new PolygonBody(64.000, 864.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 64.000, 864.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(96.000, 864.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 96.000, 864.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(128.000, 864.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 128.000, 864.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"

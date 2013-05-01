@@ -20,7 +20,7 @@ package org.dinosaurriders.swap {
 		public static const PLAYERDECCELERATION	: Number = 800;
 		public static const PLAYERJUMP 			: Number = 6.6;
 		public static const FOOTSENSORSIZE		: Number = 5;
-		public static const MAXFORCE			: Number = 1000;
+		public static const MAXFORCE			: Number = 7500;
 		public static const SWAPKEY				: String = "X";
 		public static const TOUCHSWAPKEY		: String = "S";
 		public static const JUMPKEY				: String = "SPACE";

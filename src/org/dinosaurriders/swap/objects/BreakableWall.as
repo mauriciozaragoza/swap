@@ -1,10 +1,9 @@
 package org.dinosaurriders.swap.objects {
-	import Box2D.Collision.b2Manifold;
+	import org.flixel.FlxG;
 	import Box2D.Collision.Shapes.b2PolygonShape;
-	import Box2D.Common.Math.b2Vec2;
+	import Box2D.Collision.b2Manifold;
 	import Box2D.Dynamics.Contacts.b2Contact;
 	import Box2D.Dynamics.b2Body;
-	import Box2D.Dynamics.b2ContactImpulse;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
@@ -15,11 +14,14 @@ package org.dinosaurriders.swap.objects {
 	 */
 	public class BreakableWall extends PhysicalBody {
 		private var forceToBreak : Number;
+		private var rubbleImage : Class
 		
-		public function BreakableWall(X : Number, Y : Number, image : Class, forceToBreak : Number) {
+		public function BreakableWall(X : Number, Y : Number, image : Class, rubbleImage : Class, forceToBreak : Number) {
 			super(X, Y, 100, 0, 1);
 			
 			this.forceToBreak = forceToBreak;
+			this.rubbleImage = rubbleImage;
+			
 			loadGraphic(image, false, false);
 			
 			bodyDef.type = b2Body.b2_staticBody;
@@ -46,9 +48,17 @@ package org.dinosaurriders.swap.objects {
 			trace("impulse: ", forceApplied);
 			
 			if (forceApplied > forceToBreak) {
-				trace("omg kill");
 				kill();
 			}
+		}
+
+		override public function kill() : void {
+			// create rubble
+			for (var i = 0; i < 10; i++) {
+				FlxG.state.add(new Rubble(x, y + Math.random() * 50, rubbleImage));
+			}
+			
+			super.kill();
 		}
 	}
 }

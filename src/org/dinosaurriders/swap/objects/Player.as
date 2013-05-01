@@ -205,8 +205,14 @@ package org.dinosaurriders.swap.objects {
 		}
 
 		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {
-			 trace("ouch: ", impulse.normalImpulses[0]);
-			if (impulse.normalImpulses[0] > Settings.MAXFORCE) {
+			var appliedForce : Number = 0;
+			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData() as PhysicalBody;
+			
+			appliedForce += impulse.normalImpulses[0] * FlxG.framerate; // force by impulse
+			//appliedForce += otherBody.gravityVector.y * otherBody.body.GetMass(); // force by gravity * mass
+			
+			trace("ouch: ", appliedForce);
+			if (appliedForce > Settings.MAXFORCE) {
 				kill();
 				_dead = true;
 			}

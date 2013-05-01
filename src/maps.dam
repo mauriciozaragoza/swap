@@ -2,7 +2,7 @@
 <project>
   <version>3.1.3</version>
   <bgColor>0x88beef</bgColor>
-  <viewPos x="0" y="0"/>
+  <viewPos x="-265" y="-132"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="10">
     <sprite name="Player" idx="1" className="Player" image="../assets/player2.png" width="48" height="48" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="48" boundsHeight="48" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false">
@@ -15,8 +15,8 @@
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
     </tileEntry>
-    <tileEntry name="BreakableWall1" idx="3" className="BreakableWall" image="../assets/BreakableWall1.png" offsetX="0" offsetY="0" width="32" height="96" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="96" constructor="new BreakableWall(%xpos%, %ypos%, Assets.%spritename%, 7000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false"/>
-    <tileEntry name="SquareRock1" idx="4" className="PolygonBody" image="../assets/SquareRock1.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 0.1)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false" selected="true">
+    <tileEntry name="BreakableWall1" idx="3" className="BreakableWall" image="../assets/BreakableWall1.png" offsetX="0" offsetY="0" width="32" height="96" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="96" constructor="new BreakableWall(%xpos%, %ypos%, Assets.%spritename%, Assets.ForestBoulderLarge, 7000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false" selected="true"/>
+    <tileEntry name="SquareRock1" idx="4" className="PolygonBody" image="../assets/SquareRock1.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 0.1)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
       <properties>
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
@@ -1868,7 +1868,7 @@
         </sprite>
       </spritelayer>
     </group>
-    <group name="Level15" id="39" xScroll="1" yScroll="1" visible="true" open="false" locked="false" exports="true">
+    <group name="Level15" id="39" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
       <maplayer name="Sky" id="26" xScroll="0.25" yScroll="0.25" x="0" y="0" width="50" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0</row>
         <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0</row>
@@ -2635,7 +2635,10 @@
           </properties>
         </shape>
       </shapelayer>
-      <spritelayer name="Sprites" id="35" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true">
+      <spritelayer name="Sprites" id="35" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true" selected="true">
+        <sprite guid="60589413-23AE-58E1-00FB-0609D96DC7DA" x="360" y="180" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
+        </sprite>
         <sprite guid="A5E82734-0332-ADAC-E576-1C92766B5571" x="448" y="288" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3"/>
         <sprite guid="E1B24412-D2D9-772E-7480-84CE2B20B272" x="159" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
           <properties/>
@@ -2644,9 +2647,6 @@
           <properties>
             <type typeof="String" name="warp" value="Level16" hidden="false"/>
           </properties>
-        </sprite>
-        <sprite guid="60589413-23AE-58E1-00FB-0609D96DC7DA" x="0" y="848" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
-          <properties/>
         </sprite>
         <sprite guid="EAEE9D2F-2703-E687-326A-4A45397B5154" x="64" y="864" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
           <properties/>
@@ -2811,7 +2811,7 @@
         </shape>
       </shapelayer>
     </group>
-    <group name="Level17" id="57" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true" selected="true">
+    <group name="Level17" id="57" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
       <maplayer name="Sky" id="45" xScroll="0" yScroll="0" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61</row>
         <row>61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61</row>

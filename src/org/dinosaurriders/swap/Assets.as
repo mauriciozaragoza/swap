@@ -8,6 +8,9 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/SWAP.swf")]
 		public static var StartAnimation:Class;
 		
+		[Embed(source="../assets/splash.png")]
+		public static var SplashScreen:Class;
+		
 		[Embed(source="../assets/ForestBoulderLarge.png")]
 		public static var ForestBoulderLarge : Class;
 		

@@ -2,7 +2,7 @@
 <project>
   <version>3.1.3</version>
   <bgColor>0x88beef</bgColor>
-  <viewPos x="84" y="-503"/>
+  <viewPos x="0" y="-132"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="10">
     <sprite name="Player" idx="1" className="Player" image="../assets/player2.png" width="48" height="48" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="48" boundsHeight="48" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false">
@@ -2636,6 +2636,9 @@
         </shape>
       </shapelayer>
       <spritelayer name="Sprites" id="35" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true" selected="true">
+        <sprite guid="60589413-23AE-58E1-00FB-0609D96DC7DA" x="360" y="180" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
+        </sprite>
         <sprite guid="A5E82734-0332-ADAC-E576-1C92766B5571" x="448" y="288" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3"/>
         <sprite guid="E1B24412-D2D9-772E-7480-84CE2B20B272" x="159" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
           <properties/>
@@ -2644,9 +2647,6 @@
           <properties>
             <type typeof="String" name="warp" value="Level16" hidden="false"/>
           </properties>
-        </sprite>
-        <sprite guid="60589413-23AE-58E1-00FB-0609D96DC7DA" x="0" y="848" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
-          <properties/>
         </sprite>
         <sprite guid="EAEE9D2F-2703-E687-326A-4A45397B5154" x="64" y="864" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
           <properties/>
