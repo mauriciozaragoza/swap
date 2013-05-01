@@ -181,7 +181,8 @@ package org.dinosaurriders.swap {
                         
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-//			world.DrawDebugData();
+			PhysicsUtil.updateControllers(FlxG.elapsed, 10, 10);
+			//world.DrawDebugData();
 			world.ClearForces();
 			
             PhysicsUtil.callSwaps();

@@ -12,6 +12,7 @@ package org.flixel.plugin.photonstorm.FX {
 	{
 		private var objects:Array;
 		private var blurFilter:BlurFilter;
+		private var currentSkipCount:int;
 		private var blurSpeed:int;
 		
 		public function BlurFxRectangle() 
@@ -34,7 +35,7 @@ package org.flixel.plugin.photonstorm.FX {
 		public function create(x:int, y:int, width:int, height:int, blurX:Number, blurY:Number, blurQuality:int = 1, blurSpeed = 1):FlxSprite
 		{
 			sprite = new FlxSprite(x, y).makeGraphic(width, height, 0x0, true);
-			
+			sprite.alpha = 0.5;
 			objects = new Array;
 			
 			blurFilter = new BlurFilter(blurX, blurY, blurQuality);
@@ -110,9 +111,10 @@ package org.flixel.plugin.photonstorm.FX {
 				}
 				
 				//	Then blur it
-				//for (var i : int = 0; i < blurSpeed; i++) {
+				if (currentSkipCount++ >= blurSpeed) {
+					currentSkipCount = 0;
 					sprite.pixels.applyFilter(sprite.pixels, copyRect, copyPoint, blurFilter);
-				//}
+				}
 				
 				lastUpdate = 0;
 				

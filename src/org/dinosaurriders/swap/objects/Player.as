@@ -10,6 +10,7 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
+	import org.dinosaurriders.swap.Assets;
 	import org.dinosaurriders.swap.Settings;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.*;
@@ -30,21 +31,21 @@ package org.dinosaurriders.swap.objects {
 
 		public function Player(X : Number, Y : Number) : void {
 			super(X, Y, 100, 0, 1);
-			//loadGraphic(Assets.Player, true, true, 48, 48);
+			loadGraphic(Assets.Player, true, true, 32, 32);
 			
 			width = 16;
 			height = 32;
-			makeGraphic(width, height);
+			//makeGraphic(width, height);
 
 			controls = new Dictionary();
 			controls["JUMP"] = Settings.JUMPKEY;
 			controls["SWAP"] = Settings.SWAPKEY;
 			controls["TOUCHSWAP"] = Settings.TOUCHSWAPKEY;
 
-			addAnimation("jump", [1], 10);
-			addAnimation("move", [0, 1, 2], 10);
-			addAnimation("fall", [1], 10);
-			addAnimation("idle", [1], 2);
+//			addAnimation("jump", [1], 10);
+//			addAnimation("move", [0, 1, 2], 10);
+//			addAnimation("fall", [1], 10);
+//			addAnimation("idle", [1], 2);
 			
 			immovable = false;
 			
@@ -204,7 +205,7 @@ package org.dinosaurriders.swap.objects {
 		}
 
 		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {
-			// trace("force: ", impulse.normalImpulses[0]);
+			 trace("ouch: ", impulse.normalImpulses[0]);
 			if (impulse.normalImpulses[0] > Settings.MAXFORCE) {
 				kill();
 				_dead = true;

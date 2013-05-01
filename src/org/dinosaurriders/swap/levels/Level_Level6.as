@@ -39,16 +39,22 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 128.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
@@ -97,11 +103,11 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			linkedObjectDictionary[3] = addSpriteToLayer(new Exit(128.000, 256.000, Assets.Exit), Exit, SpritesGroup , 128.000, 256.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level7" }, { name:"enabled", value:false }, null ), onAddCallback );//"Exit"
 			addSpriteToLayer(null, Player, SpritesGroup , 32.000, 279.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
 			addSpriteToLayer(new PolygonBody(256.000, 311.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 256.000, 311.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, { name:"fixedrotation", value:true }, null ), onAddCallback );//"SquareRock2"
-			addSpriteToLayer(new PolygonBody(512.000, 343.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 512.000, 343.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
-			addSpriteToLayer(new PolygonBody(768.000, 343.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 768.000, 343.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
-			addSpriteToLayer(new PolygonBody(256.000, 343.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 256.000, 343.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, { name:"friction", value:1 }, null ), onAddCallback );//"SquareRock1"
-			addSpriteToLayer(new PolygonBody(352.000, 407.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 352.000, 407.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
-			addSpriteToLayer(new PolygonBody(640.000, 407.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 640.000, 407.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new PolygonBody(512.000, 343.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 512.000, 343.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new PolygonBody(768.000, 343.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 768.000, 343.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new PolygonBody(256.000, 343.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 256.000, 343.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, { name:"friction", value:1 }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new PolygonBody(352.000, 407.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 352.000, 407.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new PolygonBody(640.000, 407.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 640.000, 407.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, { name:"fixedx", value:true }, null ), onAddCallback );//"SquareRock1"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

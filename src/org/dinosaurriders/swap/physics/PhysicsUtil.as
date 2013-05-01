@@ -1,4 +1,6 @@
 package org.dinosaurriders.swap.physics {
+	import Box2D.Dynamics.b2TimeStep;
+	import Box2D.Dynamics.Controllers.b2BuoyancyController;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2World;
 
@@ -10,6 +12,7 @@ package org.dinosaurriders.swap.physics {
 	public class PhysicsUtil {
 		private static var destroyQueue : Vector.<b2Body> = new Vector.<b2Body>();
 		private static var swapQueue : Vector.<PhysicalBody> = new Vector.<PhysicalBody>();
+		private static var buoyancyControllers : Vector.<b2BuoyancyController> = new Vector.<b2BuoyancyController>();
 		
 		private static var currentSkipCount : int = 0;
 		
@@ -41,6 +44,19 @@ package org.dinosaurriders.swap.physics {
 				}
 				
 				currentSkipCount = 0;
+			}
+		}
+		
+		public static function addBuoyancyController(world : b2World, controller : b2BuoyancyController) {
+			buoyancyControllers.push(controller);
+			world.AddController(controller);
+		}
+		
+		public static function updateControllers(dt : Number, velocityIterations : int, positionIterations : int) {
+			for (var i : int = 0; i < buoyancyControllers.length; i++) {
+				var x : b2TimeStep = new b2TimeStep();
+				x.dt = dt;
+				buoyancyControllers[i].Step(x);
 			}
 		}
 	}

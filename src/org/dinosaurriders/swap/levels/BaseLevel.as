@@ -158,5 +158,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		private static var level_Level7:Level_Level7;
 		private static var level_Level8:Level_Level8;
 		private static var level_Level15:Level_Level15;
+		private static var level_Level16:Level_Level16;
+		private static var level_Level17:Level_Level17;
 	}
 }

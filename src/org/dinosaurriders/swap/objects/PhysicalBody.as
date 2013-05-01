@@ -85,6 +85,12 @@ package org.dinosaurriders.swap.objects {
 					case "affectsplayer":
 						affectsPlayer = solid = property.value;
 						break;
+					case "innerglow":
+						applyInnerGlow(property.value);
+						break;
+					case "outerglow":
+						applyOuterGlow(property.value);
+						break;
 				}
 			}
 			
@@ -306,8 +312,12 @@ package org.dinosaurriders.swap.objects {
 			this._affectsPlayer = affectsPlayer;
 		}
 		
-		public function applyInnerGlow() {
-			framePixels.applyFilter(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0), new GlowFilter(0x6600cc, 0.5, 12, 12, 1.5, 3, true));
+		public function applyInnerGlow(color : uint = 0x6600cc) : void {
+			framePixels.applyFilter(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0), new GlowFilter(color, 0.5, 12, 12, 1.5, 3, true));
+		}
+		
+		public function applyOuterGlow(color : uint = 0xff0000) : void {
+			framePixels.applyFilter(framePixels, new Rectangle(-10, -10, width + 20, height + 20), new Point(-10, -10), new GlowFilter(color, 0.5, 12, 12, 1.5, 3, false));
 		}
 	}
 }

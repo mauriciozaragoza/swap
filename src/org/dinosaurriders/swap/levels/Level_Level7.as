@@ -39,21 +39,29 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 0.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, 0.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
@@ -91,9 +99,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			addSpriteToLayer(new PolygonBody(181.000, 159.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 181.000, 159.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			linkedObjectDictionary[1] = addSpriteToLayer(new Exit(448.000, 128.000, Assets.Exit), Exit, SpritesGroup , 448.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"enabled", value:false }, { name:"warp", value:"Level8" }, null ), onAddCallback );//"Exit"
 			linkedObjectDictionary[0] = addSpriteToLayer(new WeightSwitch(28.000, 184.000, Assets.Switch1, 1000), WeightSwitch, SpritesGroup , 28.000, 184.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
-			addSpriteToLayer(new PolygonBody(477.000, 254.000, Assets.ForestBoulderLarge, 16, 2000), PolygonBody, SpritesGroup , 477.000, 254.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new PolygonBody(477.000, 254.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 477.000, 254.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
 			addSpriteToLayer(new BreakableWall(387.000, 224.000, Assets.BreakableWall1, 7000), BreakableWall, SpritesGroup , 387.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
-			addSpriteToLayer(new PolygonBody(93.000, 384.000, Assets.ForestBoulderLarge, 16, 2000), PolygonBody, SpritesGroup , 93.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new PolygonBody(93.000, 384.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 93.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
 			addSpriteToLayer(null, Player, SpritesGroup , -3.000, 401.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
 		}
 

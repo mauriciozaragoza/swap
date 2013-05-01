@@ -42,21 +42,29 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, -32.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -32.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 640.000, -32.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 640.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
@@ -100,7 +108,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
 			addSpriteToLayer(null, Player, SpritesGroup , 704.000, 143.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(640.000, 160.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 640.000, 160.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new PolygonBody(640.000, 160.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 640.000, 160.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock1"
 			addSpriteToLayer(new Exit(770.000, 358.000, Assets.Exit), Exit, SpritesGroup , 770.000, 358.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level6" }, null ), onAddCallback );//"Exit"
 		}
 

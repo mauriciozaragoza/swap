@@ -32,7 +32,7 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/Exit.png")]
 		public static var Exit : Class;
 		
-		[Embed(source='../assets/player2.png')] 
+		[Embed(source='../assets/sarah.png')] 
 		public static var Player:Class;
 	}
 }

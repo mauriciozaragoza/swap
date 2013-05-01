@@ -1,4 +1,7 @@
 package org.dinosaurriders.swap.objects {
+	import org.dinosaurriders.swap.physics.PhysicsUtil;
+	import flash.events.AccelerometerEvent;
+	import Box2D.Dynamics.Controllers.b2BuoyancyController;
 	import org.flixel.plugin.photonstorm.FX.BlurFxRectangle;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
@@ -27,6 +30,7 @@ package org.dinosaurriders.swap.objects {
 		private var _currentState : FlxState;
 		private var blur : BlurFxRectangle;
 		private var blurEffect : FlxSprite;
+		var bc : b2BuoyancyController;
 
 		public function PropertyField(X : Number, Y : Number) {
 			super(X, Y, 0, 0, 0);
@@ -37,8 +41,6 @@ package org.dinosaurriders.swap.objects {
 			bodyDef.type = b2Body.b2_staticBody;
 		}
 		
-		
-
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var polyDef : b2PolygonShape = new b2PolygonShape();
 
@@ -65,22 +67,31 @@ package org.dinosaurriders.swap.objects {
 					case "onlyPlayer":
 						onlyPlayer = property.value;
 						break;
+					case "buoyancy":
+						bc = new b2BuoyancyController();
+						bc.normal.Set(0,-1);
+						bc.useDensity = false;
+						bc.offset = height / Settings.ratio;
+						bc.density = property.value;
+						bc.linearDrag = 5;
+						bc.angularDrag = 2;
+						PhysicsUtil.addBuoyancyController(world, bc);
+						break;
 				}
 			}
 
 			return super.createPhysicsObject(world, properties);
 		}
 		
-		
-
 		override public function onStartCollision(contact : b2Contact) : void {
 			super.onStartCollision(contact);
 			
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 			
 			if (otherBody != null && affectedByField[otherBody] == null) {
-				if ((onlyPlayer && otherBody is Player) || (!affectsPlayer && !(otherBody is Player))) {
-					trace("lo");
+				if ((onlyPlayer && otherBody is Player) ||
+					affectsPlayer ||
+				 	(!affectsPlayer && !(otherBody is Player))) {
 					applyProperties(otherBody);
 				}
 			}
@@ -92,8 +103,9 @@ package org.dinosaurriders.swap.objects {
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 
 			if (otherBody != null && affectedByField[otherBody] != null) {
-				if ((onlyPlayer && otherBody is Player) || (!affectsPlayer && !(otherBody is Player))) {
-					trace("l");
+				if ((onlyPlayer && otherBody is Player) ||
+					affectsPlayer ||
+					(!affectsPlayer && !(otherBody is Player))) {
 					ripProperties(otherBody);
 				}
 			}
@@ -106,13 +118,19 @@ package org.dinosaurriders.swap.objects {
 				}
 				
 				blur = FlxSpecialFX.blurRect();
-				trace(width, height);
-				blurEffect = blur.create(x, y, width, height, 6, 6, 1, 6);
+				FlxG.flash(0x66220044, 0.5);
+				blurEffect = blur.create(x, y, width, height, 6, 6, 4, 0);
 				blur.addSprite(affectedBody);
 				blur.start(1);
 				
 				currentState.add(blurEffect);
 			}
+			// apply bouyancy 
+			if (bc != null) {
+				trace("buoyant", affectedBody.x, affectedBody.y);
+				bc.AddBody(affectedBody.body);				
+			}
+			
 			affectedByField[affectedBody] = true;
 			var newGravity : b2Vec2 = affectedBody.gravityVector.Copy();
 			newGravity.Add(gravityField);
@@ -121,11 +139,17 @@ package org.dinosaurriders.swap.objects {
 
 		public function ripProperties(affectedBody : PhysicalBody) : void {
 			if (blurs) {
-				FlxG.flash(0xffffff, 1);
+				FlxG.flash(0x66220044, 0.5);
 				blur.stop();
 				currentState.remove(blurEffect);
 				FlxG.removePluginType(FlxSpecialFX);
 			}
+			// remove bouyancy 
+			if (bc != null) {
+				trace("die buoyant", affectedBody.x, affectedBody.y);
+				bc.RemoveBody(affectedBody.body);				
+			}
+			
 			affectedByField[affectedBody] = null;
 			var newGravity : b2Vec2 = affectedBody.gravityVector.Copy();
 			newGravity.Subtract(gravityField);

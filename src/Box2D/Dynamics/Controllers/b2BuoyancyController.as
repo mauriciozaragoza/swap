@@ -87,6 +87,7 @@ public class b2BuoyancyController extends b2Controller
 			for(var fixture:b2Fixture=body.GetFixtureList();fixture;fixture=fixture.GetNext()){
 				var sc:b2Vec2 = new b2Vec2();
 				var sarea:Number = fixture.GetShape().ComputeSubmergedArea(normal, offset, body.GetTransform(), sc);
+				trace(sarea);
 				area += sarea;
 				areac.x += sarea * sc.x;
 				areac.y += sarea * sc.y;
