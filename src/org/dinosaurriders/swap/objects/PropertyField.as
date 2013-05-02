@@ -69,17 +69,21 @@ package org.dinosaurriders.swap.objects {
 						break;
 					case "buoyancy":
 						bc = new b2BuoyancyController();
-						bc.normal.Set(0,-1);
-						bc.useDensity = false;
 						bc.offset = height / Settings.ratio;
 						bc.density = property.value;
-						bc.linearDrag = 5;
-						bc.angularDrag = 2;
+						bc.linearDrag = 500;
+						bc.angularDrag = 250;
 						PhysicsUtil.addBuoyancyController(world, bc);
 						break;
 				}
 			}
-
+			
+			if (bc != null) {
+				var bouyancyNormal : b2Vec2 = gravityField.Copy();
+				bouyancyNormal.Normalize();
+				bc.normal.Set(bouyancyNormal.x, bouyancyNormal.y);
+			}
+			
 			return super.createPhysicsObject(world, properties);
 		}
 		
@@ -146,8 +150,7 @@ package org.dinosaurriders.swap.objects {
 			}
 			// remove bouyancy 
 			if (bc != null) {
-				trace("die buoyant", affectedBody.x, affectedBody.y);
-				bc.RemoveBody(affectedBody.body);				
+				bc.RemoveBody(affectedBody.body);
 			}
 			
 			affectedByField[affectedBody] = null;

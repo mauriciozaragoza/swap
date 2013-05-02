@@ -2,10 +2,10 @@
 <project>
   <version>3.1.3</version>
   <bgColor>0x88beef</bgColor>
-  <viewPos x="-265" y="-132"/>
+  <viewPos x="72" y="-253"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="10">
-    <sprite name="Player" idx="1" className="Player" image="../assets/player2.png" width="48" height="48" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="48" boundsHeight="48" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false">
+  <spriteEntries currentId="11">
+    <sprite name="Player" idx="1" className="Player" image="../assets/sarah.png" width="32" height="32" preview="0" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="32" constructor="" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" tileIndex="0" canEditFrames="true" lockRotation="false">
       <properties>
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
@@ -15,8 +15,8 @@
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
     </tileEntry>
-    <tileEntry name="BreakableWall1" idx="3" className="BreakableWall" image="../assets/BreakableWall1.png" offsetX="0" offsetY="0" width="32" height="96" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="96" constructor="new BreakableWall(%xpos%, %ypos%, Assets.%spritename%, Assets.ForestBoulderLarge, 7000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false" selected="true"/>
-    <tileEntry name="SquareRock1" idx="4" className="PolygonBody" image="../assets/SquareRock1.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 0.1)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
+    <tileEntry name="BreakableWall1" idx="3" className="BreakableWall" image="../assets/BreakableWall1.png" offsetX="0" offsetY="0" width="32" height="96" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="32" boundsHeight="96" constructor="new BreakableWall(%xpos%, %ypos%, Assets.%spritename%, Assets.ForestBoulderLarge, 7000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false"/>
+    <tileEntry name="SquareRock1" idx="4" className="PolygonBody" image="../assets/SquareRock1.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 2000&#xD;)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
       <properties>
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
@@ -38,6 +38,11 @@
       </properties>
     </tileEntry>
     <tileEntry name="SquareRock4" idx="9" className="PolygonBody" image="../assets/SquareRock3.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 2000)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false">
+      <properties>
+        <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
+      </properties>
+    </tileEntry>
+    <tileEntry name="Crate1" idx="10" className="PolygonBody" image="../assets/crate.png" offsetX="0" offsetY="0" width="64" height="64" anchorX="0" anchorY="0" centerAnchor="false" boundsX="0" boundsY="0" boundsWidth="64" boundsHeight="64" constructor="new PolygonBody(%xpos%, %ypos%, Assets.%spritename%, 4, 500)" creation="" exports="true" canScale="true" canRotate="true" surfaceObject="false" lockRotation="false" selected="true">
       <properties>
         <type typeof="Boolean" name="swappable" value="true" hidden="false"/>
       </properties>
@@ -251,23 +256,23 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="PlayerLayer" id="2" xScroll="1" yScroll="1" x="0" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>3,3,3,3,3,3,3,3,3,4,0,0,0,2,3,3,3,3,3,3</row>
-        <row>33,17,33,17,17,16,17,33,16,20,0,0,0,18,33,33,16,33,17,33</row>
+      <maplayer name="PlayerLayer" id="2" xScroll="1" yScroll="1" x="0" y="-32" width="35" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3</row>
+        <row>33,17,16,17,33,33,16,33,16,17,17,33,33,33,33,16,33,33,17,33,17,16,33,17,33,33,16,17,33,33,17,17,33,17,33</row>
         <tileProperties>
           <properties/>
           <properties>
@@ -341,110 +346,197 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="3" xScroll="1" yScroll="1" x="0" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,6,0,0,6,0,0,5,54,0,0,0,0,0,6,0,0,7,0,37</row>
-        <row>22,22,22,22,22,22,22,22,22,23,0,0,0,21,22,22,22,22,22,22</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <tileProperties>
-          <properties/>
+      <spritelayer name="Sprites" id="3" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+        <sprite guid="E16BBA93-9381-449B-DAEC-4EDEB909E5AF" x="1024" y="352" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties>
-            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+            <type typeof="String" name="warp" value="Level2" hidden="false"/>
           </properties>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties>
-            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
-          </properties>
-          <properties>
-            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
-          </properties>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties>
-            <type typeof="Int" name="outerglow" value="65280" hidden="false"/>
-          </properties>
-        </tileProperties>
-      </maplayer>
-      <spritelayer name="Sprites" id="4" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+        </sprite>
         <sprite guid="EB60392F-C0FB-DC91-EE40-0D8A58D17CA9" x="0" y="368" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
           <properties/>
         </sprite>
-        <sprite guid="E16BBA93-9381-449B-DAEC-4EDEB909E5AF" x="576" y="352" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+      </spritelayer>
+      <maplayer name="FrontLayer" id="4" xScroll="1" yScroll="1" x="0" y="-32" width="35" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,6,0,0,6,0,0,5,54,0,0,0,0,0,6,0,0,7,0,37,0,0,0,0,0,0,5,0,0,0,6,0,0,0,6</row>
+        <row>22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <tileProperties>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="affectsplayer" value="false" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Int" name="outerglow" value="65280" hidden="false"/>
+          </properties>
+        </tileProperties>
+      </maplayer>
+    </group>
+    <group name="Level2" id="65" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
+      <maplayer name="Sky" id="5" xScroll="0.25" yScroll="0.25" x="0" y="-32" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0</row>
+        <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0</row>
+        <row>0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149</row>
+        <row>165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165</row>
+        <row>181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181</row>
+        <row>197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+      </maplayer>
+      <maplayer name="Background" id="55" xScroll="0.5" yScroll="0.5" x="0" y="-32" width="40" height="20" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101</row>
+        <row>118,119,120,119,120,117,118,117,118,119,120,117,118,119,120,117,118,119,120,117,118,119,120,119,120,117,118,117,118,119,120,117,118,119,120,117,118,119,120,117</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+      </maplayer>
+      <maplayer name="PlayerLayer" id="6" xScroll="1" yScroll="1" x="0" y="-32" width="35" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,0,0,0,0,0,2,3,3,3,3,3,3,3,3,3,3,3,3</row>
+        <row>17,33,16,17,16,17,17,33,33,16,17,33,33,33,17,17,20,0,0,0,0,0,18,17,16,16,17,17,33,16,16,16,33,33,17</row>
+      </maplayer>
+      <spritelayer name="Sprites" id="57" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+        <sprite guid="64A3458E-D8C8-3B26-B656-84CC669D0288" x="0" y="383" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
+        </sprite>
+        <sprite guid="2F5C60E7-312E-6279-8FE5-F7D9A5C4BB77" x="1080" y="352" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties>
             <type typeof="String" name="warp" value="Level5" hidden="false"/>
           </properties>
         </sprite>
       </spritelayer>
-      <shapelayer name="PropertyFields" id="5" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
+      <maplayer name="FrontLayer" id="7" xScroll="1" yScroll="1" x="0" y="-32" width="35" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,6,0,0,6,0,0,5,54,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,6,0,0,0,6</row>
+        <row>22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,23,0,0,0,0,0,21,22,22,22,22,22,22,22,22,22,22,22,22</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      </maplayer>
     </group>
     <group name="Level5" id="9" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
-      <maplayer name="Sky" id="6" xScroll="0.25" yScroll="0.25" x="0" y="-32" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Sky" id="8" xScroll="0.25" yScroll="0.25" x="0" y="-32" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0</row>
         <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0</row>
@@ -534,7 +626,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="Background" id="7" xScroll="0.5" yScroll="0.5" x="0" y="-32" width="40" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Background" id="9" xScroll="0.5" yScroll="0.5" x="0" y="-32" width="40" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -638,7 +730,8 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="PlayerLayer" id="8" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="PlayerLayer" id="10" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -650,7 +743,6 @@
         <row>3,3,17,33,16,33,33,33,33,20,0,0,0,0,0,0,0,0,0,0</row>
         <row>33,17,17,33,17,33,33,33,33,20,0,0,0,0,0,0,0,0,0,0</row>
         <row>35,35,35,35,35,35,35,35,35,36,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,54,54,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>3,3,3,3,3,3,3,3,3,4,0,0,0,0,0,0,0,0,0,0</row>
@@ -728,7 +820,8 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="9" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="FrontLayer" id="11" xScroll="1" yScroll="1" x="640" y="-32" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -741,7 +834,6 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>22,22,22,22,22,22,22,22,22,23,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -818,11 +910,11 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="10" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true">
-        <sprite guid="85CCD2D1-AC98-1C63-4DB2-552255E3FA62" x="704" y="143" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
+      <spritelayer name="Sprites" id="12" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true">
+        <sprite guid="85CCD2D1-AC98-1C63-4DB2-552255E3FA62" x="707" y="191" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1">
           <properties/>
         </sprite>
-        <sprite guid="E2CE7B2E-D0B5-FC8E-B82C-95D6ADCBE521" x="640" y="160" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
+        <sprite guid="E2CE7B2E-D0B5-FC8E-B82C-95D6ADCBE521" x="639" y="192" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="4">
           <properties/>
         </sprite>
         <sprite guid="D085E132-A9D0-AB47-29B8-F4C3146733AA" x="770" y="358" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
@@ -831,10 +923,10 @@
           </properties>
         </sprite>
       </spritelayer>
-      <shapelayer name="PropertyFields" id="11" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
+      <shapelayer name="PropertyFields" id="13" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false"/>
     </group>
     <group name="Level6" id="40" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
-      <maplayer name="Sky" id="12" xScroll="0.25" yScroll="0.25" x="0" y="128" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Sky" id="14" xScroll="0.25" yScroll="0.25" x="0" y="128" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0</row>
         <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0</row>
@@ -924,7 +1016,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="PlayerLayer" id="13" xScroll="1" yScroll="1" x="0" y="0" width="33" height="25" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="true" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="PlayerLayer" id="15" xScroll="1" yScroll="1" x="0" y="0" width="33" height="25" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="true" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1023,7 +1115,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="14" xScroll="1" yScroll="1" x="0" y="0" width="33" height="25" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="FrontLayer" id="16" xScroll="1" yScroll="1" x="0" y="0" width="33" height="25" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1122,7 +1214,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="15" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+      <spritelayer name="Sprites" id="17" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
         <sprite guid="5053F898-1D00-1ADC-C017-CE8777609274" x="896" y="312" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="6"/>
         <sprite guid="6DF63D3F-3CB4-0C43-EE88-0B04041B2336" x="128" y="256" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties>
@@ -1170,7 +1262,7 @@
           </properties>
         </sprite>
       </spritelayer>
-      <shapelayer name="PropertyFields" id="16" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+      <shapelayer name="PropertyFields" id="18" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
         <shape guid="73ECC3DF-1BFB-4E6E-D078-A58BB9304863" type="square" x="180" y="600" Z="0" angle="0" width="690.00" height="225.45" scaleX="20.617" scaleY="6.973">
           <properties>
             <type typeof="String" name="gravityy" value="-20" hidden="false"/>
@@ -1180,7 +1272,7 @@
       </shapelayer>
     </group>
     <group name="Level7" id="4" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
-      <maplayer name="Sky" id="17" xScroll="0.25" yScroll="0.25" x="0" y="0" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Sky" id="19" xScroll="0.25" yScroll="0.25" x="0" y="0" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0</row>
         <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0</row>
@@ -1270,7 +1362,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="Background" id="18" xScroll="0.5" yScroll="0.5" x="0" y="0" width="40" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Background" id="20" xScroll="0.5" yScroll="0.5" x="0" y="0" width="40" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1374,7 +1466,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="PlayerLayer" id="19" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="PlayerLayer" id="21" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1464,7 +1556,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="20" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="FrontLayer" id="22" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1554,7 +1646,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="21" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+      <spritelayer name="Sprites" id="23" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
         <sprite guid="C9423FA3-AD53-AE94-ECA7-EDE8AD4ED212" x="181" y="159" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
           <properties/>
         </sprite>
@@ -1578,15 +1670,55 @@
       </spritelayer>
     </group>
     <group name="Level8" id="20" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
-      <maplayer name="BackLayer" id="22" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
-        <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
-        <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
-        <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,83</row>
-        <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
-        <row>97,97,97,97,83,97,97,97,97,97,97,83,97,97,97,97,97,97,97,97</row>
-        <row>84,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
-        <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,99</row>
+      <maplayer name="Sky" id="24" xScroll="0.25" yScroll="0.25" x="0" y="0" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0</row>
+        <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0</row>
+        <row>0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149,149</row>
+        <row>165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165,165</row>
+        <row>181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181,181</row>
+        <row>197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197,197</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+        <row>198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198</row>
+      </maplayer>
+      <maplayer name="Background" id="25" xScroll="0.5" yScroll="0.5" x="0" y="-256" width="40" height="20" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101,102,103,104,101</row>
+        <row>118,119,120,119,120,117,118,117,118,119,120,117,118,119,120,117,118,119,120,117,118,119,120,119,120,117,118,117,118,119,120,117,118,119,120,117,118,119,120,117</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+        <row>136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136</row>
+      </maplayer>
+      <maplayer name="BackLayer" id="26" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,96,97,97,97,97,98,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,96,97,97,97,97,99,82,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,80,100,97,97,97,97,97,98,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>80,100,97,97,97,97,97,97,98,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>100,97,97,97,97,97,97,97,98,0,0,0,80,81,81,81,81,81,81,81</row>
+        <row>97,97,97,97,83,97,97,83,114,0,0,80,97,97,97,97,97,97,97,97</row>
+        <row>84,97,97,97,97,97,97,98,0,0,80,97,97,97,97,97,97,97,97,97</row>
+        <row>97,97,97,97,97,97,97,99,81,81,100,97,97,97,97,97,97,97,97,99</row>
         <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
         <row>97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
         <row>97,84,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97,97</row>
@@ -1668,7 +1800,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="PlayerLayer" id="23" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="PlayerLayer" id="27" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,18,20,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,18,20,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,18,20,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1680,8 +1812,8 @@
         <row>20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>33,3,3,3,3,3,3,4,0,0,2,4,0,0,2,4,0,0,0,0</row>
-        <row>35,35,35,35,35,35,35,36,0,0,34,35,51,51,35,36,0,0,0,0</row>
+        <row>33,3,3,3,3,3,3,3,4,0,0,2,4,0,0,2,4,0,0,0</row>
+        <row>35,35,35,35,35,35,35,35,36,0,0,34,35,51,51,35,36,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3</row>
@@ -1758,18 +1890,37 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="24" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <spritelayer name="Sprites" id="28" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+        <sprite guid="AB09E285-9030-8CDB-872E-0C63B63146AD" x="0" y="433" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
+        </sprite>
+        <sprite guid="7949C50D-7B20-DD38-E31F-CB8CF6D1925D" x="588" y="59" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+          <properties>
+            <type typeof="String" name="warp" value="Level15" hidden="false"/>
+          </properties>
+        </sprite>
+        <sprite guid="A3D146E2-ED42-06FD-8F99-12296316E2B7" x="99" y="100" Z="0" angle="0" scaleX="0.95" scaleY="0.95" flipped="false" idx="4">
+          <properties/>
+        </sprite>
+        <sprite guid="41BADB37-922C-793D-ADA7-EA3FD881B5AE" x="417" y="324" Z="0" angle="0" scaleX="0.95" scaleY="0.95" flipped="false" idx="8">
+          <properties/>
+        </sprite>
+        <sprite guid="F00C2749-2CB6-BCA2-5D19-8BD7848507FE" x="288" y="420" Z="0" angle="0" scaleX="0.95" scaleY="0.95" flipped="false" idx="9">
+          <properties/>
+        </sprite>
+      </spritelayer>
+      <maplayer name="FrontLayer" id="29" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,6,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,21,22,22,22,22,22,22,22</row>
+        <row>0,0,21,22,22,39,0,0,0,0,6,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,9,0,0,0,0,0,21,22,39,0,10,0,0,0,0,0</row>
+        <row>0,0,0,0,25,0,0,0,0,0,0,0,0,0,26,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0</row>
+        <row>0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1848,28 +1999,9 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="25" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
-        <sprite guid="AB09E285-9030-8CDB-872E-0C63B63146AD" x="0" y="433" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
-          <properties/>
-        </sprite>
-        <sprite guid="7949C50D-7B20-DD38-E31F-CB8CF6D1925D" x="588" y="59" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
-          <properties>
-            <type typeof="String" name="warp" value="Level15" hidden="false"/>
-          </properties>
-        </sprite>
-        <sprite guid="A3D146E2-ED42-06FD-8F99-12296316E2B7" x="99" y="100" Z="0" angle="0" scaleX="0.95" scaleY="0.95" flipped="false" idx="4">
-          <properties/>
-        </sprite>
-        <sprite guid="41BADB37-922C-793D-ADA7-EA3FD881B5AE" x="385" y="325" Z="0" angle="0" scaleX="0.95" scaleY="0.95" flipped="false" idx="8">
-          <properties/>
-        </sprite>
-        <sprite guid="F00C2749-2CB6-BCA2-5D19-8BD7848507FE" x="258" y="419" Z="0" angle="0" scaleX="0.95" scaleY="0.95" flipped="false" idx="9">
-          <properties/>
-        </sprite>
-      </spritelayer>
     </group>
     <group name="Level15" id="39" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="Sky" id="26" xScroll="0.25" yScroll="0.25" x="0" y="0" width="50" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Sky" id="30" xScroll="0.25" yScroll="0.25" x="0" y="0" width="50" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0</row>
         <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -1959,7 +2091,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="Background" id="27" xScroll="0.5" yScroll="0.5" x="0" y="0" width="50" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Background" id="31" xScroll="0.5" yScroll="0.5" x="0" y="0" width="50" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2063,7 +2195,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="BlackSpaceLayer" id="28" xScroll="1" yScroll="1" x="896" y="-64" width="100" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="BlackSpaceLayer" id="32" xScroll="1" yScroll="1" x="896" y="-64" width="100" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>121,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,0,0,0,0,0</row>
         <row>121,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,0,0,0,0,0</row>
         <row>121,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,0,0,0,0,0</row>
@@ -2156,7 +2288,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="Stars2" id="29" xScroll="0.25" yScroll="0.25" x="800" y="-192" width="30" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Stars2" id="33" xScroll="0.25" yScroll="0.25" x="800" y="-192" width="30" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2249,7 +2381,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="Stars1" id="30" xScroll="0.5" yScroll="0.5" x="896" y="-64" width="60" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Stars1" id="34" xScroll="0.5" yScroll="0.5" x="896" y="-64" width="60" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2342,7 +2474,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="GlowLayer" id="31" xScroll="1" yScroll="1" x="1632" y="448" width="5" height="3" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="GlowLayer" id="35" xScroll="1" yScroll="1" x="1632" y="448" width="5" height="3" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,139,140,141,0</row>
         <row>154,155,156,157,158</row>
         <row>170,171,172,173,174</row>
@@ -2419,7 +2551,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="PlayerLayer" id="32" xScroll="1" yScroll="1" x="0" y="0" width="123" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="PlayerLayer" id="36" xScroll="1" yScroll="1" x="0" y="0" width="123" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2523,7 +2655,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="FrontLayer" id="33" xScroll="1" yScroll="1" x="0" y="0" width="80" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="FrontLayer" id="37" xScroll="1" yScroll="1" x="0" y="0" width="80" height="30" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2627,7 +2759,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <shapelayer name="PropertyFields" id="34" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+      <shapelayer name="PropertyFields" id="38" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
         <shape guid="7FA25475-A9D7-630D-0D86-442CBB9EAD70" type="square" x="894" y="420.7" Z="0" angle="0" width="3050.00" height="124.98" scaleX="61.000" scaleY="2.500">
           <properties>
             <type typeof="Boolean" name="onlyPlayer" value="true" hidden="false"/>
@@ -2635,18 +2767,18 @@
           </properties>
         </shape>
       </shapelayer>
-      <spritelayer name="Sprites" id="35" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true" selected="true">
-        <sprite guid="60589413-23AE-58E1-00FB-0609D96DC7DA" x="360" y="180" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
-          <properties/>
-        </sprite>
+      <spritelayer name="Sprites" id="39" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="true" selected="true">
         <sprite guid="A5E82734-0332-ADAC-E576-1C92766B5571" x="448" y="288" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="3"/>
-        <sprite guid="E1B24412-D2D9-772E-7480-84CE2B20B272" x="159" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
+        <sprite guid="E1B24412-D2D9-772E-7480-84CE2B20B272" x="160" y="385" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="2">
           <properties/>
         </sprite>
         <sprite guid="62566C29-8796-0E2A-369E-FB56B0ECEC6C" x="3870" y="480" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties>
             <type typeof="String" name="warp" value="Level16" hidden="false"/>
           </properties>
+        </sprite>
+        <sprite guid="60589413-23AE-58E1-00FB-0609D96DC7DA" x="0" y="864" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
         </sprite>
         <sprite guid="EAEE9D2F-2703-E687-326A-4A45397B5154" x="64" y="864" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="5">
           <properties/>
@@ -2663,7 +2795,7 @@
       </spritelayer>
     </group>
     <group name="Level16" id="52" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
-      <maplayer name="Sky" id="36" xScroll="0" yScroll="0" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Sky" id="40" xScroll="0" yScroll="0" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61</row>
         <row>61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61</row>
         <row>11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11</row>
@@ -2681,25 +2813,43 @@
         <row>60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60</row>
         <row>60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60</row>
       </maplayer>
-      <maplayer name="Background" id="37" xScroll="0.5" yScroll="0.5" x="800" y="-32" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,45,46,0,0,0,0,0,0,0,0,0,0,13,14,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,45,46,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,76,76,0,0,0,0,0,0,0,0,0</row>
-        <row>76,76,0,0,0,0,76,76,0,92,92,75,75,0,75,76,75,0,75,75</row>
-        <row>92,92,75,76,76,76,92,92,75,92,92,91,91,76,91,92,91,75,91,91</row>
-        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
-        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
-        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
-        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
-        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
-        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
+      <maplayer name="Clouds" id="94" xScroll="0.3" yScroll="0.3" x="480" y="-32" width="40" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,45,46,0,0,0,0,0,0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,0,0,0,0,0,45,46,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,13,14,0,0,0,0,0,0,0,0,0,45,46,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,29,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
-      <maplayer name="BlackSpaceLayer" id="38" xScroll="1" yScroll="1" x="0" y="0" width="50" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Background" id="41" xScroll="0.5" yScroll="0.5" x="800" y="-32" width="40" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,75,76,75,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,77,0,0,0,0,0,0,0,0,91,92,91,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,76,76,0,0,0,0,0,0,0,0,93,0,0,0,0,0,0,0,0,91,92,91,0,0,0,0,0,0,0,0,0</row>
+        <row>76,76,0,0,0,0,76,76,0,92,92,75,75,0,75,76,75,0,75,76,76,75,0,0,0,0,0,0,91,92,91,75,75,76,75,0,0,0,0,0</row>
+        <row>92,92,75,76,76,76,92,92,75,92,92,91,91,76,91,92,91,75,91,92,92,91,0,0,0,0,0,0,91,92,91,91,92,92,91,75,76,76,76,76</row>
+        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,92,92,91,75,76,76,75,75,75,91,92,91,91,92,92,91,91,92,92,92,92</row>
+        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,92,92,91,91,92,92,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
+        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,92,92,91,91,92,92,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
+        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
+        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
+        <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
+      </maplayer>
+      <maplayer name="BlackSpaceLayer" id="42" xScroll="1" yScroll="1" x="0" y="0" width="50" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,105</row>
         <row>123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,105</row>
         <row>123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,105</row>
@@ -2720,7 +2870,7 @@
         <row>123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,105</row>
         <row>123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,123,105</row>
       </maplayer>
-      <maplayer name="Stars1" id="39" xScroll="0.5" yScroll="0.5" x="0" y="0" width="25" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Stars1" id="43" xScroll="0.5" yScroll="0.5" x="0" y="0" width="25" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2741,7 +2891,7 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
-      <maplayer name="Stars2" id="40" xScroll="0.25" yScroll="0.25" x="-96" y="-32" width="15" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Stars2" id="44" xScroll="0.25" yScroll="0.25" x="-96" y="-32" width="15" height="19" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2762,30 +2912,35 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
-      <maplayer name="Player" id="41" xScroll="1" yScroll="1" x="0" y="0" width="90" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,32,32,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32</row>
+      <maplayer name="Player" id="45" xScroll="1" yScroll="1" x="0" y="0" width="77" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>19,19,19,19,19,19,19,19,19,19,19,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>20,20,20,20,20,20,20,20,20,20,20,20,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,36,36,36,36,36,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,36,36,36,36,36,36,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,35,36,36,36</row>
       </maplayer>
-      <spritelayer name="Sprites" id="42" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+      <spritelayer name="Sprites" id="46" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
         <sprite guid="FFF313CA-F76E-10B6-E310-940553F2116B" x="150" y="330" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
           <properties/>
         </sprite>
+        <sprite guid="A6C83B0C-418E-AE0E-5775-AB0F8E4E8F96" x="2399" y="414" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+          <properties>
+            <type typeof="String" name="warp" value="Level17" hidden="false"/>
+          </properties>
+        </sprite>
       </spritelayer>
-      <maplayer name="Front" id="43" xScroll="1" yScroll="1" x="0" y="0" width="90" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Front" id="47" xScroll="1" yScroll="1" x="0" y="0" width="90" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2798,12 +2953,12 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,32,32,32,50,50,50,50,50,50,50,50,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
-      <shapelayer name="PropertyFields" id="44" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+      <shapelayer name="PropertyFields" id="48" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
         <shape guid="C43F7513-F1F5-960D-0437-9B59AB3FB702" type="square" x="0" y="240" Z="0" angle="0" width="1590.00" height="300.00" scaleX="31.800" scaleY="6.000">
           <properties>
             <type typeof="Boolean" name="blur" value="true" hidden="false"/>
@@ -2812,7 +2967,7 @@
       </shapelayer>
     </group>
     <group name="Level17" id="57" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
-      <maplayer name="Sky" id="45" xScroll="0" yScroll="0" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Sky" id="49" xScroll="0" yScroll="0" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61</row>
         <row>61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61</row>
         <row>11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11</row>
@@ -2830,15 +2985,33 @@
         <row>60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60</row>
         <row>60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60</row>
       </maplayer>
-      <maplayer name="Background" id="46" xScroll="0.5" yScroll="0.5" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <maplayer name="Clouds" id="96" xScroll="0.3" yScroll="0.3" x="-32" y="-64" width="40" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,45,46,0,0,0,0,0,0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,0,0,0,0,0,45,46,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,13,14,0,0,0,0,0,0,0,0,0,45,46,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,29,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      </maplayer>
+      <maplayer name="Background" id="50" xScroll="0.5" yScroll="0.5" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,45,46,0,0,0,0,0,0,0,0,0,0,13,14,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,29,30,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,45,46,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,76,76,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>77,0,0,0,0,0,0,0,0,0,0,77,0,0,0,0,0,0,0,0</row>
+        <row>93,0,0,0,0,0,0,0,0,76,76,93,0,0,0,0,0,0,0,0</row>
         <row>76,76,0,0,0,0,76,76,0,92,92,75,75,0,75,76,75,0,75,75</row>
         <row>92,92,75,76,76,76,92,92,75,92,92,91,91,76,91,92,91,75,91,91</row>
         <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
@@ -2848,45 +3021,45 @@
         <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
         <row>91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91</row>
       </maplayer>
-      <maplayer name="Back" id="47" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,33,33,33,33,33,33,33,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,16,33,16,33,16,33,16,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,33,33,33,33,33,33,33,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,33,33,33,33,33,33,33,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,33,33,33,33,33,33,33,33</row>
-        <row>0,0,0,50,50,50,50,50,0,0,0,0,0,33,33,33,33,33,33,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,33,33,33,33,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,33,33,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,33</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <maplayer name="Back" id="51" xScroll="1" yScroll="1" x="0" y="0" width="30" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,33,33,34,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,33,16,34,48,49,48,49,48,49,48,49,48,49,48,49,48,49,48,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,33,33,34,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,33,33,34,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,33,34,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,34,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <tileProperties>
           <properties/>
           <properties/>
         </tileProperties>
       </maplayer>
-      <maplayer name="Player" id="48" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>17,17,17,0,0,0,0,0,0,0,0,17,0,0,0,0,0,0,0,0</row>
-        <row>17,17,17,0,0,0,0,0,0,0,0,17,17,0,0,0,0,0,0,0</row>
-        <row>17,17,17,17,17,17,17,17,17,17,17,17,17,17,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,17,17,17,17,17,17,17,17,17</row>
+      <maplayer name="Player" id="52" xScroll="1" yScroll="1" x="0" y="0" width="30" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,36,36,36,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,36,36,36,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,36,36,36,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,36,36,36,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,36,36,36,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,36,36,36,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>36,36,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>36,36,36,0,0,0,0,0,0,0,0,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>36,36,36,0,0,0,0,0,0,0,0,36,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>36,36,36,35,35,35,35,35,35,35,35,36,36,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>36,36,36,0,0,0,0,0,0,0,0,36,36,36,19,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>36,36,36,0,0,0,0,0,0,0,0,36,36,36,20,20,19,19,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>36,36,36,0,0,0,0,0,0,0,0,36,36,36,20,20,20,20,19,19,19,19,19,19,19,19,19,19,19,19</row>
         <tileProperties>
           <properties/>
           <properties>
@@ -2960,7 +3133,17 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <maplayer name="Front" id="49" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+      <spritelayer name="Sprites" id="53" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+        <sprite guid="E68899C7-C278-ADAC-2B23-8A288254D391" x="0" y="240" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
+        </sprite>
+        <sprite guid="88E63005-6CB4-2DB1-81F7-A448A3E42F68" x="913" y="416" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
+          <properties>
+            <type typeof="String" name="warp" value="Level18" hidden="false"/>
+          </properties>
+        </sprite>
+      </spritelayer>
+      <maplayer name="Front" id="54" xScroll="1" yScroll="1" x="0" y="0" width="20" height="16" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -2972,17 +3155,160 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,50,50,50,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,50,50,50,50,50,50,50,50,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
-      <spritelayer name="Sprites" id="50" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
-        <sprite guid="E68899C7-C278-ADAC-2B23-8A288254D391" x="0" y="240" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+    </group>
+    <group name="Level18" id="106" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
+      <maplayer name="Back" id="183" xScroll="1" yScroll="1" x="0" y="0" width="30" height="30" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,48,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,48,49,49,48,49,49,49,49,49,49,49,49,49,49,49,49,49,49,48,49,49,48,49,49,48,49,49,48,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+        <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
+      </maplayer>
+      <maplayer name="Arrows" id="110" xScroll="1" yScroll="1" x="64" y="512" width="20" height="10" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,38,38,38,38,38,38,38,38,38,38,0,0,0,0,0</row>
+        <row>0,0,0,0,0,38,38,38,38,38,38,38,38,38,38,0,0,0,0,0</row>
+        <row>0,0,0,0,0,38,38,38,38,38,38,38,38,38,38,0,0,0,0,0</row>
+        <row>0,0,0,0,0,38,38,38,38,38,38,38,38,38,38,0,0,0,0,0</row>
+        <row>0,0,0,0,0,38,38,38,38,38,38,38,38,38,38,0,0,0,0,0</row>
+        <row>0,0,0,0,0,22,22,22,22,22,22,22,22,22,22,0,0,0,0,0</row>
+        <row>0,0,0,0,0,22,22,22,22,22,22,22,22,22,22,0,0,0,0,0</row>
+        <row>0,0,0,0,0,22,22,22,22,22,22,22,22,22,22,0,0,0,0,0</row>
+        <row>0,0,0,0,0,22,22,22,22,22,22,22,22,22,22,0,0,0,0,0</row>
+        <row>0,0,0,0,0,22,22,22,22,22,22,22,22,22,22,0,0,0,0,0</row>
+      </maplayer>
+      <maplayer name="Player" id="109" xScroll="1" yScroll="1" x="0" y="0" width="30" height="30" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="true" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="true" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,20,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,20,20,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,19,19,19,19,19</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,19,19,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20,20,20,20</row>
+        <row>19,19,19,19,19,19,19,0,0,0,0,0,0,0,0,0,0,19,19,19,19,20,20,20,20,20,20,20,20,20</row>
+        <row>20,20,20,20,20,20,20,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>20,20,20,20,20,20,20,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>20,20,20,20,20,20,20,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>20,20,20,20,20,20,20,0,0,0,0,0,0,0,0,0,0,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19</row>
+        <row>20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <row>20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20</row>
+        <tileProperties>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties/>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+        </tileProperties>
+      </maplayer>
+      <spritelayer name="Sprites" id="107" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
+        <sprite guid="066CDB4C-0D15-0FE5-8AA8-B5A155892461" x="0" y="480" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0">
+          <properties/>
+        </sprite>
+        <sprite guid="D1E05FC9-A5DF-A796-1739-1D2862A20446" x="96" y="448" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10">
+          <properties/>
+        </sprite>
+        <sprite guid="21C6EC9C-4961-5117-A61F-41103722B216" x="160" y="448" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10">
+          <properties/>
+        </sprite>
+        <sprite guid="F9C2C791-46C5-70C3-6988-D78E045EF8BA" x="0" y="768" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="7">
           <properties/>
         </sprite>
       </spritelayer>
+      <maplayer name="Hazards" id="182" xScroll="1" yScroll="1" x="64" y="512" width="20" height="5" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,23,24,23,24,23,24,23,24,23,24,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      </maplayer>
+      <shapelayer name="PropertyFields" id="108" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false">
+        <shape guid="9465510F-26DE-C826-B897-103D8966B6B0" type="square" x="223" y="681" Z="0" angle="0" width="320.00" height="151.00" scaleX="6.400" scaleY="3.020">
+          <properties>
+            <type typeof="Float" name="gravityx" value="-5.000000" hidden="false"/>
+          </properties>
+        </shape>
+        <shape guid="C1D1E427-7C0E-4BE5-8CDC-E328751CE420" type="square" x="226" y="515" Z="0" angle="0" width="320.00" height="165.00" scaleX="6.400" scaleY="3.300">
+          <properties>
+            <type typeof="Float" name="gravityy" value="-20.000000" hidden="false"/>
+            <type typeof="Float" name="buoyancy" value="200.000000" hidden="false"/>
+          </properties>
+        </shape>
+        <shape guid="10370E23-6AAA-C9ED-9C5B-703E8D365253" type="square" x="210" y="570" Z="0" angle="0" width="360.00" height="50.00" scaleX="7.200" scaleY="1.000">
+          <properties>
+            <type typeof="Boolean" name="kills" value="true" hidden="false"/>
+          </properties>
+        </shape>
+      </shapelayer>
     </group>
   </layers>
   <layerTemplates>
@@ -3271,29 +3597,41 @@
       </tileProperties>
     </maplayer>
   </layerTemplates>
-  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="">
+  <tileMatrix currentMatrix="0" rows="4" cols="4" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
     <row>
-      <tile>0</tile>
-      <tile>0</tile>
-      <tile>0</tile>
+      <tile>2</tile>
+      <tile>3</tile>
+      <tile>3</tile>
+      <tile>4</tile>
     </row>
     <row>
-      <tile>0</tile>
-      <tile>0</tile>
-      <tile>0</tile>
+      <tile>18</tile>
+      <tile>33</tile>
+      <tile>17</tile>
+      <tile>20</tile>
     </row>
     <row>
-      <tile>0</tile>
-      <tile>0</tile>
-      <tile>0</tile>
+      <tile>18</tile>
+      <tile>16</tile>
+      <tile>33</tile>
+      <tile>20</tile>
+    </row>
+    <row>
+      <tile>34</tile>
+      <tile>35</tile>
+      <tile>35</tile>
+      <tile>36</tile>
     </row>
     <specialConnections>
       <sets/>
       <rows/>
     </specialConnections>
   </tileMatrix>
-  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="">
-    <tiles>0,0,0,0,0,0,0,0,0</tiles>
+  <tileMatrixData name="matrix1" rows="4" cols="4" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
+    <tiles>2,3,3,4,18,33,17,20,18,16,33,20,34,35,35,36</tiles>
+  </tileMatrixData>
+  <tileMatrixData name="grass" rows="1" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../assets/spritesheet1.png">
+    <tiles>21,22,23</tiles>
   </tileMatrixData>
   <tileBrushes/>
   <colorSwatches/>

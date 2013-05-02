@@ -11,6 +11,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		//Embedded media...
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level16_Sky.csv", mimeType="application/octet-stream")] public var CSV_Sky:Class;
 		[Embed(source="../../../../../assets/spritesheet2.png")] public var Img_Sky:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level16_Clouds.csv", mimeType="application/octet-stream")] public var CSV_Clouds:Class;
+		[Embed(source="../../../../../assets/spritesheet2.png")] public var Img_Clouds:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level16_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
 		[Embed(source="../../../../../assets/spritesheet2.png")] public var Img_Background:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level16_BlackSpaceLayer.csv", mimeType="application/octet-stream")] public var CSV_BlackSpaceLayer:Class;
@@ -26,6 +28,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		//Tilemaps
 		public var layerSky:FlxTilemap;
+		public var layerClouds:FlxTilemap;
 		public var layerBackground:FlxTilemap;
 		public var layerBlackSpaceLayer:FlxTilemap;
 		public var layerStars1:FlxTilemap;
@@ -51,6 +54,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			properties = generateProperties( null );
 			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 0.000, 32, 32, 0.000, 0.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			layerClouds = addTilemap( CSV_Clouds, Img_Clouds, 480.000, -32.000, 32, 32, 0.300, 0.300, false, 1, 1, properties, onAddCallback );
+			properties = generateProperties( null );
 			layerBackground = addTilemap( CSV_Background, Img_Background, 800.000, -32.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			layerBlackSpaceLayer = addTilemap( CSV_BlackSpaceLayer, Img_BlackSpaceLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
@@ -65,6 +70,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerSky);
+			masterLayer.add(layerClouds);
 			masterLayer.add(layerBackground);
 			masterLayer.add(layerBlackSpaceLayer);
 			masterLayer.add(layerStars1);
@@ -109,6 +115,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
 			addSpriteToLayer(null, Player, SpritesGroup , 150.000, 330.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
+			addSpriteToLayer(new Exit(2399.000, 414.000, Assets.Exit), Exit, SpritesGroup , 2399.000, 414.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level17" }, null ), onAddCallback );//"Exit"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

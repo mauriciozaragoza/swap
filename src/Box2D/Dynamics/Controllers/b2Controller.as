@@ -63,6 +63,11 @@ public class b2Controller
 		//Attempted to remove a body that was not attached?
 		//b2Settings.b2Assert(bEdge != null);
 		
+		// Bugs up when objects are destroyed
+		if (edge == null) {
+			return;
+		}
+		
 		if (edge.prevBody)
 			edge.prevBody.nextBody = edge.nextBody;
 		if (edge.nextBody)

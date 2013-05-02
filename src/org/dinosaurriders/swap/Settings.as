@@ -11,14 +11,13 @@ package org.dinosaurriders.swap {
 		// OBJECTS
 		public static const DEFAULTGRAVITYY 	: Number = 10;
 		public static const DEFAULTGRAVITYX 	: Number = 0;
-		public static const DEFAULTPLAYERGRAV	: Number = 400;
 		
 		// PLAYER
 		public static const PLAYERSPEED 		: Number = 500;
 		public static const PLAYERMAXVELOCITY 	: Number = 150;
 		public static const PLAYERMAXFALLSPEED	: Number = 10000;
 		public static const PLAYERDECCELERATION	: Number = 800;
-		public static const PLAYERJUMP 			: Number = 6.6;
+		public static const PLAYERJUMP 			: Number = 275;
 		public static const FOOTSENSORSIZE		: Number = 5;
 		public static const MAXFORCE			: Number = 7500;
 		public static const SWAPKEY				: String = "X";

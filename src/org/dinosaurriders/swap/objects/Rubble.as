@@ -17,8 +17,6 @@ package org.dinosaurriders.swap.objects {
 			velocity.x = Math.random() * 100 - 50;
 			velocity.y = Math.random() * 100 - 50;
 			
-			scale.x = scale.y = Math.random() * 0.25 + 0.25;
-			
 			acceleration.y = 10 * Settings.ratio;	
 			
 			t1 = new FlxTimer();

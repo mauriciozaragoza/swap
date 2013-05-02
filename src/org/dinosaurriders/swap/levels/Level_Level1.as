@@ -27,9 +27,6 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		//Sprites
 		public var SpritesGroup:FlxGroup = new FlxGroup;
 
-		//Shapes
-		public var PropertyFieldsGroup:FlxGroup = new FlxGroup;
-
 		//Properties
 
 
@@ -72,25 +69,23 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			masterLayer.add(layerSky);
 			masterLayer.add(layerBackground);
 			masterLayer.add(layerPlayerLayer);
-			masterLayer.add(layerFrontLayer);
 			masterLayer.add(SpritesGroup);
-			masterLayer.add(PropertyFieldsGroup);
+			masterLayer.add(layerFrontLayer);
 
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
 
 			boundsMinX = 0;
 			boundsMinY = -32;
-			boundsMaxX = 640;
+			boundsMaxX = 1120;
 			boundsMaxY = 480;
 			boundsMin = new FlxPoint(0, -32);
-			boundsMax = new FlxPoint(640, 480);
+			boundsMax = new FlxPoint(1120, 480);
 			bgColor = 0xff88beef;
 		}
 
 		override public function createObjects(onAddCallback:Function = null, parentObject:Object = null):void
 		{
-			addShapesForLayerPropertyFields(onAddCallback);
 			addSpritesForLayerSprites(onAddCallback);
 			generateObjectLinks(onAddCallback);
 			if ( parentObject != null )
@@ -99,16 +94,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 				FlxG.state.add(masterLayer);
 		}
 
-		public function addShapesForLayerPropertyFields(onAddCallback:Function = null):void
-		{
-			var obj:Object;
-
-		}
-
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
+			addSpriteToLayer(new Exit(1024.000, 352.000, Assets.Exit), Exit, SpritesGroup , 1024.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level2" }, null ), onAddCallback );//"Exit"
 			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 368.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
-			addSpriteToLayer(new Exit(576.000, 352.000, Assets.Exit), Exit, SpritesGroup , 576.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level5" }, null ), onAddCallback );//"Exit"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

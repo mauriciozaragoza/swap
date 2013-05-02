@@ -10,11 +10,10 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
-
 	import org.dinosaurriders.swap.Settings;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
+	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
-
 	import flash.filters.GlowFilter;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -35,6 +34,7 @@ package org.dinosaurriders.swap.objects {
 		protected var _enabled : Boolean = true;
 		protected var _swappable : Boolean = false;
 		protected var _affectsPlayer : Boolean = true;
+		protected var _kills : Boolean = false;
 		
 		private var objectLinks : Array;
 		private var density : Number, restitution : Number, friction : Number;
@@ -78,6 +78,9 @@ package org.dinosaurriders.swap.objects {
 						break;
 					case "fixedrotation":
 						bodyDef.fixedRotation = property.value;
+						break;
+					case "kills":
+						kills = property.value;
 						break;
 					case "friction":
 						friction = property.value;
@@ -228,19 +231,25 @@ package org.dinosaurriders.swap.objects {
 		}
 
 		public function swap(swapObject : PhysicalBody) : void {
-			if (swappable && swapObject.swappable) {
-				// linear velocities
-				var tmpLin : b2Vec2 = body.GetLinearVelocity().Copy();
-				body.SetLinearVelocity(swapObject.body.GetLinearVelocity());
-				swapObject.body.SetLinearVelocity(tmpLin);
-	
-				var tmpPos : b2Vec2 = body.GetPosition().Copy();
-				body.SetPosition(swapObject.body.GetPosition());
-				swapObject.body.SetPosition(tmpPos);
-	
-				// Prevents freezing in midair
-				swapObject.body.SetAwake(true);
-			}
+//			if (swappable && swapObject.swappable) {
+//				// creates swap trails
+//				FlxG.state.add(new SwapTrail(x, y));
+//				
+//				// linear velocities
+//				var tmpLin : b2Vec2 = body.GetLinearVelocity().Copy();
+//				body.SetLinearVelocity(swapObject.body.GetLinearVelocity());
+//				swapObject.body.SetLinearVelocity(tmpLin);
+//	
+//				var tmpPos : b2Vec2 = body.GetPosition().Copy();
+//				body.SetPosition(swapObject.body.GetPosition());
+//				swapObject.body.SetPosition(tmpPos);
+//	
+//				// Prevents freezing in midair
+//				swapObject.body.SetAwake(true);
+//				
+//				// creates swap trails
+//				FlxG.state.add(new SwapTrail(x, y));
+//			}
 		}
 
 		public override function kill() : void {
@@ -318,6 +327,14 @@ package org.dinosaurriders.swap.objects {
 		
 		public function applyOuterGlow(color : uint = 0xff0000) : void {
 			framePixels.applyFilter(framePixels, new Rectangle(-10, -10, width + 20, height + 20), new Point(-10, -10), new GlowFilter(color, 0.5, 12, 12, 1.5, 3, false));
+		}
+
+		public function get kills() : Boolean {
+			return _kills;
+		}
+
+		public function set kills(kills : Boolean) : void {
+			this._kills = kills;
 		}
 	}
 }

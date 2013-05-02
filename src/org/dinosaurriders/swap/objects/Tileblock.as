@@ -11,8 +11,7 @@ package org.dinosaurriders.swap.objects {
 	/**
 	 * @author Mau
 	 */
-	public class Tileblock extends PhysicalBody {		
-		private var kills : Boolean;
+	public class Tileblock extends PhysicalBody {
 		
 		public function Tileblock(X : Number, Y : Number, density : Number = 1, restitution : Number = 0, friction : Number = 2) {
 			super(X, Y, density, restitution, friction);
@@ -28,23 +27,7 @@ package org.dinosaurriders.swap.objects {
 
 			polyDef.SetAsBox(Settings.TILESIZE / Settings.ratio / 2, Settings.TILESIZE / Settings.ratio / 2);
 			
-			for each (var property : Object in properties) {
-				switch (property.name) {
-					case "kills":
-					kills = property.value;	
-					break;
-				}
-			}
-			
 			return super.createPhysicsObject(world, properties);
-		}
-
-		override public function onStartCollision(contact : b2Contact) : void {
-			var collision : Vector.<b2Fixture> = identifyCollision(contact);
-			
-			if (kills && collision[1].GetUserData() is Player) {
-				collision[1].GetUserData().kill();
-			}
 		}
 	}
 }

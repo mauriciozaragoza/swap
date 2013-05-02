@@ -59,5 +59,9 @@ package org.dinosaurriders.swap.physics {
 				buoyancyControllers[i].Step(x);
 			}
 		}
+		
+		public static function clearControllers() {
+			buoyancyControllers = new Vector.<b2BuoyancyController>();
+		}
 	}
 }

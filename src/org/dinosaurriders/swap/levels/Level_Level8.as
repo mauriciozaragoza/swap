@@ -9,6 +9,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 	public class Level_Level8 extends BaseLevel
 	{
 		//Embedded media...
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level8_Sky.csv", mimeType="application/octet-stream")] public var CSV_Sky:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Sky:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level8_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
+		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Background:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level8_BackLayer.csv", mimeType="application/octet-stream")] public var CSV_BackLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_BackLayer:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level8_PlayerLayer.csv", mimeType="application/octet-stream")] public var CSV_PlayerLayer:Class;
@@ -17,6 +21,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_FrontLayer:Class;
 
 		//Tilemaps
+		public var layerSky:FlxTilemap;
+		public var layerBackground:FlxTilemap;
 		public var layerBackLayer:FlxTilemap;
 		public var layerPlayerLayer:FlxTilemap;
 		public var layerFrontLayer:FlxTilemap;
@@ -33,6 +39,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			var properties:Array = [];
 			var tileProperties:Dictionary = new Dictionary;
 
+			properties = generateProperties( null );
+			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 0.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
+			properties = generateProperties( null );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -256.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
@@ -56,10 +66,12 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
+			masterLayer.add(layerSky);
+			masterLayer.add(layerBackground);
 			masterLayer.add(layerBackLayer);
 			masterLayer.add(layerPlayerLayer);
-			masterLayer.add(layerFrontLayer);
 			masterLayer.add(SpritesGroup);
+			masterLayer.add(layerFrontLayer);
 
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
@@ -87,9 +99,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		{
 			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 433.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
 			addSpriteToLayer(new Exit(588.000, 59.000, Assets.Exit), Exit, SpritesGroup , 588.000, 59.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level15" }, null ), onAddCallback );//"Exit"
-			addSpriteToLayer(new PolygonBody(99.000, 100.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 99.000, 100.000, 0.000, 1, 1, false, 0.950, 0.950, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock1"
-			addSpriteToLayer(new PolygonBody(385.000, 325.000, Assets.SquareRock3, 4, 2000), PolygonBody, SpritesGroup , 385.000, 325.000, 0.000, 1, 1, false, 0.950, 0.950, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock3"
-			addSpriteToLayer(new PolygonBody(258.000, 419.000, Assets.SquareRock4, 4, 2000), PolygonBody, SpritesGroup , 258.000, 419.000, 0.000, 1, 1, false, 0.950, 0.950, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock4"
+			addSpriteToLayer(new PolygonBody(99.000, 100.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 99.000, 100.000, 0.000, 1, 1, false, 0.950, 0.950, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(new PolygonBody(417.000, 324.000, Assets.SquareRock3, 4, 2000), PolygonBody, SpritesGroup , 417.000, 324.000, 0.000, 1, 1, false, 0.950, 0.950, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock3"
+			addSpriteToLayer(new PolygonBody(288.000, 420.000, Assets.SquareRock4, 4, 2000), PolygonBody, SpritesGroup , 288.000, 420.000, 0.000, 1, 1, false, 0.950, 0.950, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock4"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

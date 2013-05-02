@@ -8,6 +8,9 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/SWAP.swf")]
 		public static var StartAnimation:Class;
 		
+		[Embed(source="../assets/aniswap.png")]
+		public static var SwapTrail:Class;
+		
 		[Embed(source="../assets/splash.png")]
 		public static var SplashScreen:Class;
 		
@@ -28,6 +31,9 @@ package org.dinosaurriders.swap {
 		
 		[Embed(source="../assets/SquareRock4.png")]
 		public static var SquareRock4 : Class;
+		
+		[Embed(source="../assets/crate1.png")]
+		public static var Crate1:Class;
 		
 		[Embed(source="../assets/Switch1.png")]
 		public static var Switch1 : Class;

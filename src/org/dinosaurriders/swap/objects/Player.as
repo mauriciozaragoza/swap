@@ -33,9 +33,9 @@ package org.dinosaurriders.swap.objects {
 			super(X, Y, 100, 0, 1);
 			loadGraphic(Assets.Player, true, true, 32, 32);
 			
+			offset.x = 8;
 			width = 16;
-			height = 32;
-			//makeGraphic(width, height);
+			height = 32;		
 
 			controls = new Dictionary();
 			controls["JUMP"] = Settings.JUMPKEY;
@@ -60,8 +60,8 @@ package org.dinosaurriders.swap.objects {
 			FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES, 1, true, false);
 			FlxControl.player1.setCustomKeys(Settings.UPKEY, Settings.DOWNKEY, Settings.LEFTKEY, Settings.RIGHTKEY);
 			
-			FlxControl.player1.setJumpButton(controls["JUMP"], FlxControlHandler.KEYMODE_PRESSED, 250, FlxObject.FLOOR, 250, 200);
-			FlxControl.player1.setGravity(0, Settings.DEFAULTPLAYERGRAV);
+			FlxControl.player1.setJumpButton(controls["JUMP"], FlxControlHandler.KEYMODE_PRESSED, Settings.PLAYERJUMP, FlxObject.FLOOR, 250, 200);
+			//FlxControl.player1.setGravity(0, Settings.DEFAULTPLAYERGRAV);
 			FlxControl.player1.setMovementSpeed(
 				Settings.PLAYERSPEED, 
 				0, 
@@ -109,8 +109,12 @@ package org.dinosaurriders.swap.objects {
 				// Prevents freezing in midair
 				swapObject.body.SetAwake(true);
 				
+				FlxG.state.add(new SwapTrail(x - width / 2, y - height / 2));
+				
 				x = (body.GetPosition().x * Settings.ratio) - width / 2;
 				y = (body.GetPosition().y * Settings.ratio) - height / 2;
+				
+				FlxG.state.add(new SwapTrail(x - width / 2, y - height / 2));		
 			}
 		}
 
@@ -165,10 +169,16 @@ package org.dinosaurriders.swap.objects {
 			var collision : Vector.<b2Fixture> = identifyCollision(contact);
 			var playerFixture : b2Fixture = collision[0];
 			var otherFixture : b2Fixture = collision[1];
-
+			var otherBody : PhysicalBody = otherFixture.GetUserData() as PhysicalBody;
+			 
+			// kill on touch			
+			if (otherBody != null && otherBody.kills) {
+				kill();
+			}
+			
 			// if feet sensor touched something, then player landed somewhere
 			// fixtures[1] is the feet sensor
-			if (playerFixture == fixtures[1] && !otherFixture.IsSensor()) {
+			else if (playerFixture == fixtures[1] && !otherFixture.IsSensor()) {
 				feetContactCount++;
 				onLand();
 			}
@@ -315,9 +325,11 @@ package org.dinosaurriders.swap.objects {
 		// This rotates the player and the controls if the gravity changes
 		override public function set gravityVector(gravityVector : b2Vec2) : void {
 			super.gravityVector = gravityVector;
-
-			var unitVector : b2Vec2 = gravityVector.Copy();
-			unitVector.Normalize();
+//
+//			var unitVector : b2Vec2 = gravityVector.Copy();
+//			unitVector.Normalize();
+			
+			FlxControl.player1.setGravity(gravityVector.x * Settings.ratio, gravityVector.y * Settings.ratio);
 			
 //			// Currently it only supports 4 directions
 //			if (unitVector.x > 0.9) {

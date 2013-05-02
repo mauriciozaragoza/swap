@@ -11,6 +11,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		//Embedded media...
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level17_Sky.csv", mimeType="application/octet-stream")] public var CSV_Sky:Class;
 		[Embed(source="../../../../../assets/spritesheet2.png")] public var Img_Sky:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level17_Clouds.csv", mimeType="application/octet-stream")] public var CSV_Clouds:Class;
+		[Embed(source="../../../../../assets/spritesheet2.png")] public var Img_Clouds:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level17_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
 		[Embed(source="../../../../../assets/spritesheet2.png")] public var Img_Background:Class;
 		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level17_Back.csv", mimeType="application/octet-stream")] public var CSV_Back:Class;
@@ -22,6 +24,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		//Tilemaps
 		public var layerSky:FlxTilemap;
+		public var layerClouds:FlxTilemap;
 		public var layerBackground:FlxTilemap;
 		public var layerBack:FlxTilemap;
 		public var layerPlayer:FlxTilemap;
@@ -42,6 +45,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			properties = generateProperties( null );
 			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 0.000, 32, 32, 0.000, 0.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			layerClouds = addTilemap( CSV_Clouds, Img_Clouds, -32.000, -64.000, 32, 32, 0.300, 0.300, false, 1, 1, properties, onAddCallback );
+			properties = generateProperties( null );
 			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, 0.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			layerBack = addTilemap( CSV_Back, Img_Back, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
@@ -57,21 +62,22 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerSky);
+			masterLayer.add(layerClouds);
 			masterLayer.add(layerBackground);
 			masterLayer.add(layerBack);
 			masterLayer.add(layerPlayer);
-			masterLayer.add(layerFront);
 			masterLayer.add(SpritesGroup);
+			masterLayer.add(layerFront);
 
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
 
 			boundsMinX = 0;
 			boundsMinY = 0;
-			boundsMaxX = 640;
+			boundsMaxX = 960;
 			boundsMaxY = 512;
 			boundsMin = new FlxPoint(0, 0);
-			boundsMax = new FlxPoint(640, 512);
+			boundsMax = new FlxPoint(960, 512);
 			bgColor = 0xff88beef;
 		}
 
@@ -88,6 +94,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
 			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 240.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
+			addSpriteToLayer(new Exit(913.000, 416.000, Assets.Exit), Exit, SpritesGroup , 913.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level18" }, null ), onAddCallback );//"Exit"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

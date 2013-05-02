@@ -49,13 +49,21 @@ package org.dinosaurriders.swap.objects {
 			
 			if (forceApplied > forceToBreak) {
 				kill();
+			} else if (forceApplied > forceToBreak * 0.3) {
+				// create small rubble
+				var rubble : Rubble = new Rubble(x, y + Math.random() * 50, rubbleImage)
+				rubble.scale.x = rubble.scale.y = Math.random() * 0.1 + 0.05;
+				FlxG.state.add(rubble);
 			}
 		}
 
 		override public function kill() : void {
 			// create rubble
+			var rubble : Rubble;
 			for (var i = 0; i < 10; i++) {
-				FlxG.state.add(new Rubble(x, y + Math.random() * 50, rubbleImage));
+				rubble = new Rubble(x, y + Math.random() * 50, rubbleImage)
+				rubble.scale.x = rubble.scale.y = Math.random() * 0.25 + 0.25;
+				FlxG.state.add(rubble);
 			}
 			
 			super.kill();

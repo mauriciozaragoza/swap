@@ -59,6 +59,9 @@ package org.dinosaurriders.swap {
 			
 			camera.setBounds(hitTilemap.x, hitTilemap.y, hitTilemap.width, hitTilemap.height);
 			FlxG.worldBounds = new FlxRect(hitTilemap.x - 100, hitTilemap.y, hitTilemap.width + 200, hitTilemap.height + 200);
+			
+			// initial flash
+			FlxG.flash(0xffffff,2);
 		}
 		
 		private function setupWorld() : void {
@@ -211,12 +214,11 @@ package org.dinosaurriders.swap {
 			player.revive();
 			player=temp;*/
 			
-			FlxG.flash(0xffffff,2);
-			//FlxG.stage.removeChild(debugSprite);
-			worldGroup.kill();
-			
 			// destroy disposed objects
+			PhysicsUtil.clearControllers();
+			worldGroup.kill();
 			PhysicsUtil.destroyPhysicObjects(world);
+			
 			
 			this.kill();
 			

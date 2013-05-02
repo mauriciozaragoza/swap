@@ -107,8 +107,8 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(null, Player, SpritesGroup , 704.000, 143.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(640.000, 160.000, Assets.SquareRock1, 4, 0.1), PolygonBody, SpritesGroup , 640.000, 160.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock1"
+			addSpriteToLayer(null, Player, SpritesGroup , 707.000, 191.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
+			addSpriteToLayer(new PolygonBody(639.000, 192.000, Assets.SquareRock1, 4, 2000), PolygonBody, SpritesGroup , 639.000, 192.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock1"
 			addSpriteToLayer(new Exit(770.000, 358.000, Assets.Exit), Exit, SpritesGroup , 770.000, 358.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level6" }, null ), onAddCallback );//"Exit"
 		}
 
