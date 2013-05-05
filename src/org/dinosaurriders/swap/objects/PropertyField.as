@@ -131,7 +131,6 @@ package org.dinosaurriders.swap.objects {
 			}
 			// apply bouyancy 
 			if (bc != null) {
-				trace("buoyant", affectedBody.x, affectedBody.y);
 				bc.AddBody(affectedBody.body);				
 			}
 			

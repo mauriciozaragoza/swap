@@ -27,7 +27,6 @@ package org.dinosaurriders.swap.objects {
 		private var onKillCallback : Function;
 		private var onExitCallback : Function;
 		private var controls : Dictionary;
-		private var groundMoveVector : b2Vec2, airMoveVector : b2Vec2;
 
 		public function Player(X : Number, Y : Number) : void {
 			super(X, Y, 100, 0, 1);
@@ -41,11 +40,6 @@ package org.dinosaurriders.swap.objects {
 			controls["JUMP"] = Settings.JUMPKEY;
 			controls["SWAP"] = Settings.SWAPKEY;
 			controls["TOUCHSWAP"] = Settings.TOUCHSWAPKEY;
-
-//			addAnimation("jump", [1], 10);
-//			addAnimation("move", [0, 1, 2], 10);
-//			addAnimation("fall", [1], 10);
-//			addAnimation("idle", [1], 2);
 			
 			immovable = false;
 			
@@ -69,10 +63,6 @@ package org.dinosaurriders.swap.objects {
 				Settings.PLAYERMAXFALLSPEED, 
 				Settings.PLAYERDECCELERATION,
 				0);
-				
-//			FlxControl.player1.setMovementSpeed(
-//				Settings.PLAYERSPEED, Settings.PLAYERSPEED,
-//				Settings.PLAYERMAXVELOCITY, Settings.PLAYERMAXVELOCITY, 400, 0);
 
 			FlxControl.player1.setCursorControl(false, false, true, true);
 			
@@ -93,7 +83,7 @@ package org.dinosaurriders.swap.objects {
 			}
 		}
 			
-		override public function swap(swapObject : PhysicalBody) : void {
+		public function swap(swapObject : PhysicalBody) : void {
 			if (swapObject.swappable) {
 				// linear velocities
 				var tmpLin : FlxPoint = new FlxPoint();
@@ -118,31 +108,24 @@ package org.dinosaurriders.swap.objects {
 			}
 		}
 
+		private function addTouchSensor() : void {
+			fixtureDefs[3] = new b2FixtureDef();
+			var touchSensorDef : b2CircleShape = new b2CircleShape();
+			
+			touchSensorDef.SetRadius(Settings.TOUCHSENSORRADIUS);
+			touchSensorDef.SetLocalPosition(new b2Vec2(width / Settings.ratio / 3.0, height / Settings.ratio / 3.0));
+			fixtureDefs[3].shape = touchSensorDef;
+			fixtureDefs[3].isSensor = true;
+			fixtureDefs[3].userData = this;
+			fixtures[3] = body.CreateFixture(fixtureDefs[3]);
+		}
+		
+		private function removeTouchSensor() : void {
+			body.DestroyFixture(fixtures[3]);
+		}
+
 		override public function update() : void {
 			super.update2();
-			//trace(FlxG.collide(this, levelHitLayers));
-//			var velocity : b2Vec2 = body.GetLinearVelocity();
-//			var moveDirection : b2Vec2 = groundMoveVector.Copy();
-//			moveDirection.Normalize();
-
-//			if (grounded) {
-//				if (FlxG.keys.justPressed(controls["LEFT"]) || FlxG.keys.justPressed(controls["RIGHT"])) {
-//					setFriction(0.1);
-//				}
-//				if (FlxG.keys.justReleased(controls["LEFT"]) || FlxG.keys.justReleased(controls["RIGHT"])) {
-//					setFriction(1);
-//				}	
-//			}
-//			
-//			// dot product
-//			if (FlxG.keys.pressed(controls["LEFT"]) && velocity.x * moveDirection.x + velocity.y * moveDirection.y > -Settings.PLAYERMAXVELOCITY) {
-//				// body.SetLinearVelocity(groundMoveVector.Copy().GetNegative());
-//				// trace("applying", groundMoveVector.GetNegative().x, groundMoveVector.GetNegative().y);
-//				body.ApplyImpulse(grounded ? groundMoveVector.Copy().GetNegative() : airMoveVector.Copy().GetNegative(), new b2Vec2());
-//			} else if (FlxG.keys.pressed(controls["RIGHT"]) && velocity.x * moveDirection.x + velocity.y * moveDirection.y < Settings.PLAYERMAXVELOCITY) {
-//				// body.SetLinearVelocity(groundMoveVector.Copy());
-//				body.ApplyImpulse(grounded ? groundMoveVector.Copy() : airMoveVector.Copy(), new b2Vec2());
-//			}
 
 			if (FlxG.keys.justPressed(controls["JUMP"])) {
 				jump();
@@ -152,15 +135,20 @@ package org.dinosaurriders.swap.objects {
 				// WARNING: order IS important
 				PhysicsUtil.enqueueSwap(tempSwapObject, this);
 			}
+			
+			if (FlxG.keys.justPressed(controls["TOUCHSWAP"])) {
+				addTouchSensor();
+			}
+			
+			if (FlxG.keys.justReleased(controls["TOUCHSWAP"])) {
+				removeTouchSensor();
+			}
 
 			if (Math.abs(velocity.x) > 0.1) {
 				play("move");
 			} else {
 				play("idle");
 			}
-			
-			//trace(this.overlaps(levelHitLayers));
-			//trace(FlxG.collide(this, levelHitLayers.members[0], lolz));
 			
 			body.SetPosition(new b2Vec2((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio));
 		}
@@ -170,10 +158,22 @@ package org.dinosaurriders.swap.objects {
 			var playerFixture : b2Fixture = collision[0];
 			var otherFixture : b2Fixture = collision[1];
 			var otherBody : PhysicalBody = otherFixture.GetUserData() as PhysicalBody;
-			 
+			
 			// kill on touch			
 			if (otherBody != null && otherBody.kills) {
 				kill();
+			}
+			
+			// if touchsensor collided
+			if (playerFixture == fixtures[3] && otherBody.swappable) {
+				// deselect previous swap object
+				if (tempSwapObject != null && tempSwapObject.selected) {
+					tempSwapObject.selected = false;
+				}
+				if (!otherBody.selected) {
+					tempSwapObject = otherBody;
+					tempSwapObject.selected = true;
+				}
 			}
 			
 			// if feet sensor touched something, then player landed somewhere
@@ -199,13 +199,11 @@ package org.dinosaurriders.swap.objects {
 		}
 
 		override public function onBeforeSolveCollision(contact : b2Contact, oldManifold : b2Manifold) : void {
-			var otherObject : PhysicalBody = identifyCollision(contact)[1].GetUserData() as PhysicalBody;
-
+			var collision : Vector.<b2Fixture> = identifyCollision(contact);
+			var playerFixture : b2Fixture = collision[0];
+			var otherObject : PhysicalBody = collision[1].GetUserData() as PhysicalBody;
+			
 			if (otherObject != null) {
-				if (FlxG.keys.pressed(controls["TOUCHSWAP"]) && otherObject.swappable) {
-					tempSwapObject = otherObject;
-				}
-
 				if (!otherObject.affectsPlayer) {
 					contact.SetEnabled(false);
 				}
@@ -221,7 +219,7 @@ package org.dinosaurriders.swap.objects {
 			appliedForce += impulse.normalImpulses[0] * FlxG.framerate; // force by impulse
 			//appliedForce += otherBody.gravityVector.y * otherBody.body.GetMass(); // force by gravity * mass
 			
-			trace("ouch: ", appliedForce);
+			//trace("ouch: ", appliedForce);
 			if (appliedForce > Settings.MAXFORCE) {
 				kill();
 				_dead = true;
@@ -249,6 +247,8 @@ package org.dinosaurriders.swap.objects {
 			// foot sensor
 			fixtureDefs[2] = new b2FixtureDef();
 			// bottom circle
+			fixtureDefs[3] = new b2FixtureDef();
+			// touch sensor
 
 			boxDef.SetAsBox(w1 / 2.2, h1 / 3);
 			fixtureDefs[0].shape = boxDef;
@@ -270,27 +270,25 @@ package org.dinosaurriders.swap.objects {
 			circleDef.SetLocalPosition(new b2Vec2(0, h1 * 1.0 / 3.0));
 			fixtureDefs[2].shape = circleDef;
 
+			var touchSensorDef : b2CircleShape = new b2CircleShape();
+
+			touchSensorDef.SetRadius(Settings.TOUCHSENSORRADIUS);
+			touchSensorDef.SetLocalPosition(new b2Vec2(w1 / 2.0, h1 / 2.0));
+			fixtureDefs[3].shape = touchSensorDef;
+			fixtureDefs[3].isSensor = true;
+			fixtureDefs[3].userData = this;
+
 			// Creates the body
 			super.createPhysicsObject(world, properties);
 
+			// removes initial touch sensor
+			removeTouchSensor();
+			
 			body.SetBullet(true);
 			return body;
 		}
 
 		public function jump() : void {
-//			if (grounded) {
-//				var direction : b2Vec2 = gravityVector.Copy();
-//				var jumpVector : b2Vec2;
-//
-//				direction.NegativeSelf();
-//				direction.Normalize();
-//
-//				jumpVector = new b2Vec2(direction.x * Settings.PLAYERJUMP, direction.y * Settings.PLAYERJUMP);
-//				jumpVector.Multiply(body.GetMass());
-//				setFriction(0);
-//
-//				body.ApplyImpulse(jumpVector, new b2Vec2());
-//			}
 		}
 
 		/*
@@ -298,9 +296,6 @@ package org.dinosaurriders.swap.objects {
 		 */
 		public function onAir() : void {
 			setFriction(0);
-			// var newAirVel : b2Vec2 = body.GetLinearVelocity().Copy();
-			// newAirVel.x = 0;
-			// body.SetLinearVelocity(newAirVel);
 			grounded = false;
 		}
 
@@ -325,45 +320,7 @@ package org.dinosaurriders.swap.objects {
 		// This rotates the player and the controls if the gravity changes
 		override public function set gravityVector(gravityVector : b2Vec2) : void {
 			super.gravityVector = gravityVector;
-//
-//			var unitVector : b2Vec2 = gravityVector.Copy();
-//			unitVector.Normalize();
-			
 			FlxControl.player1.setGravity(gravityVector.x * Settings.ratio, gravityVector.y * Settings.ratio);
-			
-//			// Currently it only supports 4 directions
-//			if (unitVector.x > 0.9) {
-//				
-//				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
-//				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
-//				angle = 270.0;
-//				body.SetAngle(angle / 180.0 * Math.PI);
-//				trace("lol1");
-//			} else if (unitVector.x < -0.9) {
-//				controls["LEFT"] = Settings.UPKEY;
-//				controls["RIGHT"] = Settings.DOWNKEY;
-//				groundMoveVector = new b2Vec2(0, Settings.PLAYERSPEED * body.GetMass());
-//				airMoveVector = new b2Vec2(0, Settings.PLAYERAIRSPEED * body.GetMass());
-//				angle = 90.0;
-//				body.SetAngle(angle / 180.0 * Math.PI);
-//				trace("lol2");
-//			} else if (unitVector.y > 0.9) {
-//				controls["LEFT"] = Settings.LEFTKEY;
-//				controls["RIGHT"] = Settings.RIGHTKEY;
-//				groundMoveVector = new b2Vec2(Settings.PLAYERSPEED * body.GetMass());
-//				airMoveVector = new b2Vec2(Settings.PLAYERAIRSPEED * body.GetMass());
-//				angle = 0;
-//				body.SetAngle(angle / 180.0 * Math.PI);
-//				trace("lol3");
-//			} else if (unitVector.y < 0.9) {
-//				controls["LEFT"] = Settings.RIGHTKEY;
-//				controls["RIGHT"] = Settings.LEFTKEY;
-//				groundMoveVector = new b2Vec2(-Settings.PLAYERSPEED * body.GetMass());
-//				airMoveVector = new b2Vec2(-Settings.PLAYERAIRSPEED * body.GetMass());
-//				angle = 180.0;
-//				body.SetAngle(angle / 180.0 * Math.PI);
-//				trace("lol3");
-			// }
 		}
 	}
 }

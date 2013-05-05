@@ -88,10 +88,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 			obj = new BoxData(223.000, 681.000, 0.000, 320.000, 151.000, PropertyFieldsGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityx", value:-5.000000 }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityx", value:-5 }, null ), 1, 1 );
 			obj = new BoxData(226.000, 515.000, 0.000, 320.000, 165.000, PropertyFieldsGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-20.000000 }, { name:"buoyancy", value:200.000000 }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-20 }, { name:"buoyancy", value:200 }, null ), 1, 1 );
 			obj = new BoxData(210.000, 570.000, 0.000, 360.000, 50.000, PropertyFieldsGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"kills", value:true }, null ), 1, 1 );
@@ -99,9 +99,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 480.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(96.000, 448.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 96.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
-			addSpriteToLayer(new PolygonBody(160.000, 448.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 160.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
+			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 480.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
+			addSpriteToLayer(new PolygonBody(96.000, 448.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 96.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Crate1"
+			addSpriteToLayer(new PolygonBody(160.000, 448.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 160.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Crate1"
 			addSpriteToLayer(new Exit(0.000, 768.000, Assets.Exit), Exit, SpritesGroup , 0.000, 768.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, null ), onAddCallback );//"Exit"
 		}
 

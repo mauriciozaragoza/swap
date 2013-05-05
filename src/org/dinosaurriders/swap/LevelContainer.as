@@ -176,7 +176,6 @@ package org.dinosaurriders.swap {
 		override public function update() : void {
 			super.update();
 			
-//			FlxG.collide(player, currentLevel.hitTilemaps);
 			FlxG.collide(player, spriteGroup);
 			
 			// destroy disposed objects
@@ -218,7 +217,6 @@ package org.dinosaurriders.swap {
 			PhysicsUtil.clearControllers();
 			worldGroup.kill();
 			PhysicsUtil.destroyPhysicObjects(world);
-			
 			
 			this.kill();
 			

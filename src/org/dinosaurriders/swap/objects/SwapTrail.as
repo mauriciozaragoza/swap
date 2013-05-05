@@ -17,8 +17,6 @@ package org.dinosaurriders.swap.objects {
 			addAnimation("play", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 12);
 			play("play");
 			
-			trace("lol", x, y);
-			
 			t = new FlxTimer();
 			t.start(1, 0, onFinish);
 			t2 = new FlxTimer();

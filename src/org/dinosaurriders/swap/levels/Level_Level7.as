@@ -102,7 +102,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			addSpriteToLayer(new PolygonBody(477.000, 254.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 477.000, 254.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
 			addSpriteToLayer(new BreakableWall(387.000, 224.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 387.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
 			addSpriteToLayer(new PolygonBody(93.000, 384.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 93.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
-			addSpriteToLayer(null, Player, SpritesGroup , -3.000, 401.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Player"
+			addSpriteToLayer(null, Player, SpritesGroup , -3.000, 401.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void

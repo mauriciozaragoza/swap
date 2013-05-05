@@ -1,4 +1,5 @@
 package org.dinosaurriders.swap.objects {
+	import flash.display.BitmapData;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Collision.b2Manifold;
 	import Box2D.Common.Math.b2Vec2;
@@ -35,10 +36,12 @@ package org.dinosaurriders.swap.objects {
 		protected var _swappable : Boolean = false;
 		protected var _affectsPlayer : Boolean = true;
 		protected var _kills : Boolean = false;
+		protected var _selected : Boolean = false;
 		
 		private var objectLinks : Array;
 		private var density : Number, restitution : Number, friction : Number;
-
+		private var originalPixels : BitmapData;
+	
 		public function PhysicalBody(X : Number, Y : Number, density : Number = 1, restitution : Number = 0, friction : Number = 1) : void {
 			super(X, Y);
 
@@ -230,28 +233,6 @@ package org.dinosaurriders.swap.objects {
 		public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {
 		}
 
-		public function swap(swapObject : PhysicalBody) : void {
-//			if (swappable && swapObject.swappable) {
-//				// creates swap trails
-//				FlxG.state.add(new SwapTrail(x, y));
-//				
-//				// linear velocities
-//				var tmpLin : b2Vec2 = body.GetLinearVelocity().Copy();
-//				body.SetLinearVelocity(swapObject.body.GetLinearVelocity());
-//				swapObject.body.SetLinearVelocity(tmpLin);
-//	
-//				var tmpPos : b2Vec2 = body.GetPosition().Copy();
-//				body.SetPosition(swapObject.body.GetPosition());
-//				swapObject.body.SetPosition(tmpPos);
-//	
-//				// Prevents freezing in midair
-//				swapObject.body.SetAwake(true);
-//				
-//				// creates swap trails
-//				FlxG.state.add(new SwapTrail(x, y));
-//			}
-		}
-
 		public override function kill() : void {
 			PhysicsUtil.enqueueDeletedBody(body);
 
@@ -322,10 +303,26 @@ package org.dinosaurriders.swap.objects {
 		}
 		
 		public function applyInnerGlow(color : uint = 0x6600cc) : void {
+			if (originalPixels == null) {
+				originalPixels = new BitmapData(width, height);
+				originalPixels.copyPixels(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0));
+			}
+			else {
+				framePixels.copyPixels(originalPixels, new Rectangle(0, 0, width, height), new Point(0, 0));
+			}
+			
 			framePixels.applyFilter(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0), new GlowFilter(color, 0.5, 12, 12, 1.5, 3, true));
 		}
 		
 		public function applyOuterGlow(color : uint = 0xff0000) : void {
+			if (originalPixels == null) {
+				originalPixels = new BitmapData(width, height);
+				originalPixels.copyPixels(framePixels, new Rectangle(0, 0, width, height), new Point(0, 0));
+			}
+			else {
+				framePixels.copyPixels(originalPixels, new Rectangle(0, 0, width, height), new Point(0, 0));
+			}
+			
 			framePixels.applyFilter(framePixels, new Rectangle(-10, -10, width + 20, height + 20), new Point(-10, -10), new GlowFilter(color, 0.5, 12, 12, 1.5, 3, false));
 		}
 
@@ -335,6 +332,15 @@ package org.dinosaurriders.swap.objects {
 
 		public function set kills(kills : Boolean) : void {
 			this._kills = kills;
+		}
+
+		public function get selected() : Boolean {
+			return _selected;
+		}
+
+		public function set selected(selected : Boolean) : void {
+			this._selected = selected;			
+			applyInnerGlow(selected ? 0x66ff33 : 0x6600cc);
 		}
 	}
 }
