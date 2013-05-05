@@ -1,7 +1,7 @@
 package org.dinosaurriders.swap.physics {
-	import Box2D.Dynamics.b2TimeStep;
 	import Box2D.Dynamics.Controllers.b2BuoyancyController;
 	import Box2D.Dynamics.b2Body;
+	import Box2D.Dynamics.b2TimeStep;
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.Settings;
@@ -47,12 +47,12 @@ package org.dinosaurriders.swap.physics {
 			}
 		}
 		
-		public static function addBuoyancyController(world : b2World, controller : b2BuoyancyController) {
+		public static function addBuoyancyController(world : b2World, controller : b2BuoyancyController) : void {
 			buoyancyControllers.push(controller);
 			world.AddController(controller);
 		}
 		
-		public static function updateControllers(dt : Number, velocityIterations : int, positionIterations : int) {
+		public static function updateControllers(dt : Number, velocityIterations : int, positionIterations : int) : void {
 			for (var i : int = 0; i < buoyancyControllers.length; i++) {
 				var x : b2TimeStep = new b2TimeStep();
 				x.dt = dt;
@@ -60,7 +60,7 @@ package org.dinosaurriders.swap.physics {
 			}
 		}
 		
-		public static function clearControllers() {
+		public static function clearControllers() : void {
 			buoyancyControllers = new Vector.<b2BuoyancyController>();
 		}
 	}

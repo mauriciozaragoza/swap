@@ -60,7 +60,7 @@ package org.dinosaurriders.swap.objects {
 		override public function kill() : void {
 			// create rubble
 			var rubble : Rubble;
-			for (var i = 0; i < 10; i++) {
+			for (var i : int = 0; i < 10; i++) {
 				rubble = new Rubble(x, y + Math.random() * 50, rubbleImage)
 				rubble.scale.x = rubble.scale.y = Math.random() * 0.25 + 0.25;
 				FlxG.state.add(rubble);

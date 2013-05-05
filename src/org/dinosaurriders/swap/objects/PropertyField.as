@@ -30,7 +30,7 @@ package org.dinosaurriders.swap.objects {
 		private var _currentState : FlxState;
 		private var blur : BlurFxRectangle;
 		private var blurEffect : FlxSprite;
-		var bc : b2BuoyancyController;
+		private var bc : b2BuoyancyController;
 
 		public function PropertyField(X : Number, Y : Number) {
 			super(X, Y, 0, 0, 0);
@@ -53,7 +53,7 @@ package org.dinosaurriders.swap.objects {
 
 			gravityField = new b2Vec2();
 
-			for each (var property in properties) {
+			for each (var property : Object in properties) {
 				switch (property.name) {
 					case "gravityx":
 						gravityField.x = property.value;

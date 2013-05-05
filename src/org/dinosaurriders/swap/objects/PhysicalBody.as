@@ -1,5 +1,4 @@
 package org.dinosaurriders.swap.objects {
-	import flash.display.BitmapData;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Collision.b2Manifold;
 	import Box2D.Common.Math.b2Vec2;
@@ -11,10 +10,12 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
+
 	import org.dinosaurriders.swap.Settings;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
-	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
+
+	import flash.display.BitmapData;
 	import flash.filters.GlowFilter;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -71,7 +72,7 @@ package org.dinosaurriders.swap.objects {
 			bodyDef.position.Set((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio);
 			
 			// pre-creation property check
-			for each (var property in properties) {
+			for each (var property : Object in properties) {
 				switch (property.name) {
 					case "sensor":
 						isSensor = property.value;
@@ -104,7 +105,7 @@ package org.dinosaurriders.swap.objects {
 			body.SetUserData(this);
 			
 			// post-creation properties
-			for each (var property in properties) {
+			for each (var property : Object in properties) {
 				switch (property.name) {
 					case "enabled":
 						enabled = property.value;

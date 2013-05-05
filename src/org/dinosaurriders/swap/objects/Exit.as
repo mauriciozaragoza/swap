@@ -50,7 +50,7 @@ package org.dinosaurriders.swap.objects {
 			fixtureDefs[0].shape = polyDef;
 			fixtureDefs[0].isSensor = true;
 			
-			for each (var property in properties) {
+			for each (var property : Object in properties) {
 				switch (property.name) {
 					case "warp":
 						warpTo = property.value;

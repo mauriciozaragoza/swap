@@ -6,16 +6,16 @@ package org.dinosaurriders.swap.levels
 	import flash.utils.Dictionary;
 	// Custom imports:
 import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
-	public class Level_Level2 extends BaseLevel
+	public class Level_Level3 extends BaseLevel
 	{
 		//Embedded media...
-		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_Sky.csv", mimeType="application/octet-stream")] public var CSV_Sky:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level3_Sky.csv", mimeType="application/octet-stream")] public var CSV_Sky:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Sky:Class;
-		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level3_Background.csv", mimeType="application/octet-stream")] public var CSV_Background:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_Background:Class;
-		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_PlayerLayer.csv", mimeType="application/octet-stream")] public var CSV_PlayerLayer:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level3_PlayerLayer.csv", mimeType="application/octet-stream")] public var CSV_PlayerLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_PlayerLayer:Class;
-		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level2_FrontLayer.csv", mimeType="application/octet-stream")] public var CSV_FrontLayer:Class;
+		[Embed(source="../../../../../assets/worlds/maps/mapCSV_Level3_FrontLayer.csv", mimeType="application/octet-stream")] public var CSV_FrontLayer:Class;
 		[Embed(source="../../../../../assets/spritesheet1.png")] public var Img_FrontLayer:Class;
 
 		//Tilemaps
@@ -30,7 +30,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		//Properties
 
 
-		public function Level_Level2(addToStage:Boolean = true, onAddCallback:Function = null, parentObject:Object = null)
+		public function Level_Level3(addToStage:Boolean = true, onAddCallback:Function = null, parentObject:Object = null)
 		{
 			// Generate maps.
 			var properties:Array = [];
@@ -57,10 +57,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 			boundsMinX = 0;
 			boundsMinY = -32;
-			boundsMaxX = 1120;
+			boundsMaxX = 640;
 			boundsMaxY = 480;
 			boundsMin = new FlxPoint(0, -32);
-			boundsMax = new FlxPoint(1120, 480);
+			boundsMax = new FlxPoint(640, 480);
 			bgColor = 0xff88beef;
 		}
 
@@ -76,13 +76,15 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 383.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new Exit(1080.000, 352.000, Assets.Exit), Exit, SpritesGroup , 1080.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level3" }, null ), onAddCallback );//"Exit"
-			addSpriteToLayer(new PolygonBody(443.000, 352.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 443.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:false }, null ), onAddCallback );//"ForestBoulderLarge"
+			linkedObjectDictionary[4] = addSpriteToLayer(new WeightSwitch(450.000, 408.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 450.000, 408.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
+			addSpriteToLayer(new PolygonBody(240.000, 384.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 240.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			linkedObjectDictionary[5] = addSpriteToLayer(new Exit(600.000, 256.000, Assets.Exit), Exit, SpritesGroup , 600.000, 256.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"enabled", value:false }, { name:"warp", value:"Level4" }, null ), onAddCallback );//"Exit"
+			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 288.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void
 		{
+			createLink(linkedObjectDictionary[4], linkedObjectDictionary[5], onAddCallback, generateProperties( { name:"onActivate", value:"ENABLE" }, null ) );
 		}
 
 	}

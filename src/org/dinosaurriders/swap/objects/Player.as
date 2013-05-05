@@ -29,7 +29,7 @@ package org.dinosaurriders.swap.objects {
 		private var controls : Dictionary;
 
 		public function Player(X : Number, Y : Number) : void {
-			super(X, Y, 100, 0, 1);
+			super(X, Y, 1000, 0, 1);
 			loadGraphic(Assets.Player, true, true, 32, 32);
 			
 			offset.x = 8;
@@ -110,10 +110,10 @@ package org.dinosaurriders.swap.objects {
 
 		private function addTouchSensor() : void {
 			fixtureDefs[3] = new b2FixtureDef();
-			var touchSensorDef : b2CircleShape = new b2CircleShape();
+			var touchSensorDef : b2PolygonShape = new b2PolygonShape();
 			
-			touchSensorDef.SetRadius(Settings.TOUCHSENSORRADIUS);
-			touchSensorDef.SetLocalPosition(new b2Vec2(width / Settings.ratio / 3.0, height / Settings.ratio / 3.0));
+			touchSensorDef.SetAsBox(Settings.TOUCHSENSORRADIUS, Settings.TOUCHSENSORRADIUS);
+			//touchSensorDef.SetLocalPosition(new b2Vec2(width / Settings.ratio / 3.0, height / Settings.ratio / 3.0));
 			fixtureDefs[3].shape = touchSensorDef;
 			fixtureDefs[3].isSensor = true;
 			fixtureDefs[3].userData = this;
@@ -270,18 +270,18 @@ package org.dinosaurriders.swap.objects {
 			circleDef.SetLocalPosition(new b2Vec2(0, h1 * 1.0 / 3.0));
 			fixtureDefs[2].shape = circleDef;
 
-			var touchSensorDef : b2CircleShape = new b2CircleShape();
-
-			touchSensorDef.SetRadius(Settings.TOUCHSENSORRADIUS);
-			touchSensorDef.SetLocalPosition(new b2Vec2(w1 / 2.0, h1 / 2.0));
+			fixtureDefs[3] = new b2FixtureDef();
+			var touchSensorDef : b2PolygonShape = new b2PolygonShape();
+			
+			touchSensorDef.SetAsBox(Settings.TOUCHSENSORRADIUS, Settings.TOUCHSENSORRADIUS);
+			//touchSensorDef.SetLocalPosition(new b2Vec2(width / Settings.ratio / 3.0, height / Settings.ratio / 3.0));
 			fixtureDefs[3].shape = touchSensorDef;
 			fixtureDefs[3].isSensor = true;
 			fixtureDefs[3].userData = this;
 
 			// Creates the body
 			super.createPhysicsObject(world, properties);
-
-			// removes initial touch sensor
+			
 			removeTouchSensor();
 			
 			body.SetBullet(true);

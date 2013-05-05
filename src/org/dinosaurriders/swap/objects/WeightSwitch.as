@@ -13,6 +13,7 @@ package org.dinosaurriders.swap.objects {
 	 */
 	public class WeightSwitch extends Switch {
 		private var requiredForce : Number;
+		private var currentForce : Number = 0;
 		
 		public function WeightSwitch(X : Number, Y : Number, image : Class, requiredForce : Number) {
 			super(X, Y, image);
@@ -24,14 +25,10 @@ package org.dinosaurriders.swap.objects {
 			super.onStartCollision(contact);
 			
 			var collision : Vector.<b2Fixture> = identifyCollision(contact);
-			var switchBody : PhysicalBody = collision[0].GetUserData();
 			var otherBody : PhysicalBody = collision[1].GetUserData();
 			
-			trace("applied", otherBody.body.GetMass() * otherBody.gravityVector.Length(),
-				" to switch (mass = ", otherBody.body.GetMass(),
-				"gravity: ", otherBody.gravityVector.Length());
-				
-			if (otherBody.body.GetMass() * otherBody.gravityVector.Length() >= requiredForce) {
+			currentForce += otherBody.body.GetMass() * otherBody.gravityVector.Length();
+			if (currentForce >= requiredForce) {
 				activate();
 			}
 		}
@@ -40,10 +37,10 @@ package org.dinosaurriders.swap.objects {
 			super.onEndCollision(contact);
 			
 			var collision : Vector.<b2Fixture> = identifyCollision(contact);
-			var switchBody : PhysicalBody = collision[0].GetUserData();
 			var otherBody : PhysicalBody = collision[1].GetUserData();
 			
-			if (otherBody.body.GetMass() * otherBody.gravityVector.Length() >= requiredForce) {
+			currentForce -= otherBody.body.GetMass() * otherBody.gravityVector.Length();		
+			if (currentForce < requiredForce) {
 				deactivate();
 			}
 		}

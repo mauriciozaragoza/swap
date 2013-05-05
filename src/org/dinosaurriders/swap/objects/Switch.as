@@ -23,7 +23,8 @@ package org.dinosaurriders.swap.objects {
 			var otherSwitch : Switch, otherBody : PhysicalBody;
 
 			activated = true;
-
+			var metRequirements : Boolean = activated;
+			
 			// check if switch requirements are met
 			for each (var requirement : Array in requirements) {
 				otherSwitch = requirement[2] as Switch;
@@ -32,7 +33,7 @@ package org.dinosaurriders.swap.objects {
 				switch (requirement[1]) {
 					case "AND":
 						if (!otherSwitch.activated) {
-							return;
+							metRequirements = false; 
 						}
 						break;
 				}
@@ -44,7 +45,7 @@ package org.dinosaurriders.swap.objects {
 
 				switch (object[1]) {
 					case "ENABLE":
-						otherBody.enabled = true;
+						otherBody.enabled = metRequirements;
 						break;
 				}
 			}
@@ -52,6 +53,36 @@ package org.dinosaurriders.swap.objects {
 
 		protected function deactivate() : void {
 			activated = false;
+			
+			var requirements : Array = findAllObjectLinks("require");
+			var objectsToTrigger : Array = findAllObjectLinks("onActivate");
+			var otherSwitch : Switch, otherBody : PhysicalBody;
+			
+			var metRequirements : Boolean = activated;			
+			// check if switch requirements are met
+			for each (var requirement : Array in requirements) {
+				otherSwitch = requirement[2] as Switch;
+
+				// only works for switches, if this fails, then you linked it with something wrong
+				switch (requirement[1]) {
+					case "AND":
+						if (!otherSwitch.activated) {
+							metRequirements = false; 
+						}
+						break;
+				}
+			}
+
+			// if all requirements are met, then enable triggers
+			for each (var object : Array in objectsToTrigger) {
+				otherBody = object[2] as PhysicalBody;
+
+				switch (object[1]) {
+					case "ENABLE":
+						otherBody.enabled = metRequirements;
+						break;
+				}
+			}
 		}
 	}
 }

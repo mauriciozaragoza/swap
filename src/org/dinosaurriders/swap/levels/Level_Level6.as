@@ -99,7 +99,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			linkedObjectDictionary[2] = addSpriteToLayer(new WeightSwitch(896.000, 312.000, Assets.Switch1, 1000), WeightSwitch, SpritesGroup , 896.000, 312.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
+			linkedObjectDictionary[2] = addSpriteToLayer(new WeightSwitch(896.000, 312.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 896.000, 312.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
 			linkedObjectDictionary[3] = addSpriteToLayer(new Exit(128.000, 256.000, Assets.Exit), Exit, SpritesGroup , 128.000, 256.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level7" }, { name:"enabled", value:false }, null ), onAddCallback );//"Exit"
 			addSpriteToLayer(null, Player, SpritesGroup , 32.000, 279.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
 			addSpriteToLayer(new PolygonBody(256.000, 311.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 256.000, 311.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, { name:"fixedrotation", value:true }, null ), onAddCallback );//"SquareRock2"

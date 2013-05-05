@@ -32,7 +32,7 @@ package org.flixel.plugin.photonstorm.FX {
 		 * 
 		 * @return	An FlxSprite containing the updating blur effect
 		 */
-		public function create(x:int, y:int, width:int, height:int, blurX:Number, blurY:Number, blurQuality:int = 1, blurSpeed = 1):FlxSprite
+		public function create(x:int, y:int, width:int, height:int, blurX:Number, blurY:Number, blurQuality:int = 1, blurSpeed:int = 1):FlxSprite
 		{
 			sprite = new FlxSprite(x, y).makeGraphic(width, height, 0x0, true);
 			sprite.alpha = 0.5;
