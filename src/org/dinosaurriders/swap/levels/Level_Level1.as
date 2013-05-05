@@ -27,6 +27,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		//Sprites
 		public var SpritesGroup:FlxGroup = new FlxGroup;
 
+		//Shapes
+		public var TextGroup:FlxGroup = new FlxGroup;
+
 		//Properties
 
 
@@ -71,6 +74,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(SpritesGroup);
 			masterLayer.add(layerFrontLayer);
+			masterLayer.add(TextGroup);
 
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
@@ -86,12 +90,20 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		override public function createObjects(onAddCallback:Function = null, parentObject:Object = null):void
 		{
+			addShapesForLayerText(onAddCallback);
 			addSpritesForLayerSprites(onAddCallback);
 			generateObjectLinks(onAddCallback);
 			if ( parentObject != null )
 				parentObject.add(masterLayer);
 			else
 				FlxG.state.add(masterLayer);
+		}
+
+		public function addShapesForLayerText(onAddCallback:Function = null):void
+		{
+			var obj:Object;
+
+			callbackNewData(new TextData(60.000, 360.000, 100.000, 50.000, 0.000, "Why am I here?","system", 8, 0xffffff, "center"), onAddCallback, TextGroup, generateProperties( null ), 1, 1 ) ;
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void

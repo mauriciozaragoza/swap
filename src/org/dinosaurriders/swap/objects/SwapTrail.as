@@ -23,11 +23,11 @@ package org.dinosaurriders.swap.objects {
 			t.start(0.16, 12, onAlphaChange);
 		}
 		
-		private function onAlphaChange(t : FlxTimer) {
+		private function onAlphaChange(t : FlxTimer) : void {
 			alpha -= 0.1;
 		}
 		
-		private function onFinish(t : FlxTimer) {
+		private function onFinish(t : FlxTimer) : void {
 			kill();
 		}
 	}

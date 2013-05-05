@@ -199,11 +199,11 @@ package org.dinosaurriders.swap {
 			}
 		}
 		
-		private function onKillPlayerCallback() {
+		private function onKillPlayerCallback() : void {
 			reset();
 		}
 		
-		private function onExitPlayerCallback(levelName : String) {
+		private function onExitPlayerCallback(levelName : String) : void {
 			exitTo = levelName;
 		}
 		

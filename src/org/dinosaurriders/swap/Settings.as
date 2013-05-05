@@ -27,7 +27,8 @@ package org.dinosaurriders.swap {
 		public static const RIGHTKEY			: String = "RIGHT";
 		public static const UPKEY				: String = "UP";
 		public static const DOWNKEY				: String = "DOWN";
-		public static const TOUCHSENSORRADIUS	: Number = 0.40;
+		public static const TOUCHSENSORRADIUS	: Number = 0.60;
+		public static const SWAPCOOLDOWN		: Number = 1;
 		
 		public static const SWAPSKIPCOUNT		: Number = 2;
 	}

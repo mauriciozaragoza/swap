@@ -105,10 +105,10 @@ package org.dinosaurriders.swap.objects {
 			body.SetUserData(this);
 			
 			// post-creation properties
-			for each (var property : Object in properties) {
-				switch (property.name) {
+			for each (var property2 : Object in properties) {
+				switch (property2.name) {
 					case "enabled":
-						enabled = property.value;
+						enabled = property2.value;
 						break;
 					
 					case "fixedx":

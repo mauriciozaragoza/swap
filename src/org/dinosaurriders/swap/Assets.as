@@ -11,6 +11,9 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/aniswap.png")]
 		public static var SwapTrail:Class;
 		
+		[Embed(source="../assets/swaparea.png")]
+		public static var SwapArea:Class;
+		
 		[Embed(source="../assets/splash.png")]
 		public static var SplashScreen:Class;
 		

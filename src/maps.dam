@@ -67,7 +67,7 @@
     </link>
   </links>
   <layers>
-    <group name="Level1" id="46" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
+    <group name="Level1" id="46" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
       <maplayer name="Sky" id="0" xScroll="0.25" yScroll="0.25" x="0" y="-32" width="80" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0,0,0,0,0,151,152,0,0,0,0,0,0,0,0,0,169,0,0,0,0</row>
         <row>0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,167,168,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
@@ -450,6 +450,9 @@
           </properties>
         </tileProperties>
       </maplayer>
+      <shapelayer name="Text" id="230" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="false" sort="false" selected="true">
+        <shape guid="3B76FA3E-EA3D-85B3-BC73-614303FEDA85" x="60" y="360" Z="0" angle="0" width="100.00" height="50.00" text="Why am I here?" family="system" fontsize="8" align="center" color="16777215"/>
+      </shapelayer>
     </group>
     <group name="Level2" id="65" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
       <maplayer name="Sky" id="5" xScroll="0.25" yScroll="0.25" x="0" y="-32" width="40" height="16" tileset="../assets/spritesheet1.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
@@ -3350,7 +3353,7 @@
         <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
     </group>
-    <group name="Level18" id="106" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
+    <group name="Level18" id="106" xScroll="1" yScroll="1" visible="false" open="false" locked="false" exports="true">
       <maplayer name="Back" id="183" xScroll="1" yScroll="1" x="0" y="0" width="30" height="30" tileset="../assets/spritesheet2.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
         <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
         <row>49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49,49</row>
@@ -3458,7 +3461,7 @@
           </properties>
         </tileProperties>
       </maplayer>
-      <spritelayer name="Sprites" id="107" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true" selected="true">
+      <spritelayer name="Sprites" id="107" xScroll="1" yScroll="1" visible="true" locked="false" exports="true" aligned="true" sort="true">
         <sprite guid="066CDB4C-0D15-0FE5-8AA8-B5A155892461" x="0" y="416" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="1" frame="0"/>
         <sprite guid="D1E05FC9-A5DF-A796-1739-1D2862A20446" x="96" y="384" Z="0" angle="0" scaleX="1" scaleY="1" flipped="false" idx="10">
           <properties/>

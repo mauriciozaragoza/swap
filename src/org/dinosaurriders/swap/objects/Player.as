@@ -27,6 +27,9 @@ package org.dinosaurriders.swap.objects {
 		private var onKillCallback : Function;
 		private var onExitCallback : Function;
 		private var controls : Dictionary;
+		private var canSwap : Boolean;
+		private var swapCooldownTimer : FlxTimer;
+		private var swapTouchSensorSprite : FlxSprite;
 
 		public function Player(X : Number, Y : Number) : void {
 			super(X, Y, 1000, 0, 1);
@@ -42,6 +45,9 @@ package org.dinosaurriders.swap.objects {
 			controls["TOUCHSWAP"] = Settings.TOUCHSWAPKEY;
 			
 			immovable = false;
+			canSwap = true;
+			swapCooldownTimer = new FlxTimer();
+			swapTouchSensorSprite = new FlxSprite();
 			
 			bodyDef.fixedRotation = true;
 			bodyDef.allowSleep = false;
@@ -69,6 +75,11 @@ package org.dinosaurriders.swap.objects {
 			bodyDef.type = b2Body.b2_dynamicBody;
 		}
 
+		private function onFinishCooldown(t : FlxTimer) : void {
+			canSwap = true;
+			t.stop();
+		}
+
 		public function setOnKill(callback : Function) : void {
 			this.onKillCallback = callback;
 		}
@@ -84,7 +95,7 @@ package org.dinosaurriders.swap.objects {
 		}
 			
 		public function swap(swapObject : PhysicalBody) : void {
-			if (swapObject.swappable) {
+			if (swapObject.swappable && canSwap) {
 				// linear velocities
 				var tmpLin : FlxPoint = new FlxPoint();
 				velocity.copyTo(tmpLin);
@@ -105,12 +116,23 @@ package org.dinosaurriders.swap.objects {
 				y = (body.GetPosition().y * Settings.ratio) - height / 2;
 				
 				FlxG.state.add(new SwapTrail(x - width / 2, y - height / 2));		
+				
+				// Start cooldown
+				canSwap = false;
+				swapCooldownTimer.start(Settings.SWAPCOOLDOWN, 0, onFinishCooldown);
 			}
 		}
 
 		private function addTouchSensor() : void {
 			fixtureDefs[3] = new b2FixtureDef();
 			var touchSensorDef : b2PolygonShape = new b2PolygonShape();
+			
+			if (swapTouchSensorSprite.exists) {
+				swapTouchSensorSprite.kill();
+			}
+			
+			swapTouchSensorSprite = new SwapAreaSprite(x, y, this);
+			FlxG.state.add(swapTouchSensorSprite);
 			
 			touchSensorDef.SetAsBox(Settings.TOUCHSENSORRADIUS, Settings.TOUCHSENSORRADIUS);
 			//touchSensorDef.SetLocalPosition(new b2Vec2(width / Settings.ratio / 3.0, height / Settings.ratio / 3.0));
@@ -121,6 +143,8 @@ package org.dinosaurriders.swap.objects {
 		}
 		
 		private function removeTouchSensor() : void {
+			swapTouchSensorSprite.kill();
+				
 			body.DestroyFixture(fixtures[3]);
 		}
 
@@ -165,7 +189,7 @@ package org.dinosaurriders.swap.objects {
 			}
 			
 			// if touchsensor collided
-			if (playerFixture == fixtures[3] && otherBody.swappable) {
+			if (playerFixture == fixtures[3] && otherBody != null && otherBody.swappable) {
 				// deselect previous swap object
 				if (tempSwapObject != null && tempSwapObject.selected) {
 					tempSwapObject.selected = false;
@@ -200,7 +224,6 @@ package org.dinosaurriders.swap.objects {
 
 		override public function onBeforeSolveCollision(contact : b2Contact, oldManifold : b2Manifold) : void {
 			var collision : Vector.<b2Fixture> = identifyCollision(contact);
-			var playerFixture : b2Fixture = collision[0];
 			var otherObject : PhysicalBody = collision[1].GetUserData() as PhysicalBody;
 			
 			if (otherObject != null) {
@@ -214,7 +237,6 @@ package org.dinosaurriders.swap.objects {
 
 		override public function onAfterSolveCollision(contact : b2Contact, impulse : b2ContactImpulse) : void {
 			var appliedForce : Number = 0;
-			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData() as PhysicalBody;
 			
 			appliedForce += impulse.normalImpulses[0] * FlxG.framerate; // force by impulse
 			//appliedForce += otherBody.gravityVector.y * otherBody.body.GetMass(); // force by gravity * mass
@@ -324,3 +346,4 @@ package org.dinosaurriders.swap.objects {
 		}
 	}
 }
+
