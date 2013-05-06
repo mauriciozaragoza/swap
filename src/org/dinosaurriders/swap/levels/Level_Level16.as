@@ -107,14 +107,14 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		{
 			var obj:Object;
 
-			obj = new BoxData(0.000, 240.000, 0.000, 1590.000, 300.000, PropertyFieldsGroup );
+			obj = new BoxData(0.000, 318.000, 0.000, 1590.000, 150.000, PropertyFieldsGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"blur", value:true }, null ), 1, 1 );
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(null, Player, SpritesGroup , 150.000, 330.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
+			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 415.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
 			addSpriteToLayer(new Exit(2399.000, 414.000, Assets.Exit), Exit, SpritesGroup , 2399.000, 414.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level17" }, null ), onAddCallback );//"Exit"
 		}
 

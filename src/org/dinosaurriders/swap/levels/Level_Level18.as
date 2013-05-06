@@ -99,9 +99,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
+			addSpriteToLayer(new PolygonBody(94.000, 384.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 94.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
 			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(96.000, 384.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 96.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
-			addSpriteToLayer(new PolygonBody(160.000, 384.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 160.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
+			addSpriteToLayer(new PolygonBody(160.000, 384.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 160.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
 			addSpriteToLayer(new Exit(0.000, 768.000, Assets.Exit), Exit, SpritesGroup , 0.000, 768.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, null ), onAddCallback );//"Exit"
 		}
 

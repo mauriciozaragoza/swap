@@ -92,10 +92,17 @@ package org.dinosaurriders.swap.objects {
 			
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 			
-			if (otherBody != null && affectedByField[otherBody] == null) {
-				if ((onlyPlayer && otherBody is Player) ||
+			if (otherBody != null) {
+				if (affectedByField[otherBody] == null) {
+					affectedByField[otherBody] = 0;
+				}
+				
+				affectedByField[otherBody]++;
+				
+				if (affectedByField[otherBody] == 1 && 
+					((onlyPlayer && otherBody is Player) ||
 					affectsPlayer ||
-				 	(!affectsPlayer && !(otherBody is Player))) {
+				 	(!affectsPlayer && !(otherBody is Player)))) {
 					applyProperties(otherBody);
 				}
 			}
@@ -106,10 +113,13 @@ package org.dinosaurriders.swap.objects {
 
 			var otherBody : PhysicalBody = identifyCollision(contact)[1].GetUserData();
 
-			if (otherBody != null && affectedByField[otherBody] != null) {
-				if ((onlyPlayer && otherBody is Player) ||
+			if (otherBody != null) {
+				affectedByField[otherBody]--;
+				
+				if (affectedByField[otherBody] == 0 &&
+					((onlyPlayer && otherBody is Player) ||
 					affectsPlayer ||
-					(!affectsPlayer && !(otherBody is Player))) {
+					(!affectsPlayer && !(otherBody is Player)))) {
 					ripProperties(otherBody);
 				}
 			}
