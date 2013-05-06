@@ -12,6 +12,7 @@ package org.dinosaurriders.swap.physics {
 	public class PhysicsUtil {
 		private static var destroyQueue : Vector.<b2Body> = new Vector.<b2Body>();
 		private static var swapQueue : Vector.<PhysicalBody> = new Vector.<PhysicalBody>();
+		private static var rotationQueue : Array = [];
 		private static var buoyancyControllers : Vector.<b2BuoyancyController> = new Vector.<b2BuoyancyController>();
 		
 		private static var currentSkipCount : int = 0;
@@ -20,6 +21,17 @@ package org.dinosaurriders.swap.physics {
 			while (destroyQueue.length > 0) {
 				world.DestroyBody(destroyQueue.pop());
 			}
+		}
+		
+		public static function enqueueRotation(body : b2Body, angle : Number) : void {
+			rotationQueue.push(angle, body);
+		}
+		
+		public static function callRotation() : void {
+			while (rotationQueue.length > 0) {
+				trace("rotating to 0");
+				(rotationQueue.pop() as b2Body).SetAngle(rotationQueue.pop());
+			}	
 		}
 		
 		public static function enqueueDeletedBody(body : b2Body) : void {
@@ -45,6 +57,13 @@ package org.dinosaurriders.swap.physics {
 				
 				currentSkipCount = 0;
 			}
+		}
+		
+		public static function update(world : b2World, dt : Number, velocityIterations : int, positionIterations : int) : void {
+			callSwaps();
+			destroyPhysicObjects(world);
+			callRotation();
+			updateControllers(dt, velocityIterations, positionIterations);
 		}
 		
 		public static function addBuoyancyController(world : b2World, controller : b2BuoyancyController) : void {

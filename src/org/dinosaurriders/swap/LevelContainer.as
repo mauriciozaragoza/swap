@@ -177,13 +177,11 @@ package org.dinosaurriders.swap {
 			super.update();
 			
 			FlxG.collide(player, spriteGroup);
-			
-			// destroy disposed objects
-			PhysicsUtil.destroyPhysicObjects(world);
                         
+			PhysicsUtil.update(world, FlxG.elapsed, 10, 10);
+			
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			PhysicsUtil.updateControllers(FlxG.elapsed, 10, 10);
 			//world.DrawDebugData();
 			world.ClearForces();
 			

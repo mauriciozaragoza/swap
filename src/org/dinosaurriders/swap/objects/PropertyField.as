@@ -1,20 +1,18 @@
 package org.dinosaurriders.swap.objects {
-	import org.dinosaurriders.swap.physics.PhysicsUtil;
-	import flash.events.AccelerometerEvent;
-	import Box2D.Dynamics.Controllers.b2BuoyancyController;
-	import org.flixel.plugin.photonstorm.FX.BlurFxRectangle;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
+	import Box2D.Dynamics.Controllers.b2BuoyancyController;
 	import Box2D.Dynamics.b2Body;
 	import Box2D.Dynamics.b2FixtureDef;
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.Settings;
+	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
-	import org.flixel.plugin.photonstorm.FX.BlurFX;
+	import org.flixel.plugin.photonstorm.FX.BlurFxRectangle;
 	import org.flixel.plugin.photonstorm.FlxSpecialFX;
 
 	import flash.utils.Dictionary;
@@ -31,6 +29,7 @@ package org.dinosaurriders.swap.objects {
 		private var blur : BlurFxRectangle;
 		private var blurEffect : FlxSprite;
 		private var bc : b2BuoyancyController;
+		private var fixesRotation : Boolean = false;
 
 		public function PropertyField(X : Number, Y : Number) {
 			super(X, Y, 0, 0, 0);
@@ -66,6 +65,9 @@ package org.dinosaurriders.swap.objects {
 						break;
 					case "onlyPlayer":
 						onlyPlayer = property.value;
+						break;
+					case "fixesRotation":
+						fixesRotation = property.value;
 						break;
 					case "buoyancy":
 						bc = new b2BuoyancyController();
@@ -144,7 +146,10 @@ package org.dinosaurriders.swap.objects {
 				bc.AddBody(affectedBody.body);				
 			}
 			
-			affectedByField[affectedBody] = true;
+			if (fixesRotation) {
+				affectedBody.fixedRotation = true;
+			}
+			
 			var newGravity : b2Vec2 = affectedBody.gravityVector.Copy();
 			newGravity.Add(gravityField);
 			affectedBody.gravityVector = newGravity;
@@ -162,7 +167,10 @@ package org.dinosaurriders.swap.objects {
 				bc.RemoveBody(affectedBody.body);
 			}
 			
-			affectedByField[affectedBody] = null;
+			if (fixesRotation) {
+				affectedBody.fixedRotation = false;
+			}
+			
 			var newGravity : b2Vec2 = affectedBody.gravityVector.Copy();
 			newGravity.Subtract(gravityField);
 			affectedBody.gravityVector = newGravity;

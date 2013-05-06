@@ -38,6 +38,7 @@ package org.dinosaurriders.swap.objects {
 		protected var _affectsPlayer : Boolean = true;
 		protected var _kills : Boolean = false;
 		protected var _selected : Boolean = false;
+		protected var _fixedRotation : Boolean = false;
 		
 		private var objectLinks : Array;
 		private var density : Number, restitution : Number, friction : Number;
@@ -81,7 +82,7 @@ package org.dinosaurriders.swap.objects {
 						swappable = property.value;
 						break;
 					case "fixedrotation":
-						bodyDef.fixedRotation = property.value;
+						fixedRotation = property.value;
 						break;
 					case "kills":
 						kills = property.value;
@@ -342,6 +343,28 @@ package org.dinosaurriders.swap.objects {
 		public function set selected(selected : Boolean) : void {
 			this._selected = selected;			
 			applyInnerGlow(selected ? 0x66ff33 : 0x6600cc);
+		}
+
+		public function get fixedRotation() : Boolean {
+			return _fixedRotation;
+		}
+
+		public function set fixedRotation(fixedRotation : Boolean) : void {
+			this._fixedRotation = fixedRotation;
+			
+			bodyDef.fixedRotation = fixedRotation;
+			
+			if (fixedRotation) {
+				if (body != null) {
+					PhysicsUtil.enqueueRotation(body, 0);
+					body.SetAngularVelocity(0);
+					body.SetFixedRotation(fixedRotation);
+					trace("fixing rotation", body.IsFixedRotation(), body.GetAngle());
+				}
+			}
+			else {
+				body.SetFixedRotation(false);
+			}
 		}
 	}
 }
