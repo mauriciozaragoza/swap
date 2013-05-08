@@ -35,6 +35,8 @@ package org.dinosaurriders.swap.objects {
 			super(X, Y, 1000, 0, 1);
 			loadGraphic(Assets.Player, true, true, 32, 32);
 			
+			
+			
 			offset.x = 8;
 			width = 16;
 			height = 32;		
@@ -178,17 +180,17 @@ package org.dinosaurriders.swap.objects {
 			if(velocity.y>0)
 			{
 				play("fall");
-				trace("falling");
+				//trace("falling");
 			}
 			else if(velocity.y<0)
 			{
 				play("jump");
-				trace("Goin up");
+				//trace("Goin up");
 			}
 			}else
 			if (Math.abs(velocity.x) > 0.1) {
 				play("move");
-				FlxG.play(Assets.step,1,false,true);
+				FlxG.play(Assets.step,0.1);
 			} 
 			else {
 				play("idle");

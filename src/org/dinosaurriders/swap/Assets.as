@@ -56,7 +56,7 @@ package org.dinosaurriders.swap {
 		[Embed (source='../assets/stonewall.mp3')]
 		public static var stonewall:Class;
 		
-		[Embed (source='../assets/sfx.wav')]
-		public static var jump:Class;
+		[Embed (source='../assets/test.mp3')]
+		public static var dark:Class;
 	}
 }

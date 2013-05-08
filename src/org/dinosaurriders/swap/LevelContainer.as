@@ -42,7 +42,7 @@ package org.dinosaurriders.swap {
 		override public function create() : void {
 			worldGroup = new FlxGroup();
 			spriteGroup = new FlxGroup();
-			
+			FlxG.playMusic(Assets.dark);
 			// sets up the world physics
 			setupWorld();
 			
