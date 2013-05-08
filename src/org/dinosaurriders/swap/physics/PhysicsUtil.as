@@ -29,7 +29,6 @@ package org.dinosaurriders.swap.physics {
 		
 		public static function callRotation() : void {
 			while (rotationQueue.length > 0) {
-				trace("rotating to 0");
 				(rotationQueue.pop() as b2Body).SetAngle(rotationQueue.pop());
 			}	
 		}

@@ -359,7 +359,6 @@ package org.dinosaurriders.swap.objects {
 					PhysicsUtil.enqueueRotation(body, 0);
 					body.SetAngularVelocity(0);
 					body.SetFixedRotation(fixedRotation);
-					trace("fixing rotation", body.IsFixedRotation(), body.GetAngle());
 				}
 			}
 			else {

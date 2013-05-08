@@ -45,7 +45,7 @@ package org.dinosaurriders.swap.objects {
 			// FIXME only takes velocity x component into account
 			forceApplied = Math.abs(otherBody.GetLinearVelocity().x) * otherBody.GetMass(); 
 			
-			trace("impulse: ", forceApplied);
+			//trace("impulse: ", forceApplied);
 			
 			if (forceApplied > forceToBreak) {
 				kill();

@@ -23,7 +23,7 @@
 			s.loadGraphic(Assets.SplashScreen);
             add(s);
 			
- 			texto = new FlxText(0, 300, FlxG.width, "SWAP").setFormat(null, 21, 0x33ff88, "center");
+ 			texto = new FlxText(0, 300, FlxG.width, "SWAP").setFormat(null, 21, 0x9944ff, "center");
          
           	add(texto);
 		   	var botonInicio:FlxButton =  new FlxButton(FlxG.width / 2 - 40, FlxG.height / 2 - 60, "Start Game!", iniciar);
