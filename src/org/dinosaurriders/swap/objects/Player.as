@@ -192,7 +192,7 @@ package org.dinosaurriders.swap.objects {
 			} 
 			else {
 				play("idle");
-				FlxG.playMusic(Assets.jump);
+				FlxG.play(Assets.jump);
 			}
 			
 			body.SetPosition(new b2Vec2((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio));
