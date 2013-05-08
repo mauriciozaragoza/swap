@@ -196,6 +196,7 @@ package org.dinosaurriders.swap.objects {
 				play("idle");
 				//FlxG.play(Assets.jump);
 			}
+			
 			body.SetPosition(new b2Vec2((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio));
 		}
 		
