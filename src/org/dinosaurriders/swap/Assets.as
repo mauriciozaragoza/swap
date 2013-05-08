@@ -44,7 +44,19 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/Exit.png")]
 		public static var Exit : Class;
 		
-		[Embed(source='../assets/sarah.png')] 
+		[Embed(source='../assets/SarahSS.png')] 
 		public static var Player:Class;
+		
+		[Embed (source='../assets/step.mp3')]
+		public static var step:Class;
+		
+		//[Embed (source='../assets/ambient.mp3')]
+		//public static var bgm:Class;
+		
+		[Embed (source='../assets/stonewall.mp3')]
+		public static var stonewall:Class;
+		
+		[Embed (source='../assets/test.mp3')]
+		public static var dark:Class;
 	}
 }

@@ -35,6 +35,8 @@ package org.dinosaurriders.swap.objects {
 			super(X, Y, 1000, 0, 1);
 			loadGraphic(Assets.Player, true, true, 32, 32);
 			
+			
+			
 			offset.x = 8;
 			width = 16;
 			height = 32;		
@@ -43,6 +45,11 @@ package org.dinosaurriders.swap.objects {
 			controls["JUMP"] = Settings.JUMPKEY;
 			controls["SWAP"] = Settings.SWAPKEY;
 			controls["TOUCHSWAP"] = Settings.TOUCHSWAPKEY;
+			
+			addAnimation("jump", [5], 1,false);
+			addAnimation("move", [9, 10, 11, 12, 13, 14, 15, 16], 16, true);
+			addAnimation("fall", [6], 1, false);
+			addAnimation("idle", [2,0,1,0,0,1], 3,true);
 			
 			immovable = false;
 			canSwap = true;
@@ -168,12 +175,27 @@ package org.dinosaurriders.swap.objects {
 				removeTouchSensor();
 			}
 
+			//checking where is the player in order to play soaunds and sprite
+			if(!grounded){
+			if(velocity.y>0)
+			{
+				play("fall");
+				//trace("falling");
+			}
+			else if(velocity.y<0)
+			{
+				play("jump");
+				//trace("Goin up");
+			}
+			}else
 			if (Math.abs(velocity.x) > 0.1) {
 				play("move");
-			} else {
+				FlxG.play(Assets.step,0.1);
+			} 
+			else {
 				play("idle");
+				//FlxG.play(Assets.jump);
 			}
-			
 			body.SetPosition(new b2Vec2((x + width / 2) / Settings.ratio, (y + height / 2) / Settings.ratio));
 		}
 		

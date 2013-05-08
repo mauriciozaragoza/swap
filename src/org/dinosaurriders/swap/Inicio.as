@@ -23,7 +23,7 @@
 			s.loadGraphic(Assets.SplashScreen);
             add(s);
 			
- 			texto = new FlxText(0, 300, FlxG.width, "SWAP").setFormat(null, 21, 0x33ff88, "center");
+ 			texto = new FlxText(0, 300, FlxG.width, "SWAP").setFormat(null, 21, 0xcc0099, "center");
          
           	add(texto);
 		   	var botonInicio:FlxButton =  new FlxButton(FlxG.width / 2 - 40, FlxG.height / 2 - 60, "Start Game!", iniciar);
@@ -31,7 +31,7 @@
 		}
 
 		private function iniciar() : void {
-			FlxG.switchState(new LevelContainer("Level1"));
+			FlxG.switchState(new LevelContainer("Level15"));
 		}
 	}
 }
