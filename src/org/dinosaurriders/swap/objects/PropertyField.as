@@ -8,10 +8,10 @@ package org.dinosaurriders.swap.objects {
 	import Box2D.Dynamics.b2World;
 
 	import org.dinosaurriders.swap.Settings;
+	import org.dinosaurriders.swap.levels.TextData;
 	import org.dinosaurriders.swap.physics.PhysicsUtil;
 	import org.flixel.FlxG;
 	import org.flixel.FlxSprite;
-	import org.flixel.FlxState;
 	import org.flixel.plugin.photonstorm.FX.BlurFxRectangle;
 	import org.flixel.plugin.photonstorm.FlxSpecialFX;
 
@@ -25,7 +25,6 @@ package org.dinosaurriders.swap.objects {
 		private var affectedByField : Dictionary;
 		private var blurs : Boolean;
 		private var onlyPlayer : Boolean;
-		private var _currentState : FlxState;
 		private var blur : BlurFxRectangle;
 		private var blurEffect : FlxSprite;
 		private var bc : b2BuoyancyController;
@@ -128,6 +127,8 @@ package org.dinosaurriders.swap.objects {
 		}
 
 		public function applyProperties(affectedBody : PhysicalBody) : void {
+			callObjectLinkActions();
+						
 			if (blurs) {
 				if (FlxG.getPlugin(FlxSpecialFX) == null) {
 					FlxG.addPlugin(new FlxSpecialFX);
@@ -139,7 +140,7 @@ package org.dinosaurriders.swap.objects {
 				blur.addSprite(affectedBody);
 				blur.start(1);
 				
-				currentState.add(blurEffect);
+				FlxG.state.add(blurEffect);
 			}
 			// apply bouyancy 
 			if (bc != null) {
@@ -159,7 +160,7 @@ package org.dinosaurriders.swap.objects {
 			if (blurs) {
 				FlxG.flash(0x66220044, 0.5);
 				blur.stop();
-				currentState.remove(blurEffect);
+				FlxG.state.remove(blurEffect);
 				FlxG.removePluginType(FlxSpecialFX);
 			}
 			// remove bouyancy 
@@ -175,13 +176,18 @@ package org.dinosaurriders.swap.objects {
 			newGravity.Subtract(gravityField);
 			affectedBody.gravityVector = newGravity;
 		}
-
-		public function get currentState() : FlxState {
-			return _currentState;
-		}
-
-		public function set currentState(currentState : FlxState) : void {
-			this._currentState = currentState;
+		
+		private function callObjectLinkActions() : void {
+			var links : Array = findAllObjectLinks("showText");
+			var textObject : TextObject;
+			
+			for each (var textMessages : Array in links) {
+				textObject = textMessages[2] as TextObject;
+				
+				if (textObject.alive) {
+					PhysicsUtil.enqueueText(textObject);
+				}
+			}
 		}
 	}
 }

@@ -183,7 +183,7 @@ package org.dinosaurriders.swap.objects {
 		/*
 		 * Saves an object link in a dictionary indexed by property name, k -> [v, target]
 		 */
-		public function addObjectLink(key : String, value : Object, target : PhysicalBody) : void {
+		public function addObjectLink(key : String, value : Object, target : Object) : void {
 			objectLinks.push([key, value, target]);
 		}
 

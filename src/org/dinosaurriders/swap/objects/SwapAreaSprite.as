@@ -17,7 +17,7 @@ package org.dinosaurriders.swap.objects {
 		override public function update() : void {
 			super.update();
 			
-			x = follow.x - follow.width - 10;
+			x = follow.x - follow.width - 18;
 			y = follow.y - follow.height / 2.0;
 		}
 	}

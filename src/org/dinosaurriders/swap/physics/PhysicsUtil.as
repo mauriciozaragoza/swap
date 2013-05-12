@@ -6,6 +6,7 @@ package org.dinosaurriders.swap.physics {
 
 	import org.dinosaurriders.swap.Settings;
 	import org.dinosaurriders.swap.objects.PhysicalBody;
+	import org.dinosaurriders.swap.objects.TextObject;
 	/**
 	 * @author Drakaen
 	 */
@@ -14,6 +15,7 @@ package org.dinosaurriders.swap.physics {
 		private static var swapQueue : Vector.<PhysicalBody> = new Vector.<PhysicalBody>();
 		private static var rotationQueue : Array = [];
 		private static var buoyancyControllers : Vector.<b2BuoyancyController> = new Vector.<b2BuoyancyController>();
+		private static var currentText : TextObject;
 		
 		private static var currentSkipCount : int = 0;
 		
@@ -80,6 +82,19 @@ package org.dinosaurriders.swap.physics {
 		
 		public static function clearControllers() : void {
 			buoyancyControllers = new Vector.<b2BuoyancyController>();
+		}
+		
+		public static function enqueueText(t : TextObject) : void {
+			// if it's not currently showing
+			if (currentText != t) {
+				// if currenttext is alive
+				if (currentText != null && currentText.alive) {
+					currentText.kill();
+				}
+				
+				currentText = t;
+				currentText.show();
+			}
 		}
 	}
 }
