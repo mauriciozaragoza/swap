@@ -251,7 +251,7 @@ package org.dinosaurriders.swap.objects {
 			// force by impulse
 			// appliedForce += otherBody.gravityVector.y * otherBody.body.GetMass(); // force by gravity * mass
 
-			// trace("ouch: ", appliedForce);
+			trace("ouch: ", appliedForce);
 			if (appliedForce > Settings.MAXFORCE) {
 				kill();
 				_dead = true;
