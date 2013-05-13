@@ -1,4 +1,5 @@
 package org.dinosaurriders.swap.objects {
+	import org.dinosaurriders.swap.states.EndgameState;
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
@@ -29,6 +30,7 @@ package org.dinosaurriders.swap.objects {
 		private var blurEffect : FlxSprite;
 		private var bc : b2BuoyancyController;
 		private var fixesRotation : Boolean = false;
+		private var endsGame : Boolean = true;
 
 		public function PropertyField(X : Number, Y : Number) {
 			super(X, Y, 0, 0, 0);
@@ -75,6 +77,9 @@ package org.dinosaurriders.swap.objects {
 						bc.linearDrag = 500;
 						bc.angularDrag = 250;
 						PhysicsUtil.addBuoyancyController(world, bc);
+						break;
+					case "endgame":
+						endsGame = property.value;
 						break;
 				}
 			}
@@ -128,6 +133,11 @@ package org.dinosaurriders.swap.objects {
 
 		public function applyProperties(affectedBody : PhysicalBody) : void {
 			callObjectLinkActions();
+			
+			if (endsGame) {
+				FlxG.switchState(new EndgameState());
+				return;
+			}
 						
 			if (blurs) {
 				if (FlxG.getPlugin(FlxSpecialFX) == null) {
