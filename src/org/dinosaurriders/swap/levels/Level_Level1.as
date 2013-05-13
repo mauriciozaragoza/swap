@@ -103,10 +103,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		{
 			var obj:Object;
 
-			linkedObjectDictionary[11] = callbackNewData(new TextData(0.000, 30.000, 360.000, 50.000, 0.000, "Why am I here? ","system", 11, 0x333333, "center"), onAddCallback, TextGroup, generateProperties( null ), 1, 1, true  ) ;
-			obj = new BoxData(60.000, 216.000, 0.000, 50.000, 200.000, TextGroup );
-			shapes.push(obj);
-			linkedObjectDictionary[10] = callbackNewData( obj, onAddCallback, TextGroup, generateProperties( null ), 1, 1, true  );
+			callbackNewData(new TextData(300.000, 330.000, 100.000, 50.000, 0.000, "Algo no terminaba de funcionar","system", 8, 0xffffff, "center"), onAddCallback, TextGroup, generateProperties( { name:"showText", value:true }, null ), 1, 1 ) ;
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
@@ -117,7 +114,6 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function generateObjectLinks(onAddCallback:Function = null):void
 		{
-			createLink(linkedObjectDictionary[10], linkedObjectDictionary[11], onAddCallback, generateProperties( { name:"showText", value:true }, null ) );
 		}
 
 	}
