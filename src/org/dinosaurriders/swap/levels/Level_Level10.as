@@ -5,7 +5,8 @@ package org.dinosaurriders.swap.levels
 	import org.flixel.*;
 	import flash.utils.Dictionary;
 	// Custom imports:
-import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
+import org.dinosaurriders.swap.*;
+import org.dinosaurriders.swap.objects.*;
 	public class Level_Level10 extends BaseLevel
 	{
 		//Embedded media...
@@ -44,11 +45,11 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			properties = generateProperties( null );
 			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -256.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerBackLayer = addTilemap( CSV_BackLayer, Img_BackLayer, 0.000, -224.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerBackLayer = addTilemap( CSV_BackLayer, Img_BackLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, -224.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, -224.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerSky);
@@ -62,11 +63,11 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 				createObjects(onAddCallback, parentObject);
 
 			boundsMinX = 0;
-			boundsMinY = -224;
+			boundsMinY = -32;
 			boundsMaxX = 640;
-			boundsMaxY = 288;
-			boundsMin = new FlxPoint(0, -224);
-			boundsMax = new FlxPoint(640, 288);
+			boundsMaxY = 512;
+			boundsMin = new FlxPoint(0, -32);
+			boundsMax = new FlxPoint(640, 512);
 			bgColor = 0xff88beef;
 		}
 
@@ -82,23 +83,34 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			linkedObjectDictionary[10] = addSpriteToLayer(new WeightSwitch(206.000, -104.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 206.000, -104.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
-			linkedObjectDictionary[11] = addSpriteToLayer(new Exit(288.000, -160.000, Assets.Exit), Exit, SpritesGroup , 288.000, -160.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"enabled", value:false }, { name:"warp", value:"Level15" }, null ), onAddCallback );//"Exit"
-			linkedObjectDictionary[13] = addSpriteToLayer(new WeightSwitch(354.000, 24.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 354.000, 24.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
-			addSpriteToLayer(new BreakableWall(192.000, -64.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 192.000, -64.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
-			linkedObjectDictionary[12] = addSpriteToLayer(new WeightSwitch(92.000, 152.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 92.000, 152.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
-			addSpriteToLayer(new PolygonBody(352.000, 96.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 352.000, 96.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
-			addSpriteToLayer(null, Player, SpritesGroup , 288.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(224.000, 128.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 224.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
-			addSpriteToLayer(new PolygonBody(192.000, 128.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
-			addSpriteToLayer(new PolygonBody(160.000, 128.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(84.000, -32.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 84.000, -32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new BreakableWall(448.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 448.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 96.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
+			addSpriteToLayer(new BreakableWall(128.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 128.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(new BreakableWall(256.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 256.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(new BreakableWall(384.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 384.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(new BreakableWall(416.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 416.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(new PolygonBody(512.000, 192.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 512.000, 192.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(480.000, 192.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 480.000, 192.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			linkedObjectDictionary[22] = addSpriteToLayer(new WeightSwitch(96.000, 216.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 96.000, 216.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
+			addSpriteToLayer(new PolygonBody(512.000, 224.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 512.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(480.000, 224.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 480.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(288.000, 288.000, Assets.SquareRock3, 4, 2000), PolygonBody, SpritesGroup , 288.000, 288.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock3"
+			addSpriteToLayer(new PolygonBody(160.000, 320.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 320.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(192.000, 352.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(160.000, 352.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(192.000, 384.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(160.000, 384.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(160.000, 416.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(192.000, 416.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(160.000, 448.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(192.000, 448.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			linkedObjectDictionary[23] = addSpriteToLayer(new Exit(448.000, 416.000, Assets.Exit), Exit, SpritesGroup , 448.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level11" }, { name:"enabled", value:false }, null ), onAddCallback );//"Exit"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void
 		{
-			createLink(linkedObjectDictionary[10], linkedObjectDictionary[11], onAddCallback, generateProperties( { name:"onActivate", value:"ENABLE" }, { name:"require", value:"AND" }, null ) );
-			createLink(linkedObjectDictionary[10], linkedObjectDictionary[12], onAddCallback, generateProperties( { name:"require", value:"AND" }, null ) );
-			createLink(linkedObjectDictionary[10], linkedObjectDictionary[13], onAddCallback, generateProperties( { name:"require", value:"AND" }, null ) );
+			createLink(linkedObjectDictionary[22], linkedObjectDictionary[23], onAddCallback, generateProperties( { name:"onActivate", value:"ENABLE" }, null ) );
 		}
 
 	}
