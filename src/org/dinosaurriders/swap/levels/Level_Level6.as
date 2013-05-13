@@ -42,7 +42,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
 			tileProperties[61]=generateProperties( { name:"outerglow", value:65280 }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 128.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
+			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 128.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[1]=generateProperties( { name:"affectsplayer", value:false }, null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
@@ -70,10 +70,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 			boundsMinX = 0;
 			boundsMinY = 0;
-			boundsMaxX = 1056;
+			boundsMaxX = 2560;
 			boundsMaxY = 800;
 			boundsMin = new FlxPoint(0, 0);
-			boundsMax = new FlxPoint(1056, 800);
+			boundsMax = new FlxPoint(2560, 800);
 			bgColor = 0xff88beef;
 		}
 

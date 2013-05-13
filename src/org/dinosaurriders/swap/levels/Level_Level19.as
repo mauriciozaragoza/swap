@@ -85,13 +85,13 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 			obj = new BoxData(320.000, 579.000, 0.000, 320.000, 201.000, PropertyFieldsGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-16.000000 }, { name:"buoyancy", value:5.000000 }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-16 }, { name:"buoyancy", value:5 }, null ), 1, 1 );
 			obj = new BoxData(314.000, 608.000, 0.000, 340.000, 23.000, PropertyFieldsGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"kills", value:true }, null ), 1, 1 );
 			obj = new BoxData(390.000, 132.000, 0.000, 180.000, 170.000, PropertyFieldsGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-12.000000 }, { name:"buoyancy", value:200.000000 }, { name:"fixesRotation", value:true }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-12 }, { name:"buoyancy", value:200 }, { name:"fixesRotation", value:true }, null ), 1, 1 );
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
