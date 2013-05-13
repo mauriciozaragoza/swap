@@ -251,7 +251,7 @@ package org.dinosaurriders.swap.objects {
 			// force by impulse
 			// appliedForce += otherBody.gravityVector.y * otherBody.body.GetMass(); // force by gravity * mass
 
-			trace("ouch: ", appliedForce);
+//			trace("ouch: ", appliedForce);
 			if (appliedForce > Settings.MAXFORCE) {
 				kill();
 				_dead = true;
@@ -269,7 +269,7 @@ package org.dinosaurriders.swap.objects {
 		override public function createPhysicsObject(world : b2World, properties : Array = null) : b2Body {
 			var footSensorShape : b2PolygonShape = new b2PolygonShape();
 			var boxDef : b2PolygonShape = new b2PolygonShape();
-			const widthSizeRatio : Number = 0.25, heightSizeRatio : Number = 2.0 / 3.0;
+			const widthSizeRatio : Number = 1, heightSizeRatio : Number = 1;
 			var w1 : Number = width * widthSizeRatio / Settings.ratio, 
 			h1 : Number = height * heightSizeRatio / Settings.ratio;
 

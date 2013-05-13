@@ -98,9 +98,6 @@ package org.dinosaurriders.swap {
 			if (level.hitTilemaps.members.lastIndexOf(tilemap) != -1) {
 				currentHitLayer = tilemap.getData();
 
-				// iterates on y then x to special mark platform tiles
-				// var isPlatform : Boolean;
-
 				for (var y : Number = 0, i : Number = 0; y < tilemap.heightInTiles; y++) {
 					for (var x : Number = 0; x < tilemap.widthInTiles; x++, i++) {
 						if (currentHitLayer[i] != 0) {
@@ -110,7 +107,7 @@ package org.dinosaurriders.swap {
 				}
 
 				// Create border tiles on the hit layer
-				for (var y1 : int = -10; y1 <= tilemap.heightInTiles; y1++) {
+				for (var y1 : int = -10; y1 <= tilemap.heightInTiles + 10; y1++) {
 					spriteGroup.add(createTileBox(-1, y1, offsetX, offsetY, []));
 					spriteGroup.add(createTileBox(tilemap.widthInTiles, y1, offsetX, offsetY, []));
 				}
@@ -187,7 +184,7 @@ package org.dinosaurriders.swap {
 
 			// Box2D physics step
 			world.Step(FlxG.elapsed, 10, 10);
-			// world.DrawDebugData();
+//			world.DrawDebugData();
 			world.ClearForces();
 
 			PhysicsUtil.callSwaps();

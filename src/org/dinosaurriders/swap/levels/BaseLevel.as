@@ -5,7 +5,8 @@ package org.dinosaurriders.swap.levels
 	import org.flixel.*;
 	import flash.utils.Dictionary;
 	// Custom imports:
-import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
+import org.dinosaurriders.swap.*;
+import org.dinosaurriders.swap.objects.*;
 	public class BaseLevel
 	{
 		// The masterLayer contains every single object in this group making it easy to empty the level.
