@@ -38,6 +38,12 @@ package org.dinosaurriders.swap {
 		[Embed(source="../assets/crate1.png")]
 		public static var Crate1:Class;
 		
+		[Embed(source="../assets/crate2.png")]
+		public static var Crate2:Class;
+		
+		[Embed(source="../assets/crate3.png")]
+		public static var Crate3:Class;
+		
 		[Embed(source="../assets/Switch1.png")]
 		public static var Switch1 : Class;
 		

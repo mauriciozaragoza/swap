@@ -183,7 +183,11 @@ package org.dinosaurriders.swap.objects {
 		/*
 		 * Saves an object link in a dictionary indexed by property name, k -> [v, target]
 		 */
+<<<<<<< HEAD
+		public function addObjectLink(key : String, value : Object, target : PhysicalBody) : void {
+=======
 		public function addObjectLink(key : String, value : Object, target : Object) : void {
+>>>>>>> 66b465219082c655b4caef8fe561661ca0d73973
 			objectLinks.push([key, value, target]);
 		}
 
@@ -359,6 +363,10 @@ package org.dinosaurriders.swap.objects {
 					PhysicsUtil.enqueueRotation(body, 0);
 					body.SetAngularVelocity(0);
 					body.SetFixedRotation(fixedRotation);
+<<<<<<< HEAD
+					trace("fixing rotation", body.IsFixedRotation(), body.GetAngle());
+=======
+>>>>>>> 66b465219082c655b4caef8fe561661ca0d73973
 				}
 			}
 			else {

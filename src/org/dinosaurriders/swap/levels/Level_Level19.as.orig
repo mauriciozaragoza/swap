@@ -86,7 +86,11 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			obj = new BoxData(320.000, 579.000, 0.000, 320.000, 201.000, PropertyFieldsGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-16 }, { name:"buoyancy", value:5 }, null ), 1, 1 );
+<<<<<<< HEAD
+			obj = new BoxData(314.000, 608.000, 0.000, 340.000, 23.000, PropertyFieldsGroup );
+=======
 			obj = new BoxData(314.000, 621.000, 0.000, 340.000, 5.000, PropertyFieldsGroup );
+>>>>>>> 66b465219082c655b4caef8fe561661ca0d73973
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"kills", value:true }, null ), 1, 1 );
 			obj = new BoxData(390.000, 132.000, 0.000, 180.000, 170.000, PropertyFieldsGroup );
