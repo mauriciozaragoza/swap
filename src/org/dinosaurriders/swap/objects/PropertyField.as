@@ -30,7 +30,7 @@ package org.dinosaurriders.swap.objects {
 		private var blurEffect : FlxSprite;
 		private var bc : b2BuoyancyController;
 		private var fixesRotation : Boolean = false;
-		private var endsGame : Boolean = true;
+		private var endsGame : Boolean = false;
 
 		public function PropertyField(X : Number, Y : Number) {
 			super(X, Y, 0, 0, 0);

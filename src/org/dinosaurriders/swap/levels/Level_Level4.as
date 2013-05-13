@@ -114,7 +114,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public function generateObjectLinks(onAddCallback:Function = null):void
 		{
 			createLink(linkedObjectDictionary[6], linkedObjectDictionary[7], onAddCallback, generateProperties( { name:"onActivate", value:"ENABLE" }, null ) );
-			createLink(linkedObjectDictionary[31], linkedObjectDictionary[32], onAddCallback, generateProperties( null ) );
+			createLink(linkedObjectDictionary[31], linkedObjectDictionary[32], onAddCallback, generateProperties( { name:"showText", value:true }, null ) );
 		}
 
 	}

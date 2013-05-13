@@ -40,11 +40,11 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			var tileProperties:Dictionary = new Dictionary;
 
 			properties = generateProperties( null );
-			layerBack = addTilemap( CSV_Back, Img_Back, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerBack = addTilemap( CSV_Back, Img_Back, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			layerArrows = addTilemap( CSV_Arrows, Img_Arrows, 160.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerPlayer = addTilemap( CSV_Player, Img_Player, 0.000, 0.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			layerPlayer = addTilemap( CSV_Player, Img_Player, 0.000, -32.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			layerHazards = addTilemap( CSV_Hazards, Img_Hazards, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
@@ -60,10 +60,10 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 				createObjects(onAddCallback, parentObject);
 
 			boundsMinX = 0;
-			boundsMinY = 0;
+			boundsMinY = -32;
 			boundsMaxX = 960;
 			boundsMaxY = 640;
-			boundsMin = new FlxPoint(0, 0);
+			boundsMin = new FlxPoint(0, -32);
 			boundsMax = new FlxPoint(960, 640);
 			bgColor = 0xff88beef;
 		}
@@ -85,7 +85,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 			obj = new BoxData(360.000, 540.000, 0.000, 50.000, 80.000, Property_FieldGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, Property_FieldGroup, generateProperties( { name:"endGame", value:true }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, Property_FieldGroup, generateProperties( { name:"endgame", value:true }, null ), 1, 1 );
 			obj = new BoxData(390.000, 300.000, 0.000, 5.000, 150.000, Property_FieldGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, Property_FieldGroup, generateProperties( { name:"kills", value:true }, null ), 1, 1 );
@@ -97,7 +97,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			callbackNewData( obj, onAddCallback, Property_FieldGroup, generateProperties( { name:"kills", value:true }, null ), 1, 1 );
 			obj = new BoxData(270.000, 0.000, 0.000, 270.000, 120.000, Property_FieldGroup );
 			shapes.push(obj);
-			callbackNewData( obj, onAddCallback, Property_FieldGroup, generateProperties( { name:"gravityx", value:2.000000 }, { name:"gravityy", value:-9.500000 }, null ), 1, 1 );
+			callbackNewData( obj, onAddCallback, Property_FieldGroup, generateProperties( { name:"gravityx", value:2 }, { name:"gravityy", value:-9.5 }, null ), 1, 1 );
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void

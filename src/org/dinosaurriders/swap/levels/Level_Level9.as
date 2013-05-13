@@ -5,8 +5,7 @@ package org.dinosaurriders.swap.levels
 	import org.flixel.*;
 	import flash.utils.Dictionary;
 	// Custom imports:
-import org.dinosaurriders.swap.*;
-import org.dinosaurriders.swap.objects.*;
+import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 	public class Level_Level9 extends BaseLevel
 	{
 		//Embedded media...
@@ -44,12 +43,12 @@ import org.dinosaurriders.swap.objects.*;
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerSky = addTilemap( CSV_Sky, Img_Sky, 832.000, 416.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
+			layerSky = addTilemap( CSV_Sky, Img_Sky, 288.000, 96.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
 			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
-			layerBackground = addTilemap( CSV_Background, Img_Background, 832.000, 160.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
+			layerBackground = addTilemap( CSV_Background, Img_Background, 416.000, 64.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
 			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
 			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
