@@ -103,7 +103,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		{
 			var obj:Object;
 
-			callbackNewData(new TextData(60.000, 360.000, 100.000, 50.000, 0.000, "Why am I here?","system", 8, 0xffffff, "center"), onAddCallback, TextGroup, generateProperties( null ), 1, 1 ) ;
+			callbackNewData(new TextData(300.000, 330.000, 100.000, 50.000, 0.000, "Algo no terminaba de funcionar","system", 8, 0xffffff, "center"), onAddCallback, TextGroup, generateProperties( { name:"showText", value:true }, null ), 1, 1 ) ;
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
