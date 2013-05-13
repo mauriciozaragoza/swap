@@ -31,7 +31,7 @@
 		}
 
 		private function iniciar() : void {
-			FlxG.switchState(new LevelContainer("Level18"));
+			FlxG.switchState(new LevelContainer("Level11"));
 		}
 	}
 }
