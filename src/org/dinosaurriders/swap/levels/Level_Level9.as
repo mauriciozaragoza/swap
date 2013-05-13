@@ -46,9 +46,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			properties = generateProperties( null );
 			layerBackLayer = addTilemap( CSV_BackLayer, Img_BackLayer, 0.000, -96.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, -96.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
+			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, -128.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
-			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, -96.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
+			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
 			masterLayer.add(layerSky);
@@ -62,11 +62,11 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 				createObjects(onAddCallback, parentObject);
 
 			boundsMinX = 0;
-			boundsMinY = -96;
+			boundsMinY = -128;
 			boundsMaxX = 640;
-			boundsMaxY = 416;
-			boundsMin = new FlxPoint(0, -96);
-			boundsMax = new FlxPoint(640, 416);
+			boundsMaxY = 480;
+			boundsMin = new FlxPoint(0, -128);
+			boundsMax = new FlxPoint(640, 480);
 			bgColor = 0xff88beef;
 		}
 
@@ -82,11 +82,11 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(new BreakableWall(224.000, -64.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 224.000, -64.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
-			addSpriteToLayer(new PolygonBody(64.000, -32.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 64.000, -32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
-			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 0.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new Exit(0.000, 128.000, Assets.Exit), Exit, SpritesGroup , 0.000, 128.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level15" }, null ), onAddCallback );//"Exit"
-			addSpriteToLayer(new BreakableWall(256.000, 96.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 256.000, 96.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 64.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
+			addSpriteToLayer(new PolygonBody(64.000, 32.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 64.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new BreakableWall(224.000, 0.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 224.000, 0.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
+			addSpriteToLayer(new Exit(0.000, 192.000, Assets.Exit), Exit, SpritesGroup , 0.000, 192.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level15" }, null ), onAddCallback );//"Exit"
+			addSpriteToLayer(new BreakableWall(256.000, 160.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 256.000, 160.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
 		}
 
 		public function generateObjectLinks(onAddCallback:Function = null):void
