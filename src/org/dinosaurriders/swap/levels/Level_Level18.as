@@ -92,16 +92,16 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			obj = new BoxData(226.000, 515.000, 0.000, 320.000, 145.000, PropertyFieldsGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"gravityy", value:-14 }, { name:"buoyancy", value:20 }, null ), 1, 1 );
-			obj = new BoxData(210.000, 570.000, 0.000, 360.000, 50.000, PropertyFieldsGroup );
+			obj = new BoxData(210.000, 590.000, 0.000, 360.000, 5.000, PropertyFieldsGroup );
 			shapes.push(obj);
 			callbackNewData( obj, onAddCallback, PropertyFieldsGroup, generateProperties( { name:"kills", value:true }, null ), 1, 1 );
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(new PolygonBody(94.000, 384.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 94.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
+			addSpriteToLayer(new PolygonBody(96.000, 384.000, Assets.Crate2, 4, 500), PolygonBody, SpritesGroup , 96.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate2"
+			addSpriteToLayer(new PolygonBody(160.000, 384.000, Assets.Crate2, 4, 500), PolygonBody, SpritesGroup , 160.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate2"
 			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
-			addSpriteToLayer(new PolygonBody(160.000, 384.000, Assets.Crate1, 4, 500), PolygonBody, SpritesGroup , 160.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"Crate1"
 			addSpriteToLayer(new Exit(0.000, 768.000, Assets.Exit), Exit, SpritesGroup , 0.000, 768.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level19" }, null ), onAddCallback );//"Exit"
 		}
 

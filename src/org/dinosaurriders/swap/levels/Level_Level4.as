@@ -27,6 +27,9 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		//Sprites
 		public var SpritesGroup:FlxGroup = new FlxGroup;
 
+		//Shapes
+		public var TextGroup:FlxGroup = new FlxGroup;
+
 		//Properties
 
 
@@ -37,12 +40,24 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			var tileProperties:Dictionary = new Dictionary;
 
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, -32.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -32.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
@@ -51,6 +66,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			masterLayer.add(layerPlayerLayer);
 			masterLayer.add(SpritesGroup);
 			masterLayer.add(layerFrontLayer);
+			masterLayer.add(TextGroup);
 
 			if ( addToStage )
 				createObjects(onAddCallback, parentObject);
@@ -66,12 +82,23 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		override public function createObjects(onAddCallback:Function = null, parentObject:Object = null):void
 		{
+			addShapesForLayerText(onAddCallback);
 			addSpritesForLayerSprites(onAddCallback);
 			generateObjectLinks(onAddCallback);
 			if ( parentObject != null )
 				parentObject.add(masterLayer);
 			else
 				FlxG.state.add(masterLayer);
+		}
+
+		public function addShapesForLayerText(onAddCallback:Function = null):void
+		{
+			var obj:Object;
+
+			obj = new BoxData(270.000, 240.000, 0.000, 50.000, 200.000, TextGroup );
+			shapes.push(obj);
+			linkedObjectDictionary[31] = callbackNewData( obj, onAddCallback, TextGroup, generateProperties( null ), 1, 1, true  );
+			linkedObjectDictionary[32] = callbackNewData(new TextData(0.000, 30.000, 480.000, 50.000, 0.000, "If only I was stronger... or heavier...","system", 11, 0x000000, "center"), onAddCallback, TextGroup, generateProperties( null ), 1, 1, true  ) ;
 		}
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
@@ -87,6 +114,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 		public function generateObjectLinks(onAddCallback:Function = null):void
 		{
 			createLink(linkedObjectDictionary[6], linkedObjectDictionary[7], onAddCallback, generateProperties( { name:"onActivate", value:"ENABLE" }, null ) );
+			createLink(linkedObjectDictionary[31], linkedObjectDictionary[32], onAddCallback, generateProperties( null ) );
 		}
 
 	}

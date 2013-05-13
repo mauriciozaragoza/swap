@@ -40,14 +40,29 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			var tileProperties:Dictionary = new Dictionary;
 
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerSky = addTilemap( CSV_Sky, Img_Sky, 0.000, 0.000, 32, 32, 0.250, 0.250, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerBackground = addTilemap( CSV_Background, Img_Background, 0.000, -256.000, 32, 32, 0.500, 0.500, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerBackLayer = addTilemap( CSV_BackLayer, Img_BackLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerPlayerLayer = addTilemap( CSV_PlayerLayer, Img_PlayerLayer, 0.000, -32.000, 32, 32, 1.000, 1.000, true, 1, 1, properties, onAddCallback );
 			properties = generateProperties( null );
+			tileProperties[14]=generateProperties( { name:"kills", value:true }, null );
+			tileProperties[15]=generateProperties( { name:"kills", value:true }, null );
+			properties.push( { name:"%DAME_tiledata%", value:tileProperties } );
 			layerFrontLayer = addTilemap( CSV_FrontLayer, Img_FrontLayer, 0.000, 0.000, 32, 32, 1.000, 1.000, false, 1, 1, properties, onAddCallback );
 
 			//Add layers to the master group in correct order.
@@ -82,7 +97,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 
 		public function addSpritesForLayerSprites(onAddCallback:Function = null):void
 		{
-			addSpriteToLayer(new PolygonBody(84.000, -32.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 84.000, -32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
+			addSpriteToLayer(new PolygonBody(82.000, -30.000, Assets.ForestBoulderLarge, 12, 2000), PolygonBody, SpritesGroup , 82.000, -30.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"ForestBoulderLarge"
 			addSpriteToLayer(new BreakableWall(448.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 448.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
 			addSpriteToLayer(null, Player, SpritesGroup , 0.000, 96.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Player"
 			addSpriteToLayer(new BreakableWall(128.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 128.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
@@ -91,7 +106,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			addSpriteToLayer(new BreakableWall(416.000, 32.000, Assets.BreakableWall1, Assets.ForestBoulderLarge, 7000), BreakableWall, SpritesGroup , 416.000, 32.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"BreakableWall1"
 			addSpriteToLayer(new PolygonBody(512.000, 192.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 512.000, 192.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(480.000, 192.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 480.000, 192.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
-			linkedObjectDictionary[22] = addSpriteToLayer(new WeightSwitch(96.000, 216.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 96.000, 216.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
+			linkedObjectDictionary[22] = addSpriteToLayer(new WeightSwitch(96.000, 218.000, Assets.Switch1, 100), WeightSwitch, SpritesGroup , 96.000, 218.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( null ), onAddCallback );//"Switch1"
 			addSpriteToLayer(new PolygonBody(512.000, 224.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 512.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(480.000, 224.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 480.000, 224.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(288.000, 288.000, Assets.SquareRock3, 4, 2000), PolygonBody, SpritesGroup , 288.000, 288.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock3"
@@ -100,10 +115,7 @@ import org.dinosaurriders.swap.*;import org.dinosaurriders.swap.objects.*;
 			addSpriteToLayer(new PolygonBody(160.000, 352.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 352.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(192.000, 384.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
 			addSpriteToLayer(new PolygonBody(160.000, 384.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 384.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
-			addSpriteToLayer(new PolygonBody(160.000, 416.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
-			addSpriteToLayer(new PolygonBody(192.000, 416.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
-			addSpriteToLayer(new PolygonBody(160.000, 448.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 160.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
-			addSpriteToLayer(new PolygonBody(192.000, 448.000, Assets.SquareRock2, 4, 2500), PolygonBody, SpritesGroup , 192.000, 448.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock2"
+			addSpriteToLayer(new PolygonBody(160.000, 416.000, Assets.SquareRock3, 4, 2000), PolygonBody, SpritesGroup , 160.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"swappable", value:true }, null ), onAddCallback );//"SquareRock3"
 			linkedObjectDictionary[23] = addSpriteToLayer(new Exit(448.000, 416.000, Assets.Exit), Exit, SpritesGroup , 448.000, 416.000, 0.000, 1, 1, false, 1.000, 1.000, generateProperties( { name:"sensor", value:true }, { name:"warp", value:"Level11" }, { name:"enabled", value:false }, null ), onAddCallback );//"Exit"
 		}
 
